@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 
 export default function Blog() {
   return (
-    <Layout>
+    <Layout title="Blog">
       {/* Title page */}
       <section
         className="bg-img1 txt-center p-lr-15 p-tb-92"

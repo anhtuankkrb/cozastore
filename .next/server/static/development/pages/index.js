@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -853,29 +853,102 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "C:\\Users\\pc\\Desktop\\cozastore\\components\\header.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
 function Header() {
+  const path = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])().pathname;
+  const menu = [["/", "Home"], ["/shop", "Shop"], ["/features", "Features"], ["/blog", "Blog"], ["/about", "About"], ["/contact", "Contact"]];
   return __jsx("header", {
+    className: path !== "/" ? "header-v4" : null,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4
+      lineNumber: 16
     },
     __self: this
   }, __jsx("div", {
+    className: "container-menu-desktop",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "top-bar",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "content-topbar flex-sb-m h-full container",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "left-top-bar",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }, "Free shipping for standard order over $100"), __jsx("div", {
+    className: "right-top-bar flex-w h-full",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "flex-c-m trans-04 p-lr-25",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }, "Help & FAQs"), __jsx("a", {
+    href: "#",
+    className: "flex-c-m trans-04 p-lr-25",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }, "My Account"), __jsx("a", {
+    href: "#",
+    className: "flex-c-m trans-04 p-lr-25",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: this
+  }, "EN"), __jsx("a", {
+    href: "#",
+    className: "flex-c-m trans-04 p-lr-25",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: this
+  }, "USD")))), __jsx("div", {
     className: "wrap-menu-desktop",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 41
     },
     __self: this
   }, __jsx("nav", {
     className: "limiter-menu-desktop container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 42
     },
     __self: this
   }, __jsx("a", {
@@ -883,7 +956,7 @@ function Header() {
     className: "logo",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 44
     },
     __self: this
   }, __jsx("img", {
@@ -891,153 +964,67 @@ function Header() {
     alt: "IMG-LOGO",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 45
     },
     __self: this
   })), __jsx("div", {
     className: "menu-desktop",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 48
     },
     __self: this
   }, __jsx("ul", {
     className: "main-menu",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 49
     },
     __self: this
-  }, __jsx("li", {
-    className: "active-menu",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
-    },
-    __self: this
-  }, "Home"))), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/shop",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: this
-  }, "Shop"))), __jsx("li", {
-    className: "label1",
-    "data-label1": "hot",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "shoping-cart.html",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: this
-  }, "Features")), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/blog",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30
-    },
-    __self: this
-  }, "Blog"))), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/about",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35
-    },
-    __self: this
-  }, "About"))), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/contact",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40
-    },
-    __self: this
-  }, "Contact"))))), __jsx("div", {
+  }, menu.map((page, index) => {
+    return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: page[0],
+      key: index,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 52
+      },
+      __self: this
+    }, __jsx("li", {
+      className: `${path === page[0] ? "active-menu" : ""}${page[1] === "Features" ? " label1" : ""}` || null,
+      "data-label1": page[1] === "Features" ? "hot" : null,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 53
+      },
+      __self: this
+    }, __jsx("span", {
+      className: "link",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 61
+      },
+      __self: this
+    }, page[1])));
+  }))), __jsx("div", {
     className: "wrap-icon-header flex-w flex-r-m",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 69
     },
     __self: this
   }, __jsx("div", {
     className: "icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 70
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 71
     },
     __self: this
   })), __jsx("div", {
@@ -1045,14 +1032,14 @@ function Header() {
     "data-notify": 2,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 73
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 77
     },
     __self: this
   })), __jsx("a", {
@@ -1061,35 +1048,35 @@ function Header() {
     "data-notify": 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 79
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-favorite-outline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 84
     },
     __self: this
-  }))))), __jsx("div", {
+  })))))), __jsx("div", {
     className: "wrap-header-mobile",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 91
     },
     __self: this
   }, __jsx("div", {
     className: "logo-mobile",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 93
     },
     __self: this
   }, __jsx("a", {
     href: "index.html",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 94
     },
     __self: this
   }, __jsx("img", {
@@ -1097,28 +1084,28 @@ function Header() {
     alt: "IMG-LOGO",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 95
     },
     __self: this
   }))), __jsx("div", {
     className: "wrap-icon-header flex-w flex-r-m m-r-15",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 99
     },
     __self: this
   }, __jsx("div", {
     className: "icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 100
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 101
     },
     __self: this
   })), __jsx("div", {
@@ -1126,14 +1113,14 @@ function Header() {
     "data-notify": 2,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79
+      lineNumber: 103
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-shopping-cart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 107
     },
     __self: this
   })), __jsx("a", {
@@ -1142,180 +1129,159 @@ function Header() {
     "data-notify": 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 109
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-favorite-outline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 114
     },
     __self: this
   }))), __jsx("div", {
     className: "btn-show-menu-mobile hamburger hamburger--squeeze",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 118
     },
     __self: this
   }, __jsx("span", {
     className: "hamburger-box",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 119
     },
     __self: this
   }, __jsx("span", {
     className: "hamburger-inner",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 120
     },
     __self: this
   })))), __jsx("div", {
     className: "menu-mobile",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 125
     },
     __self: this
   }, __jsx("ul", {
-    className: "main-menu-m",
+    className: "topbar-mobile",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 126
     },
     __self: this
   }, __jsx("li", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 104
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 105
-    },
-    __self: this
-  }, "Home"))), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 108
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/shop",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 109
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 110
-    },
-    __self: this
-  }, "Shop"))), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 113
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "shoping-cart.html",
-    className: "label1 rs1",
-    "data-label1": "hot",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 114
-    },
-    __self: this
-  }, "Features")), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 122
-    },
-    __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/blog",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 123
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 124
-    },
-    __self: this
-  }, "Blog"))), __jsx("li", {
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 127
     },
     __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/about",
+  }, __jsx("div", {
+    className: "left-top-bar",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 128
     },
     __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 129
-    },
-    __self: this
-  }, "About"))), __jsx("li", {
+  }, "Free shipping for standard order over $100")), __jsx("li", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 132
     },
     __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/contact",
+  }, __jsx("div", {
+    className: "right-top-bar flex-w h-full",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 133
     },
     __self: this
   }, __jsx("a", {
+    href: "#",
+    className: "flex-c-m p-lr-10 trans-04",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 134
     },
     __self: this
-  }, "Contact"))))), __jsx("div", {
-    className: "modal-search-header flex-c-m trans-04 js-hide-modal-search",
+  }, "Help & FAQs"), __jsx("a", {
+    href: "#",
+    className: "flex-c-m p-lr-10 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137
+    },
+    __self: this
+  }, "My Account"), __jsx("a", {
+    href: "#",
+    className: "flex-c-m p-lr-10 trans-04",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 140
+    },
+    __self: this
+  }, "EN"), __jsx("a", {
+    href: "#",
+    className: "flex-c-m p-lr-10 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 143
+    },
+    __self: this
+  }, "USD")))), __jsx("ul", {
+    className: "main-menu-m",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 149
+    },
+    __self: this
+  }, menu.map((page, index) => {
+    return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: page[0],
+      key: index,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 152
+      },
+      __self: this
+    }, __jsx("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 153
+      },
+      __self: this
+    }, __jsx("a", {
+      className: page[1] === "Features" ? " label1 rs1" : null,
+      "data-label1": page[1] === "Features" ? "hot" : null,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 154
+      },
+      __self: this
+    }, page[1])));
+  }))), __jsx("div", {
+    className: "modal-search-header flex-c-m trans-04 js-hide-modal-search",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 167
     },
     __self: this
   }, __jsx("div", {
     className: "container-search-header",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 141
+      lineNumber: 168
     },
     __self: this
   }, __jsx("button", {
     className: "flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142
+      lineNumber: 169
     },
     __self: this
   }, __jsx("img", {
@@ -1323,28 +1289,28 @@ function Header() {
     alt: "CLOSE",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 143
+      lineNumber: 170
     },
     __self: this
   })), __jsx("form", {
     className: "wrap-search-header flex-w p-l-15",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 172
     },
     __self: this
   }, __jsx("button", {
     className: "flex-c-m trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 146
+      lineNumber: 173
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147
+      lineNumber: 174
     },
     __self: this
   })), __jsx("input", {
@@ -1354,7 +1320,7 @@ function Header() {
     placeholder: "Search...",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149
+      lineNumber: 176
     },
     __self: this
   })))));
@@ -1378,6 +1344,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart */ "./components/cart.js");
 /* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./footer */ "./components/footer.js");
 /* harmony import */ var _backToTop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./backToTop */ "./components/backToTop.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_5__);
 var _jsxFileName = "C:\\Users\\pc\\Desktop\\cozastore\\components\\layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -1385,29 +1353,66 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 function Layout(props) {
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    __self: this
-  }), __jsx(_cart__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_5___default.a, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: this
-  }), props.children, __jsx(_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, __jsx("title", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
+    },
+    __self: this
+  }, props.title), __jsx("meta", {
+    charSet: "UTF-8",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
     },
     __self: this
-  }), __jsx(_backToTop__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), __jsx("meta", {
+    name: "viewport",
+    content: "width=device-width, initial-scale=1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13
+    },
+    __self: this
+  }), __jsx("link", {
+    rel: "icon",
+    type: "image/png",
+    href: "images/icons/favicon.png",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  })), __jsx(_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16
+    },
+    __self: this
+  }), __jsx(_cart__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: this
+  }), props.children, __jsx(_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }), __jsx(_backToTop__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
     },
     __self: this
   }));
@@ -1436,6 +1441,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function LayoutHasModal(props) {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    title: props.title,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -3700,7 +3706,8 @@ var _jsxFileName = "C:\\Users\\pc\\Desktop\\cozastore\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function Index() {
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_layoutHasModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return __jsx(_components_layoutHasModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    title: "Home",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 5
@@ -3730,7 +3737,7 @@ function Index() {
   }, __jsx("div", {
     className: "item-slick1",
     style: {
-      backgroundImage: 'url(images/slide-01.jpg)'
+      backgroundImage: "url(images/slide-01.jpg)"
     },
     __source: {
       fileName: _jsxFileName,
@@ -3741,14 +3748,14 @@ function Index() {
     className: "container h-full",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 14
     },
     __self: this
   }, __jsx("div", {
     className: "flex-col-l-m h-full p-t-100 p-b-30 respon5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 15
     },
     __self: this
   }, __jsx("div", {
@@ -3757,14 +3764,14 @@ function Index() {
     "data-delay": 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 16
     },
     __self: this
   }, __jsx("span", {
     className: "ltext-101 cl2 respon2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 21
     },
     __self: this
   }, "Women Collection 2018")), __jsx("div", {
@@ -3773,14 +3780,14 @@ function Index() {
     "data-delay": 800,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 25
     },
     __self: this
   }, __jsx("h2", {
     className: "ltext-201 cl2 p-t-19 p-b-43 respon1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 30
     },
     __self: this
   }, "NEW SEASON")), __jsx("div", {
@@ -3789,98 +3796,25 @@ function Index() {
     "data-delay": 1600,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 34
     },
     __self: this
   }, __jsx("a", {
     href: "product.html",
     className: "flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24
-    },
-    __self: this
-  }, "Shop Now"))))), __jsx("div", {
-    className: "item-slick1",
-    style: {
-      backgroundImage: 'url(images/slide-02.jpg)'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "container h-full",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "flex-col-l-m h-full p-t-100 p-b-30 respon5",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "layer-slick1 animated visible-false",
-    "data-appear": "rollIn",
-    "data-delay": 0,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34
-    },
-    __self: this
-  }, __jsx("span", {
-    className: "ltext-101 cl2 respon2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35
-    },
-    __self: this
-  }, "Men New-Season")), __jsx("div", {
-    className: "layer-slick1 animated visible-false",
-    "data-appear": "lightSpeedIn",
-    "data-delay": 800,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 39
     },
     __self: this
-  }, __jsx("h2", {
-    className: "ltext-201 cl2 p-t-19 p-b-43 respon1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40
-    },
-    __self: this
-  }, "Jackets & Coats")), __jsx("div", {
-    className: "layer-slick1 animated visible-false",
-    "data-appear": "slideInUp",
-    "data-delay": 1600,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product.html",
-    className: "flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 45
-    },
-    __self: this
   }, "Shop Now"))))), __jsx("div", {
     className: "item-slick1",
     style: {
-      backgroundImage: 'url(images/slide-03.jpg)'
+      backgroundImage: "url(images/slide-02.jpg)"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 49
     },
     __self: this
   }, __jsx("div", {
@@ -3899,7 +3833,7 @@ function Index() {
     __self: this
   }, __jsx("div", {
     className: "layer-slick1 animated visible-false",
-    "data-appear": "rotateInDownLeft",
+    "data-appear": "rollIn",
     "data-delay": 0,
     __source: {
       fileName: _jsxFileName,
@@ -3910,7 +3844,80 @@ function Index() {
     className: "ltext-101 cl2 respon2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 60
+    },
+    __self: this
+  }, "Men New-Season")), __jsx("div", {
+    className: "layer-slick1 animated visible-false",
+    "data-appear": "lightSpeedIn",
+    "data-delay": 800,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64
+    },
+    __self: this
+  }, __jsx("h2", {
+    className: "ltext-201 cl2 p-t-19 p-b-43 respon1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69
+    },
+    __self: this
+  }, "Jackets & Coats")), __jsx("div", {
+    className: "layer-slick1 animated visible-false",
+    "data-appear": "slideInUp",
+    "data-delay": 1600,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product.html",
+    className: "flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78
+    },
+    __self: this
+  }, "Shop Now"))))), __jsx("div", {
+    className: "item-slick1",
+    style: {
+      backgroundImage: "url(images/slide-03.jpg)"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "container h-full",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "flex-col-l-m h-full p-t-100 p-b-30 respon5",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 93
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "layer-slick1 animated visible-false",
+    "data-appear": "rotateInDownLeft",
+    "data-delay": 0,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94
+    },
+    __self: this
+  }, __jsx("span", {
+    className: "ltext-101 cl2 respon2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99
     },
     __self: this
   }, "Men Collection 2018")), __jsx("div", {
@@ -3919,14 +3926,14 @@ function Index() {
     "data-delay": 800,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 103
     },
     __self: this
   }, __jsx("h2", {
     className: "ltext-201 cl2 p-t-19 p-b-43 respon1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 108
     },
     __self: this
   }, "New arrivals")), __jsx("div", {
@@ -3935,7 +3942,7 @@ function Index() {
     "data-delay": 1600,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 112
     },
     __self: this
   }, __jsx("a", {
@@ -3943,42 +3950,42 @@ function Index() {
     className: "flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 117
     },
     __self: this
   }, "Shop Now")))))))), __jsx("div", {
     className: "sec-banner bg0 p-t-80 p-b-50",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 131
     },
     __self: this
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 132
     },
     __self: this
   }, __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79
+      lineNumber: 133
     },
     __self: this
   }, __jsx("div", {
     className: "col-md-6 col-xl-4 p-b-30 m-lr-auto",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 134
     },
     __self: this
   }, __jsx("div", {
     className: "block1 wrap-pic-w",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 136
     },
     __self: this
   }, __jsx("img", {
@@ -3986,7 +3993,7 @@ function Index() {
     alt: "IMG-BANNER",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 137
     },
     __self: this
   }), __jsx("a", {
@@ -3994,56 +4001,56 @@ function Index() {
     className: "block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 138
     },
     __self: this
   }, __jsx("div", {
     className: "block1-txt-child1 flex-col-l",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 142
     },
     __self: this
   }, __jsx("span", {
     className: "block1-name ltext-102 trans-04 p-b-8",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 143
     },
     __self: this
   }, "Women"), __jsx("span", {
     className: "block1-info stext-102 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 146
     },
     __self: this
   }, "Spring 2018")), __jsx("div", {
     className: "block1-txt-child2 p-b-4 trans-05",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 150
     },
     __self: this
   }, __jsx("div", {
     className: "block1-link stext-101 cl0 trans-09",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 151
     },
     __self: this
   }, "Shop Now"))))), __jsx("div", {
     className: "col-md-6 col-xl-4 p-b-30 m-lr-auto",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 158
     },
     __self: this
   }, __jsx("div", {
     className: "block1 wrap-pic-w",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 160
     },
     __self: this
   }, __jsx("img", {
@@ -4051,7 +4058,7 @@ function Index() {
     alt: "IMG-BANNER",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104
+      lineNumber: 161
     },
     __self: this
   }), __jsx("a", {
@@ -4059,56 +4066,56 @@ function Index() {
     className: "block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 162
     },
     __self: this
   }, __jsx("div", {
     className: "block1-txt-child1 flex-col-l",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 166
     },
     __self: this
   }, __jsx("span", {
     className: "block1-name ltext-102 trans-04 p-b-8",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 167
     },
     __self: this
   }, "Men"), __jsx("span", {
     className: "block1-info stext-102 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 170
     },
     __self: this
   }, "Spring 2018")), __jsx("div", {
     className: "block1-txt-child2 p-b-4 trans-05",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114
+      lineNumber: 174
     },
     __self: this
   }, __jsx("div", {
     className: "block1-link stext-101 cl0 trans-09",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115
+      lineNumber: 175
     },
     __self: this
   }, "Shop Now"))))), __jsx("div", {
     className: "col-md-6 col-xl-4 p-b-30 m-lr-auto",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 182
     },
     __self: this
   }, __jsx("div", {
     className: "block1 wrap-pic-w",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124
+      lineNumber: 184
     },
     __self: this
   }, __jsx("img", {
@@ -4116,7 +4123,7 @@ function Index() {
     alt: "IMG-BANNER",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125
+      lineNumber: 185
     },
     __self: this
   }), __jsx("a", {
@@ -4124,84 +4131,84 @@ function Index() {
     className: "block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126
+      lineNumber: 186
     },
     __self: this
   }, __jsx("div", {
     className: "block1-txt-child1 flex-col-l",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 190
     },
     __self: this
   }, __jsx("span", {
     className: "block1-name ltext-102 trans-04 p-b-8",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 128
+      lineNumber: 191
     },
     __self: this
   }, "Accessories"), __jsx("span", {
     className: "block1-info stext-102 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131
+      lineNumber: 194
     },
     __self: this
   }, "New Trend")), __jsx("div", {
     className: "block1-txt-child2 p-b-4 trans-05",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 198
     },
     __self: this
   }, __jsx("div", {
     className: "block1-link stext-101 cl0 trans-09",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 199
     },
     __self: this
   }, "Shop Now")))))))), __jsx("section", {
     className: "bg0 p-t-23 p-b-140",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147
+      lineNumber: 210
     },
     __self: this
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148
+      lineNumber: 211
     },
     __self: this
   }, __jsx("div", {
     className: "p-b-10",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149
+      lineNumber: 212
     },
     __self: this
   }, __jsx("h3", {
     className: "ltext-103 cl5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 150
+      lineNumber: 213
     },
     __self: this
   }, "Product Overview")), __jsx("div", {
     className: "flex-w flex-sb-m p-b-52",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154
+      lineNumber: 215
     },
     __self: this
   }, __jsx("div", {
     className: "flex-w flex-l-m filter-tope-group m-tb-10",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 155
+      lineNumber: 216
     },
     __self: this
   }, __jsx("button", {
@@ -4209,7 +4216,7 @@ function Index() {
     "data-filter": "*",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156
+      lineNumber: 217
     },
     __self: this
   }, "All Products"), __jsx("button", {
@@ -4217,7 +4224,7 @@ function Index() {
     "data-filter": ".women",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 159
+      lineNumber: 223
     },
     __self: this
   }, "Women"), __jsx("button", {
@@ -4225,7 +4232,7 @@ function Index() {
     "data-filter": ".men",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162
+      lineNumber: 229
     },
     __self: this
   }, "Men"), __jsx("button", {
@@ -4233,7 +4240,7 @@ function Index() {
     "data-filter": ".bag",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 165
+      lineNumber: 235
     },
     __self: this
   }, "Bag"), __jsx("button", {
@@ -4241,7 +4248,7 @@ function Index() {
     "data-filter": ".shoes",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 168
+      lineNumber: 241
     },
     __self: this
   }, "Shoes"), __jsx("button", {
@@ -4249,84 +4256,84 @@ function Index() {
     "data-filter": ".watches",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 171
+      lineNumber: 247
     },
     __self: this
   }, "Watches")), __jsx("div", {
     className: "flex-w flex-c-m m-tb-10",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 175
+      lineNumber: 254
     },
     __self: this
   }, __jsx("div", {
     className: "flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 176
+      lineNumber: 255
     },
     __self: this
   }, __jsx("i", {
     className: "icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 177
+      lineNumber: 256
     },
     __self: this
   }), __jsx("i", {
     className: "icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 178
+      lineNumber: 257
     },
     __self: this
   }), "Filter"), __jsx("div", {
     className: "flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 181
+      lineNumber: 260
     },
     __self: this
   }, __jsx("i", {
     className: "icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 182
+      lineNumber: 261
     },
     __self: this
   }), __jsx("i", {
     className: "icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 183
+      lineNumber: 262
     },
     __self: this
   }), "Search")), __jsx("div", {
     className: "dis-none panel-search w-full p-t-10 p-b-15",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 188
+      lineNumber: 267
     },
     __self: this
   }, __jsx("div", {
     className: "bor8 dis-flex p-l-15",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 189
+      lineNumber: 268
     },
     __self: this
   }, __jsx("button", {
     className: "size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 190
+      lineNumber: 269
     },
     __self: this
   }, __jsx("i", {
     className: "zmdi zmdi-search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191
+      lineNumber: 270
     },
     __self: this
   })), __jsx("input", {
@@ -4336,471 +4343,170 @@ function Index() {
     placeholder: "Search",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 193
+      lineNumber: 272
     },
     __self: this
   }))), __jsx("div", {
     className: "dis-none panel-filter w-full p-t-10",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 197
+      lineNumber: 281
     },
     __self: this
   }, __jsx("div", {
     className: "wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 198
+      lineNumber: 282
     },
     __self: this
   }, __jsx("div", {
     className: "filter-col1 p-r-15 p-b-27",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 199
+      lineNumber: 283
     },
     __self: this
   }, __jsx("div", {
     className: "mtext-102 cl2 p-b-15",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 200
+      lineNumber: 284
     },
     __self: this
   }, "Sort By"), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 203
+      lineNumber: 285
     },
     __self: this
   }, __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 204
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 205
-    },
-    __self: this
-  }, "Default")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 209
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 210
-    },
-    __self: this
-  }, "Popularity")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 214
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 215
-    },
-    __self: this
-  }, "Average rating")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 219
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04 filter-link-active",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 220
-    },
-    __self: this
-  }, "Newness")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 224
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 225
-    },
-    __self: this
-  }, "Price: Low to High")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 229
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 230
-    },
-    __self: this
-  }, "Price: High to Low")))), __jsx("div", {
-    className: "filter-col2 p-r-15 p-b-27",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 236
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "mtext-102 cl2 p-b-15",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 237
-    },
-    __self: this
-  }, "Price"), __jsx("ul", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 240
-    },
-    __self: this
-  }, __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 241
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04 filter-link-active",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 242
-    },
-    __self: this
-  }, "All")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 246
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 247
-    },
-    __self: this
-  }, "$0.00 - $50.00")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 251
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 252
-    },
-    __self: this
-  }, "$50.00 - $100.00")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 256
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 257
-    },
-    __self: this
-  }, "$100.00 - $150.00")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 261
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 262
-    },
-    __self: this
-  }, "$150.00 - $200.00")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 266
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 267
-    },
-    __self: this
-  }, "$200.00+")))), __jsx("div", {
-    className: "filter-col3 p-r-15 p-b-27",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 273
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "mtext-102 cl2 p-b-15",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 274
-    },
-    __self: this
-  }, "Color"), __jsx("ul", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 277
-    },
-    __self: this
-  }, __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 278
-    },
-    __self: this
-  }, __jsx("span", {
-    className: "fs-15 lh-12 m-r-6",
-    style: {
-      color: '#222'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 279
-    },
-    __self: this
-  }, __jsx("i", {
-    className: "zmdi zmdi-circle",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 280
-    },
-    __self: this
-  })), __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 282
-    },
-    __self: this
-  }, "Black")), __jsx("li", {
     className: "p-b-6",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 286
     },
     __self: this
-  }, __jsx("span", {
-    className: "fs-15 lh-12 m-r-6",
-    style: {
-      color: '#4272d7'
-    },
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 287
     },
     __self: this
-  }, __jsx("i", {
-    className: "zmdi zmdi-circle",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 288
-    },
-    __self: this
-  })), __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04 filter-link-active",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 290
-    },
-    __self: this
-  }, "Blue")), __jsx("li", {
+  }, "Default")), __jsx("li", {
     className: "p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 294
+      lineNumber: 291
     },
     __self: this
-  }, __jsx("span", {
-    className: "fs-15 lh-12 m-r-6",
-    style: {
-      color: '#b3b3b3'
-    },
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 295
+      lineNumber: 292
     },
     __self: this
-  }, __jsx("i", {
-    className: "zmdi zmdi-circle",
+  }, "Popularity")), __jsx("li", {
+    className: "p-b-6",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 296
     },
     __self: this
-  })), __jsx("a", {
+  }, __jsx("a", {
     href: "#",
     className: "filter-link stext-106 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 298
+      lineNumber: 297
     },
     __self: this
-  }, "Grey")), __jsx("li", {
+  }, "Average rating")), __jsx("li", {
     className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 301
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04 filter-link-active",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 302
     },
     __self: this
-  }, __jsx("span", {
-    className: "fs-15 lh-12 m-r-6",
-    style: {
-      color: '#00ad5f'
-    },
+  }, "Newness")), __jsx("li", {
+    className: "p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 303
+      lineNumber: 309
     },
     __self: this
-  }, __jsx("i", {
-    className: "zmdi zmdi-circle",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 304
-    },
-    __self: this
-  })), __jsx("a", {
+  }, __jsx("a", {
     href: "#",
     className: "filter-link stext-106 trans-04",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 306
-    },
-    __self: this
-  }, "Green")), __jsx("li", {
-    className: "p-b-6",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 310
     },
     __self: this
-  }, __jsx("span", {
-    className: "fs-15 lh-12 m-r-6",
-    style: {
-      color: '#fa4251'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 311
-    },
-    __self: this
-  }, __jsx("i", {
-    className: "zmdi zmdi-circle",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 312
-    },
-    __self: this
-  })), __jsx("a", {
-    href: "#",
-    className: "filter-link stext-106 trans-04",
+  }, "Price: Low to High")), __jsx("li", {
+    className: "p-b-6",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 314
     },
     __self: this
-  }, "Red")), __jsx("li", {
-    className: "p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 318
-    },
-    __self: this
-  }, __jsx("span", {
-    className: "fs-15 lh-12 m-r-6",
-    style: {
-      color: '#aaa'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 319
-    },
-    __self: this
-  }, __jsx("i", {
-    className: "zmdi zmdi-circle-o",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 320
-    },
-    __self: this
-  })), __jsx("a", {
+  }, __jsx("a", {
     href: "#",
     className: "filter-link stext-106 trans-04",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 322
+      lineNumber: 315
     },
     __self: this
-  }, "White")))), __jsx("div", {
-    className: "filter-col4 p-b-27",
+  }, "Price: High to Low")))), __jsx("div", {
+    className: "filter-col2 p-r-15 p-b-27",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 328
+      lineNumber: 321
     },
     __self: this
   }, __jsx("div", {
     className: "mtext-102 cl2 p-b-15",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 329
+      lineNumber: 322
     },
     __self: this
-  }, "Tags"), __jsx("div", {
-    className: "flex-w p-t-4 m-r--5",
+  }, "Price"), __jsx("ul", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 323
+    },
+    __self: this
+  }, __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 324
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04 filter-link-active",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 325
+    },
+    __self: this
+  }, "All")), __jsx("li", {
+    className: "p-b-6",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 332
@@ -4808,10 +4514,311 @@ function Index() {
     __self: this
   }, __jsx("a", {
     href: "#",
-    className: "flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5",
+    className: "filter-link stext-106 trans-04",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 333
+    },
+    __self: this
+  }, "$0.00 - $50.00")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 337
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 338
+    },
+    __self: this
+  }, "$50.00 - $100.00")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 342
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 343
+    },
+    __self: this
+  }, "$100.00 - $150.00")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 347
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 348
+    },
+    __self: this
+  }, "$150.00 - $200.00")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 352
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 353
+    },
+    __self: this
+  }, "$200.00+")))), __jsx("div", {
+    className: "filter-col3 p-r-15 p-b-27",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 359
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "mtext-102 cl2 p-b-15",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 360
+    },
+    __self: this
+  }, "Color"), __jsx("ul", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 361
+    },
+    __self: this
+  }, __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 362
+    },
+    __self: this
+  }, __jsx("span", {
+    className: "fs-15 lh-12 m-r-6",
+    style: {
+      color: "#222"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 363
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "zmdi zmdi-circle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 367
+    },
+    __self: this
+  })), __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 369
+    },
+    __self: this
+  }, "Black")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 373
+    },
+    __self: this
+  }, __jsx("span", {
+    className: "fs-15 lh-12 m-r-6",
+    style: {
+      color: "#4272d7"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 374
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "zmdi zmdi-circle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 378
+    },
+    __self: this
+  })), __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04 filter-link-active",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 380
+    },
+    __self: this
+  }, "Blue")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 387
+    },
+    __self: this
+  }, __jsx("span", {
+    className: "fs-15 lh-12 m-r-6",
+    style: {
+      color: "#b3b3b3"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 388
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "zmdi zmdi-circle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 392
+    },
+    __self: this
+  })), __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 394
+    },
+    __self: this
+  }, "Grey")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 398
+    },
+    __self: this
+  }, __jsx("span", {
+    className: "fs-15 lh-12 m-r-6",
+    style: {
+      color: "#00ad5f"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 399
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "zmdi zmdi-circle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 403
+    },
+    __self: this
+  })), __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 405
+    },
+    __self: this
+  }, "Green")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 409
+    },
+    __self: this
+  }, __jsx("span", {
+    className: "fs-15 lh-12 m-r-6",
+    style: {
+      color: "#fa4251"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 410
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "zmdi zmdi-circle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 414
+    },
+    __self: this
+  })), __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 416
+    },
+    __self: this
+  }, "Red")), __jsx("li", {
+    className: "p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 420
+    },
+    __self: this
+  }, __jsx("span", {
+    className: "fs-15 lh-12 m-r-6",
+    style: {
+      color: "#aaa"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 421
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "zmdi zmdi-circle-o",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 425
+    },
+    __self: this
+  })), __jsx("a", {
+    href: "#",
+    className: "filter-link stext-106 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 427
+    },
+    __self: this
+  }, "White")))), __jsx("div", {
+    className: "filter-col4 p-b-27",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 433
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "mtext-102 cl2 p-b-15",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 434
+    },
+    __self: this
+  }, "Tags"), __jsx("div", {
+    className: "flex-w p-t-4 m-r--5",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 435
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 436
     },
     __self: this
   }, "Fashion"), __jsx("a", {
@@ -4819,7 +4826,7 @@ function Index() {
     className: "flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 336
+      lineNumber: 442
     },
     __self: this
   }, "Lifestyle"), __jsx("a", {
@@ -4827,7 +4834,7 @@ function Index() {
     className: "flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 339
+      lineNumber: 448
     },
     __self: this
   }, "Denim"), __jsx("a", {
@@ -4835,7 +4842,7 @@ function Index() {
     className: "flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 342
+      lineNumber: 454
     },
     __self: this
   }, "Streetstyle"), __jsx("a", {
@@ -4843,35 +4850,35 @@ function Index() {
     className: "flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 345
+      lineNumber: 460
     },
     __self: this
   }, "Crafts")))))), __jsx("div", {
     className: "row isotope-grid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 353
+      lineNumber: 471
     },
     __self: this
   }, __jsx("div", {
     className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 354
+      lineNumber: 472
     },
     __self: this
   }, __jsx("div", {
     className: "block2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 356
+      lineNumber: 474
     },
     __self: this
   }, __jsx("div", {
     className: "block2-pic hov-img0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 357
+      lineNumber: 475
     },
     __self: this
   }, __jsx("img", {
@@ -4879,7 +4886,7 @@ function Index() {
     alt: "IMG-PRODUCT",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 358
+      lineNumber: 476
     },
     __self: this
   }), __jsx("a", {
@@ -4887,21 +4894,21 @@ function Index() {
     className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 359
+      lineNumber: 477
     },
     __self: this
   }, "Quick View")), __jsx("div", {
     className: "block2-txt flex-w flex-t p-t-14",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 363
+      lineNumber: 484
     },
     __self: this
   }, __jsx("div", {
     className: "block2-txt-child1 flex-col-l ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 364
+      lineNumber: 485
     },
     __self: this
   }, __jsx("a", {
@@ -4909,21 +4916,21 @@ function Index() {
     className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 365
+      lineNumber: 486
     },
     __self: this
   }, "Esprit Ruffle Shirt"), __jsx("span", {
     className: "stext-105 cl3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 368
+      lineNumber: 492
     },
     __self: this
   }, "$16.64")), __jsx("div", {
     className: "block2-txt-child2 flex-r p-t-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 372
+      lineNumber: 494
     },
     __self: this
   }, __jsx("a", {
@@ -4931,7 +4938,7 @@ function Index() {
     className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 373
+      lineNumber: 495
     },
     __self: this
   }, __jsx("img", {
@@ -4940,7 +4947,7 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 374
+      lineNumber: 499
     },
     __self: this
   }), __jsx("img", {
@@ -4949,28 +4956,28 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 375
+      lineNumber: 504
     },
     __self: this
   })))))), __jsx("div", {
     className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 381
+      lineNumber: 514
     },
     __self: this
   }, __jsx("div", {
     className: "block2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 383
+      lineNumber: 516
     },
     __self: this
   }, __jsx("div", {
     className: "block2-pic hov-img0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 384
+      lineNumber: 517
     },
     __self: this
   }, __jsx("img", {
@@ -4978,7 +4985,7 @@ function Index() {
     alt: "IMG-PRODUCT",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 385
+      lineNumber: 518
     },
     __self: this
   }), __jsx("a", {
@@ -4986,21 +4993,21 @@ function Index() {
     className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 386
+      lineNumber: 519
     },
     __self: this
   }, "Quick View")), __jsx("div", {
     className: "block2-txt flex-w flex-t p-t-14",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 390
+      lineNumber: 526
     },
     __self: this
   }, __jsx("div", {
     className: "block2-txt-child1 flex-col-l ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 391
+      lineNumber: 527
     },
     __self: this
   }, __jsx("a", {
@@ -5008,21 +5015,21 @@ function Index() {
     className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 392
+      lineNumber: 528
     },
     __self: this
   }, "Herschel supply"), __jsx("span", {
     className: "stext-105 cl3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 395
+      lineNumber: 534
     },
     __self: this
   }, "$35.31")), __jsx("div", {
     className: "block2-txt-child2 flex-r p-t-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 399
+      lineNumber: 536
     },
     __self: this
   }, __jsx("a", {
@@ -5030,7 +5037,7 @@ function Index() {
     className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 400
+      lineNumber: 537
     },
     __self: this
   }, __jsx("img", {
@@ -5039,7 +5046,7 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 401
+      lineNumber: 541
     },
     __self: this
   }), __jsx("img", {
@@ -5048,28 +5055,28 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 402
+      lineNumber: 546
     },
     __self: this
   })))))), __jsx("div", {
     className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 408
+      lineNumber: 556
     },
     __self: this
   }, __jsx("div", {
     className: "block2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 410
+      lineNumber: 558
     },
     __self: this
   }, __jsx("div", {
     className: "block2-pic hov-img0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 411
+      lineNumber: 559
     },
     __self: this
   }, __jsx("img", {
@@ -5077,7 +5084,7 @@ function Index() {
     alt: "IMG-PRODUCT",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 412
+      lineNumber: 560
     },
     __self: this
   }), __jsx("a", {
@@ -5085,21 +5092,21 @@ function Index() {
     className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 413
+      lineNumber: 561
     },
     __self: this
   }, "Quick View")), __jsx("div", {
     className: "block2-txt flex-w flex-t p-t-14",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 417
+      lineNumber: 568
     },
     __self: this
   }, __jsx("div", {
     className: "block2-txt-child1 flex-col-l ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 418
+      lineNumber: 569
     },
     __self: this
   }, __jsx("a", {
@@ -5107,21 +5114,21 @@ function Index() {
     className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 419
+      lineNumber: 570
     },
     __self: this
   }, "Only Check Trouser"), __jsx("span", {
     className: "stext-105 cl3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 422
+      lineNumber: 576
     },
     __self: this
   }, "$25.50")), __jsx("div", {
     className: "block2-txt-child2 flex-r p-t-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 426
+      lineNumber: 578
     },
     __self: this
   }, __jsx("a", {
@@ -5129,7 +5136,7 @@ function Index() {
     className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 427
+      lineNumber: 579
     },
     __self: this
   }, __jsx("img", {
@@ -5138,7 +5145,7 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 428
+      lineNumber: 583
     },
     __self: this
   }), __jsx("img", {
@@ -5147,28 +5154,28 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 429
+      lineNumber: 588
     },
     __self: this
   })))))), __jsx("div", {
     className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 435
+      lineNumber: 598
     },
     __self: this
   }, __jsx("div", {
     className: "block2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 437
+      lineNumber: 600
     },
     __self: this
   }, __jsx("div", {
     className: "block2-pic hov-img0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 438
+      lineNumber: 601
     },
     __self: this
   }, __jsx("img", {
@@ -5176,7 +5183,7 @@ function Index() {
     alt: "IMG-PRODUCT",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 439
+      lineNumber: 602
     },
     __self: this
   }), __jsx("a", {
@@ -5184,21 +5191,21 @@ function Index() {
     className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 440
+      lineNumber: 603
     },
     __self: this
   }, "Quick View")), __jsx("div", {
     className: "block2-txt flex-w flex-t p-t-14",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 444
+      lineNumber: 610
     },
     __self: this
   }, __jsx("div", {
     className: "block2-txt-child1 flex-col-l ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 445
+      lineNumber: 611
     },
     __self: this
   }, __jsx("a", {
@@ -5206,21 +5213,21 @@ function Index() {
     className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 446
+      lineNumber: 612
     },
     __self: this
   }, "Classic Trench Coat"), __jsx("span", {
     className: "stext-105 cl3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 449
+      lineNumber: 618
     },
     __self: this
   }, "$75.00")), __jsx("div", {
     className: "block2-txt-child2 flex-r p-t-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 453
+      lineNumber: 620
     },
     __self: this
   }, __jsx("a", {
@@ -5228,7 +5235,7 @@ function Index() {
     className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 454
+      lineNumber: 621
     },
     __self: this
   }, __jsx("img", {
@@ -5237,7 +5244,7 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 455
+      lineNumber: 625
     },
     __self: this
   }), __jsx("img", {
@@ -5246,28 +5253,28 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 456
+      lineNumber: 630
     },
     __self: this
   })))))), __jsx("div", {
     className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 462
+      lineNumber: 640
     },
     __self: this
   }, __jsx("div", {
     className: "block2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 464
+      lineNumber: 642
     },
     __self: this
   }, __jsx("div", {
     className: "block2-pic hov-img0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 465
+      lineNumber: 643
     },
     __self: this
   }, __jsx("img", {
@@ -5275,7 +5282,7 @@ function Index() {
     alt: "IMG-PRODUCT",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 466
+      lineNumber: 644
     },
     __self: this
   }), __jsx("a", {
@@ -5283,21 +5290,21 @@ function Index() {
     className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 467
+      lineNumber: 645
     },
     __self: this
   }, "Quick View")), __jsx("div", {
     className: "block2-txt flex-w flex-t p-t-14",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 471
+      lineNumber: 652
     },
     __self: this
   }, __jsx("div", {
     className: "block2-txt-child1 flex-col-l ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 472
+      lineNumber: 653
     },
     __self: this
   }, __jsx("a", {
@@ -5305,722 +5312,29 @@ function Index() {
     className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 473
+      lineNumber: 654
     },
     __self: this
   }, "Front Pocket Jumper"), __jsx("span", {
     className: "stext-105 cl3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 476
+      lineNumber: 660
     },
     __self: this
   }, "$34.75")), __jsx("div", {
     className: "block2-txt-child2 flex-r p-t-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 480
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 481
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 482
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 483
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 489
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 491
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 492
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-06.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 493
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 494
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 498
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 499
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 500
-    },
-    __self: this
-  }, "Vintage Inspired Classic"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 503
-    },
-    __self: this
-  }, "$93.20")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 507
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 508
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 509
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 510
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 516
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 518
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 519
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-07.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 520
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 521
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 525
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 526
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 527
-    },
-    __self: this
-  }, "Shirt in Stretch Cotton"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 530
-    },
-    __self: this
-  }, "$52.66")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 534
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 535
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 536
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 537
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 543
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 545
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 546
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-08.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 547
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 548
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 552
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 553
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 554
-    },
-    __self: this
-  }, "Pieces Metallic Printed"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 557
-    },
-    __self: this
-  }, "$18.96")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 561
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 562
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 563
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 564
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 570
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 572
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 573
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-09.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 574
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 575
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 579
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 580
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 581
-    },
-    __self: this
-  }, "Converse All Star Hi Plimsolls"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 584
-    },
-    __self: this
-  }, "$75.00")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 588
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 589
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 590
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 591
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 597
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 599
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 600
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-10.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 601
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 602
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 606
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 607
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 608
-    },
-    __self: this
-  }, "Femme T-Shirt In Stripe"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 611
-    },
-    __self: this
-  }, "$25.85")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 615
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 616
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 617
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 618
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 624
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 626
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 627
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-11.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 628
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 629
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 633
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 634
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 635
-    },
-    __self: this
-  }, "Herschel supply"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 638
-    },
-    __self: this
-  }, "$63.16")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 642
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 643
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 644
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 645
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 651
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 653
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 654
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-12.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 655
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 656
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 660
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 661
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 662
     },
     __self: this
-  }, "Herschel supply"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 665
-    },
-    __self: this
-  }, "$63.15")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 669
-    },
-    __self: this
   }, __jsx("a", {
     href: "#",
     className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 670
+      lineNumber: 663
     },
     __self: this
   }, __jsx("img", {
@@ -6029,7 +5343,7 @@ function Index() {
     alt: "ICON",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 671
+      lineNumber: 667
     },
     __self: this
   }), __jsx("img", {
@@ -6042,329 +5356,131 @@ function Index() {
     },
     __self: this
   })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 678
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 680
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 681
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-13.jpg",
-    alt: "IMG-PRODUCT",
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 682
     },
     __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 684
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 685
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-06.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 686
+    },
+    __self: this
   }), __jsx("a", {
     href: "#",
     className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 683
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 687
     },
     __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 694
+    },
+    __self: this
   }, __jsx("div", {
     className: "block2-txt-child1 flex-col-l ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 688
+      lineNumber: 695
     },
     __self: this
   }, __jsx("a", {
     href: "product-detail.html",
     className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 689
-    },
-    __self: this
-  }, "T-Shirt with Sleeve"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 692
-    },
-    __self: this
-  }, "$18.49")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 696
     },
     __self: this
+  }, "Vintage Inspired Classic"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 702
+    },
+    __self: this
+  }, "$93.20")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 704
+    },
+    __self: this
   }, __jsx("a", {
     href: "#",
     className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 697
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 698
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 699
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 705
     },
     __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 707
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 708
-    },
-    __self: this
   }, __jsx("img", {
-    src: "images/product-14.jpg",
-    alt: "IMG-PRODUCT",
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 709
     },
     __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 710
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 714
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 715
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 716
-    },
-    __self: this
-  }, "Pretty Little Thing"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 719
-    },
-    __self: this
-  }, "$54.79")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 723
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 724
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 725
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 726
-    },
-    __self: this
-  })))))), __jsx("div", {
-    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 732
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 734
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-pic hov-img0",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 735
-    },
-    __self: this
-  }, __jsx("img", {
-    src: "images/product-15.jpg",
-    alt: "IMG-PRODUCT",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 736
-    },
-    __self: this
-  }), __jsx("a", {
-    href: "#",
-    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 737
-    },
-    __self: this
-  }, "Quick View")), __jsx("div", {
-    className: "block2-txt flex-w flex-t p-t-14",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 741
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 742
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "product-detail.html",
-    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 743
-    },
-    __self: this
-  }, "Mini Silver Mesh Watch"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 746
-    },
-    __self: this
-  }, "$86.85")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 750
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 751
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 752
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 753
     },
     __self: this
   })))))), __jsx("div", {
     className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 759
+      lineNumber: 724
     },
     __self: this
   }, __jsx("div", {
     className: "block2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 761
+      lineNumber: 726
     },
     __self: this
   }, __jsx("div", {
     className: "block2-pic hov-img0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 762
+      lineNumber: 727
     },
     __self: this
   }, __jsx("img", {
-    src: "images/product-16.jpg",
+    src: "images/product-07.jpg",
     alt: "IMG-PRODUCT",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 763
+      lineNumber: 728
     },
     __self: this
   }), __jsx("a", {
@@ -6372,21 +5488,120 @@ function Index() {
     className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 764
+      lineNumber: 729
     },
     __self: this
   }, "Quick View")), __jsx("div", {
     className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 736
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 737
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 738
+    },
+    __self: this
+  }, "Shirt in Stretch Cotton"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 744
+    },
+    __self: this
+  }, "$52.66")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 746
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 747
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 751
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 756
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 766
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 768
     },
     __self: this
   }, __jsx("div", {
-    className: "block2-txt-child1 flex-col-l ",
+    className: "block2-pic hov-img0",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 769
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-08.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 770
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 771
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 778
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 779
     },
     __self: this
   }, __jsx("a", {
@@ -6394,51 +5609,18 @@ function Index() {
     className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 770
-    },
-    __self: this
-  }, "Square Neck Back"), __jsx("span", {
-    className: "stext-105 cl3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 773
-    },
-    __self: this
-  }, "$29.64")), __jsx("div", {
-    className: "block2-txt-child2 flex-r p-t-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 777
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "#",
-    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 778
-    },
-    __self: this
-  }, __jsx("img", {
-    className: "icon-heart1 dis-block trans-04",
-    src: "images/icons/icon-heart-01.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 779
-    },
-    __self: this
-  }), __jsx("img", {
-    className: "icon-heart2 dis-block trans-04 ab-t-l",
-    src: "images/icons/icon-heart-02.png",
-    alt: "ICON",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 780
     },
     __self: this
-  }))))))), __jsx("div", {
-    className: "flex-c-m flex-w w-full p-t-45",
+  }, "Pieces Metallic Printed"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 786
+    },
+    __self: this
+  }, "$18.96")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 788
@@ -6446,18 +5628,843 @@ function Index() {
     __self: this
   }, __jsx("a", {
     href: "#",
-    className: "flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 789
     },
     __self: this
-  }, "Load More"))))));
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 793
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 798
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 808
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 810
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 811
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-09.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 812
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 813
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 820
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 821
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 822
+    },
+    __self: this
+  }, "Converse All Star Hi Plimsolls"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 828
+    },
+    __self: this
+  }, "$75.00")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 830
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 831
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 835
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 840
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 850
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 852
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 853
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-10.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 854
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 855
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 862
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 863
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 864
+    },
+    __self: this
+  }, "Femme T-Shirt In Stripe"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 870
+    },
+    __self: this
+  }, "$25.85")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 872
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 873
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 877
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 882
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 892
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 894
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 895
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-11.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 896
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 897
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 904
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 905
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 906
+    },
+    __self: this
+  }, "Herschel supply"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 912
+    },
+    __self: this
+  }, "$63.16")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 914
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 915
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 919
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 924
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 934
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 936
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 937
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-12.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 938
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 939
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 946
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 947
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 948
+    },
+    __self: this
+  }, "Herschel supply"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 954
+    },
+    __self: this
+  }, "$63.15")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 956
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 957
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 961
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 966
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 976
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 978
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 979
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-13.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 980
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 981
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 988
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 989
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 990
+    },
+    __self: this
+  }, "T-Shirt with Sleeve"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 996
+    },
+    __self: this
+  }, "$18.49")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 998
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 999
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1003
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1008
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1018
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1020
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1021
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-14.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1022
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1023
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1030
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1031
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1032
+    },
+    __self: this
+  }, "Pretty Little Thing"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1038
+    },
+    __self: this
+  }, "$54.79")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1040
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1041
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1045
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1050
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1060
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1062
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1063
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-15.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1064
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1065
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1072
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1073
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1074
+    },
+    __self: this
+  }, "Mini Silver Mesh Watch"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1080
+    },
+    __self: this
+  }, "$86.85")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1082
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1083
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1087
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1092
+    },
+    __self: this
+  })))))), __jsx("div", {
+    className: "col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1102
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1104
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-pic hov-img0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1105
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "images/product-16.jpg",
+    alt: "IMG-PRODUCT",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1106
+    },
+    __self: this
+  }), __jsx("a", {
+    href: "#",
+    className: "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1107
+    },
+    __self: this
+  }, "Quick View")), __jsx("div", {
+    className: "block2-txt flex-w flex-t p-t-14",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1114
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "block2-txt-child1 flex-col-l ",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1115
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "product-detail.html",
+    className: "stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1116
+    },
+    __self: this
+  }, "Square Neck Back"), __jsx("span", {
+    className: "stext-105 cl3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1122
+    },
+    __self: this
+  }, "$29.64")), __jsx("div", {
+    className: "block2-txt-child2 flex-r p-t-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1124
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "btn-addwish-b2 dis-block pos-relative js-addwish-b2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1125
+    },
+    __self: this
+  }, __jsx("img", {
+    className: "icon-heart1 dis-block trans-04",
+    src: "images/icons/icon-heart-01.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1129
+    },
+    __self: this
+  }), __jsx("img", {
+    className: "icon-heart2 dis-block trans-04 ab-t-l",
+    src: "images/icons/icon-heart-02.png",
+    alt: "ICON",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1134
+    },
+    __self: this
+  }))))))), __jsx("div", {
+    className: "flex-c-m flex-w w-full p-t-45",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1146
+    },
+    __self: this
+  }, __jsx("a", {
+    href: "#",
+    className: "flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 1147
+    },
+    __self: this
+  }, "Load More")))));
 }
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -6521,6 +6528,28 @@ module.exports = require("core-js/library/fn/symbol/iterator");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/weak-map");
+
+/***/ }),
+
+/***/ "next/head":
+/*!****************************!*\
+  !*** external "next/head" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
+
+/***/ }),
+
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
 
 /***/ }),
 

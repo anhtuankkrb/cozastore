@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport Layout from \"./layout\";\nimport Modal from \"./modal\";\nexport default function LayoutHasModal(props) {\n  return __jsx(React.Fragment, null, __jsx(Layout, {\n    title: props.title\n  }, props.children), __jsx(Modal, null));\n}","map":null,"metadata":{},"sourceType":"module"}

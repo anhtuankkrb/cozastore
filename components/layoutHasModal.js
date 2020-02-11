@@ -4,7 +4,7 @@ import Modal from "./modal";
 export default function LayoutHasModal(props) {
   return (
     <>
-      <Layout>{props.children}</Layout>
+      <Layout title={props.title}>{props.children}</Layout>
       <Modal />
     </>
   );

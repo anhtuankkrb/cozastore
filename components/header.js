@@ -1,67 +1,91 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function Header() {
+  const path = useRouter().pathname;
+  const menu = [
+    ["/", "Home"],
+    ["/shop", "Shop"],
+    ["/features", "Features"],
+    ["/blog", "Blog"],
+    ["/about", "About"],
+    ["/contact", "Contact"]
+  ];
+
   return (
-    <header>
+    <header className={path !== "/" ? "header-v4" : null}>
       {/* Header desktop */}
-      <div className="wrap-menu-desktop">
-        <nav className="limiter-menu-desktop container">
-          {/* Logo desktop */}
-          <a href="#" className="logo">
-            <img src="images/icons/logo-01.png" alt="IMG-LOGO" />
-          </a>
-          {/* Menu desktop */}
-          <div className="menu-desktop">
-            <ul className="main-menu">
-              <li className="active-menu">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop">
-                  <a>Shop</a>
-                </Link>
-              </li>
-              <li className="label1" data-label1="hot">
-                <a href="shoping-cart.html">Features</a>
-              </li>
-              <li>
-                <Link href="/blog">
-                  <a>Blog</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/about">
-                  <a>About</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact">
-                  <a>Contact</a>
-                </Link>
-              </li>
-            </ul>
+      <div className="container-menu-desktop">
+        {/* Topbar */}
+        <div className="top-bar">
+          <div className="content-topbar flex-sb-m h-full container">
+            <div className="left-top-bar">
+              Free shipping for standard order over $100
+            </div>
+            <div className="right-top-bar flex-w h-full">
+              <a href="#" className="flex-c-m trans-04 p-lr-25">
+                Help &amp; FAQs
+              </a>
+              <a href="#" className="flex-c-m trans-04 p-lr-25">
+                My Account
+              </a>
+              <a href="#" className="flex-c-m trans-04 p-lr-25">
+                EN
+              </a>
+              <a href="#" className="flex-c-m trans-04 p-lr-25">
+                USD
+              </a>
+            </div>
           </div>
-          {/* Icon header */}
-          <div className="wrap-icon-header flex-w flex-r-m">
-            <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-              <i className="zmdi zmdi-search" />
-            </div>
-            <div
-              className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-              data-notify={2}
-            >
-              <i className="zmdi zmdi-shopping-cart" />
-            </div>
-            <a
-              href="#"
-              className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-              data-notify={0}
-            >
-              <i className="zmdi zmdi-favorite-outline" />
+        </div>
+        <div className="wrap-menu-desktop">
+          <nav className="limiter-menu-desktop container">
+            {/* Logo desktop */}
+            <a href="#" className="logo">
+              <img src="images/icons/logo-01.png" alt="IMG-LOGO" />
             </a>
-          </div>
-        </nav>
+            {/* Menu desktop */}
+            <div className="menu-desktop">
+              <ul className="main-menu">
+                {menu.map((page, index) => {
+                  return (
+                    <Link href={page[0]} key={index}>
+                      <li
+                        className={
+                          `${path === page[0] ? "active-menu" : ""}${
+                            page[1] === "Features" ? " label1" : ""
+                          }` || null
+                        }
+                        data-label1={page[1] === "Features" ? "hot" : null}
+                      >
+                        <span className="link">{page[1]}</span>
+                      </li>
+                    </Link>
+                  );
+                })}
+              </ul>
+            </div>
+            {/* Icon header */}
+            <div className="wrap-icon-header flex-w flex-r-m">
+              <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                <i className="zmdi zmdi-search" />
+              </div>
+              <div
+                className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                data-notify={2}
+              >
+                <i className="zmdi zmdi-shopping-cart" />
+              </div>
+              <a
+                href="#"
+                className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                data-notify={0}
+              >
+                <i className="zmdi zmdi-favorite-outline" />
+              </a>
+            </div>
+          </nav>
+        </div>
       </div>
       {/* Header Mobile */}
       <div className="wrap-header-mobile">
@@ -99,41 +123,44 @@ export default function Header() {
       </div>
       {/* Menu Mobile */}
       <div className="menu-mobile">
+        <ul className="topbar-mobile">
+          <li>
+            <div className="left-top-bar">
+              Free shipping for standard order over $100
+            </div>
+          </li>
+          <li>
+            <div className="right-top-bar flex-w h-full">
+              <a href="#" className="flex-c-m p-lr-10 trans-04">
+                Help &amp; FAQs
+              </a>
+              <a href="#" className="flex-c-m p-lr-10 trans-04">
+                My Account
+              </a>
+              <a href="#" className="flex-c-m p-lr-10 trans-04">
+                EN
+              </a>
+              <a href="#" className="flex-c-m p-lr-10 trans-04">
+                USD
+              </a>
+            </div>
+          </li>
+        </ul>
         <ul className="main-menu-m">
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/shop">
-              <a>Shop</a>
-            </Link>
-          </li>
-          <li>
-            <a
-              href="shoping-cart.html"
-              className="label1 rs1"
-              data-label1="hot"
-            >
-              Features
-            </a>
-          </li>
-          <li>
-            <Link href="/blog">
-              <a>Blog</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact">
-              <a>Contact</a>
-            </Link>
-          </li>
+          {menu.map((page, index) => {
+            return (
+              <Link href={page[0]} key={index}>
+                <li>
+                  <a
+                    className={page[1] === "Features" ? " label1 rs1" : null}
+                    data-label1={page[1] === "Features" ? "hot" : null}
+                  >
+                    {page[1]}
+                  </a>
+                </li>
+              </Link>
+            );
+          })}
         </ul>
       </div>
       {/* Modal Search */}
