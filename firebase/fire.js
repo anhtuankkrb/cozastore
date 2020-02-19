@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import "firebase/database";
+import "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCzbPxoRjGPiU1nKGrGCi07N2NOcMAdZvs",
@@ -14,6 +14,6 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-let db = firebase.database().ref();
+let db = firebase.firestore().collection("products");
 
 export default db;

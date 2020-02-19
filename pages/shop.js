@@ -11,10 +11,15 @@ export default function Shop({ data }) {
 }
 Shop.getInitialProps = async function() {
   let result = await db
-    .once("value")
-    .then(function(snapshot) {
-      return snapshot.val();
+    .get()
+    .then(snapshot => {
+      let arrData = [];
+      snapshot.forEach(doc => {
+        arrData.push({ id: doc.id, ...doc.data() });
+      });
+      return arrData;
     })
+
     .catch(() => {
       return [];
     });
