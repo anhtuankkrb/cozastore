@@ -2,16 +2,9 @@ import Layout from "../components/layout";
 import Slide from "../components/index/slide";
 import Banner from "../components/index/banner";
 import Products from "../components/shop/products";
-<<<<<<< HEAD
-import getData from "../getData"
-
-export default function Index() {
-  console.log(getData)
-=======
 import db from "../firebase/fire";
 
 export default function Index({ data }) {
->>>>>>> cd052c23d173fa7acc171ca08b133654cf28c00c
   return (
     <Layout title="Home">
       <Slide />
@@ -35,6 +28,5 @@ Index.getInitialProps = async function() {
     .catch(() => {
       return [];
     });
-
   return { data: result };
 };
