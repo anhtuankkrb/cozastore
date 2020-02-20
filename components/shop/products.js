@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Collapse } from "reactstrap";
 import Modal from "../modal";
 
-export default function Products({ title }) {
+export default function Products({ title, data }) {
+  const [cardsDefault, setCardsDefault] = useState(data);
+
   useEffect(() => {
     let efs = document.getElementsByClassName("ef");
 
@@ -30,121 +32,6 @@ export default function Products({ title }) {
     setFilter(false);
   };
 
-  const cardsDefault = [
-    {
-      id: "1",
-      filter: "Women",
-      img: "images/product-01.jpg",
-      name: "Esprit Ruffle Shirt",
-      price: "$16.64"
-    },
-    {
-      id: "2",
-      filter: "Women",
-      img: "images/product-02.jpg",
-      name: "Herschel supply",
-      price: "$35.31"
-    },
-    {
-      id: "3",
-      filter: "Men",
-      img: "images/product-03.jpg",
-      name: "Only Check Trouser",
-      price: "$25.50"
-    },
-    {
-      id: "4",
-      filter: "Women",
-      img: "images/product-04.jpg",
-      name: "Classic Trench Coat",
-      price: "$75.00"
-    },
-    {
-      id: "5",
-      filter: "Women",
-      img: "images/product-05.jpg",
-      name: "Front Pocket Jumper",
-      price: "$34.75"
-    },
-    {
-      id: "6",
-      filter: "Watches",
-      img: "images/product-06.jpg",
-      name: "Vintage Inspired Classic",
-      price: "$93.20"
-    },
-    {
-      id: "7",
-      filter: "Women",
-      img: "images/product-07.jpg",
-      name: "Shirt in Stretch Cotton",
-      price: "$52.66"
-    },
-    {
-      id: "8",
-      filter: "Women",
-      img: "images/product-08.jpg",
-      name: "Pieces Metallic Printed",
-      price: "$18.96"
-    },
-    {
-      id: "9",
-      filter: "Shoes",
-      img: "images/product-09.jpg",
-      name: "Converse All Star Hi Plimsolls",
-      price: "$75.00"
-    },
-    {
-      id: "10",
-      filter: "Women",
-      img: "images/product-10.jpg",
-      name: "Femme T-Shirt In Stripe",
-      price: "$25.85"
-    },
-    {
-      id: "11",
-      filter: "Men",
-      img: "images/product-11.jpg",
-      name: "Herschel supply",
-      price: "$63.16"
-    },
-    {
-      id: "12",
-      filter: "Men",
-      img: "images/product-12.jpg",
-      name: "Herschel supply",
-      price: "$63.15"
-    },
-    {
-      id: "13",
-      filter: "Women",
-      img: "images/product-13.jpg",
-      name: "T-Shirt with Sleeve",
-      price: "$18.49"
-    },
-    {
-      id: "14",
-      filter: "Women",
-      img: "images/product-14.jpg",
-      name: "Pretty Little Thing",
-      price: "$54.79"
-    },
-    {
-      id: "15",
-      filter: "Watches",
-      img: "images/product-15.jpg",
-      name: "Mini Silver Mesh Watch",
-      price: "$86.85"
-    },
-    {
-      id: "16",
-      filter: "Watches",
-      img: "images/product-16.jpg",
-      name: "Square Neck Back",
-      price: "$29.64"
-    }
-  ];
-
   const filters = ["All Products", "Women", "Men", "Bag", "Shoes", "Watches"];
 
   const onFilter = label => {
@@ -167,15 +54,17 @@ export default function Products({ title }) {
                   <button
                     key={f}
                     onClick={() => {
-                      let efs = document.getElementsByClassName("ef");
+                      if (active !== f) {
+                        let efs = document.getElementsByClassName("ef");
 
-                      for (let i = 0; i < efs.length; i++) {
-                        efs[i].style =
-                          "transform: scale(0);opacity: 0;transition: 0.5s;";
+                        for (let i = 0; i < efs.length; i++) {
+                          efs[i].style =
+                            "transform: scale(0);opacity: 0;transition: 0.5s;";
+                        }
+                        setTimeout(() => {
+                          onFilter(f);
+                        }, 500);
                       }
-                      setTimeout(() => {
-                        onFilter(f);
-                      }, 500);
                     }}
                     className={`stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${
                       f === active ? "how-active1" : ""
@@ -421,57 +310,58 @@ export default function Products({ title }) {
             </div>
           </div>
           <div className="row isotope-grid">
-            {cardsDefault.map(card => {
-              if (active === "All Products" || card.filter === active) {
-                return (
-                  <div
-                    key={card.id}
-                    className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ef"
-                  >
-                    <div className="block2">
-                      <div className="block2-pic hov-img0">
-                        <img src={card.img} alt="IMG-PRODUCT" />
-                        <a
-                          href="#"
-                          className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                          onClick={showModal}
-                        >
-                          Quick View
-                        </a>
-                      </div>
-                      <div className="block2-txt flex-w flex-t p-t-14">
-                        <div className="block2-txt-child1 flex-col-l ">
-                          <a
-                            href="product-detail.html"
-                            className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            {card.name}
-                          </a>
-                          <span className="stext-105 cl3">{card.price}</span>
-                        </div>
-                        <div className="block2-txt-child2 flex-r p-t-3">
+            {cardsDefault &&
+              cardsDefault.map(card => {
+                if (active === "All Products" || card.category === active) {
+                  return (
+                    <div
+                      key={card.id}
+                      className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ef"
+                    >
+                      <div className="block2">
+                        <div className="block2-pic hov-img0">
+                          <img src={card.imgage} alt="IMG-PRODUCT" />
                           <a
                             href="#"
-                            className="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
+                            className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+                            onClick={showModal}
                           >
-                            <img
-                              className="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              className="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
+                            Quick View
                           </a>
+                        </div>
+                        <div className="block2-txt flex-w flex-t p-t-14">
+                          <div className="block2-txt-child1 flex-col-l ">
+                            <a
+                              href="product-detail.html"
+                              className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+                            >
+                              {card.name}
+                            </a>
+                            <span className="stext-105 cl3">{card.price}</span>
+                          </div>
+                          <div className="block2-txt-child2 flex-r p-t-3">
+                            <a
+                              href="#"
+                              className="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
+                            >
+                              <img
+                                className="icon-heart1 dis-block trans-04"
+                                src="images/icons/icon-heart-01.png"
+                                alt="ICON"
+                              />
+                              <img
+                                className="icon-heart2 dis-block trans-04 ab-t-l"
+                                src="images/icons/icon-heart-02.png"
+                                alt="ICON"
+                              />
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                );
-              }
-            })}
+                  );
+                }
+              })}
           </div>
           {/* Load more */}
           <div className="flex-c-m flex-w w-full p-t-45">

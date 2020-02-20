@@ -6,4 +6,4 @@ firestoreService.initializeApp(serviceAccount, 'https://coza-store.firebaseio.co
 
 // Start exporting your data
 firestoreService
-    .restore('data.json') //Nhập data vào
+    .restore('data.json') //Upload data lên server từ file data.json
