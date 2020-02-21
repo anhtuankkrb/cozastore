@@ -1,0 +1,286 @@
+{
+  "products": {
+    "0ea575b0-ad57-4e5c-befd-9db402940725" : {
+      "name": "Chain print bermuda shorts",
+      "price": 36,
+      "quantity": 26,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 4,
+      "category": "shirt",
+      "discountPercent": 10,
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["XL", "L", "S"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2F1.jpg?alt=media&token=1d0509c1-78bc-472d-9de0-59ce557623d5",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2F2.jpg?alt=media&token=5dceb3a9-8be0-455b-9f8f-14f17dd20c74",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2F3.jpg?alt=media&token=77451a44-36ce-4cb2-8e96-9a4d68460b2a",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2F4.jpg?alt=media&token=ec0db862-ac1f-4426-a3b2-6947b6f4dbdc"
+        ]
+      }
+    }, 
+    "2bf5b5de-a718-40d1-b055-e7b2635c1eba" : {
+      "name": "Leopard print satin shirt",
+      "price": 27,
+      "quantity": 40,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 1,
+      "category": "shirt",
+      "discountPercent": 5,
+      "weight": 10.5,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton, 10% Polyeste"],
+      "reviews": [
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["L", "M"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-7-2.jpg?alt=media&token=0f62a372-0fd0-4027-a1d9-9bce9b1591ff",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-7-1.jpg?alt=media&token=062ef0bb-e555-48c2-8c26-1b1f38f668ba",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-7-3.jpg?alt=media&token=55b6088d-7587-44a2-87e9-dd622896fe21",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-7-3.jpg?alt=media&token=55b6088d-7587-44a2-87e9-dd622896fe21"
+        ]
+      }
+    },
+    "eafdf2ef-7ec5-4527-b2e2-6e0d5dbfc2ad" : {
+      "name": "Waxed-effect pleated skirt",
+      "price": 49,
+      "quantity": 33,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 2,
+      "category": "shirt",
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["XL", "M", "S"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-18-2.jpg?alt=media&token=1e08c080-3404-4859-b479-60e9273f0c16",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-18-1.jpg?alt=media&token=435e6496-67b5-47a6-8376-43c4c7c2f4db",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-18-3.jpg?alt=media&token=0532fb07-886c-4533-ba14-5f5658fe5e53",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-18-4.jpg?alt=media&token=30e7fa5b-8ad8-4cbb-95ac-4b53b236a9c5"
+        ]
+      }
+    }, 
+    "d855a07d-a47c-4906-9a5f-99c2b2f8630d" : {
+      "name": "Hig-Rise Skinny Jean",
+      "price": 59,
+      "quantity": 21,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 3,
+      "category": "shirt",
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "5", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["XL", "L", "S", "M"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-19-1.jpg?alt=media&token=87b1dd00-7669-4ecf-9caf-d65cf56ca3e5",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-19-2.jpg?alt=media&token=af87b601-8b1f-4b98-83c5-60c10453e7a8",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-19-3.jpg?alt=media&token=efb93f33-df0c-4bc7-b61b-675fdcfce30e",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-19-4.jpg?alt=media&token=16b02dd5-d435-463b-bf9d-4a0c3386dd3a"
+        ]
+      }
+    }, 
+    "5a35b3bd-b0ee-433c-832b-b5f4077fa427" : {
+      "name": "Polka dot blouse",
+      "price": 49,
+      "quantity": 41,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 3,
+      "category": "shirt",
+      "discountPercent": 21,
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["S", "M"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-8-2.jpg?alt=media&token=17308fea-11a0-474b-a905-67a4721107c4",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-8-1.jpg?alt=media&token=770f569d-9fb6-4fea-8eb1-28c8c3f09177",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-8-3.jpg?alt=media&token=d949151a-a09e-48c2-b7fb-30a6bfdc0b33",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-8-4.jpg?alt=media&token=57b634ad-3642-41fc-96d3-e9ef9778ce94"
+        ]
+      }
+    }, 
+    "7e4a7b6f-d519-4c30-830a-745025a736ac" : {
+      "name": "Linen-Blend Pinstriped Culottes",
+      "price": 75,
+      "quantity": 25,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 3,
+      "category": "shirt",
+      "discountPercent": 10,
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["L", "S", "M"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-15-1.jpg?alt=media&token=1d610924-ecfe-42ce-950f-375f2704175e",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-15-2.jpg?alt=media&token=e8e8f11c-fe2f-48c0-bc57-e20874777961",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-15-3.jpg?alt=media&token=7ef53e6e-b82d-43bf-be61-c9dc7478e01b",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-15-5.jpg?alt=media&token=af908749-19a0-423c-a287-2e847ccfd875"
+        ]
+      }
+    }, 
+    "c0159e84-ce88-4603-8048-5d590f951729" : {
+      "name": "Grey blue leather backpack",
+      "price": 49,
+      "quantity": 9,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 3,
+      "category": "bag",
+      "size": ["S", "M"],
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-10-1.jpg?alt=media&token=5d144299-b242-45f1-9755-935afb7344da",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-10-2.jpg?alt=media&token=bc1a47b5-cffe-4795-9fe5-88d44227eec1",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-10-3.jpg?alt=media&token=02438de4-a26a-4f00-a11b-6a84fd9b70a5",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-10-4.jpg?alt=media&token=3d5f0a34-70aa-4ade-a6cf-38fe88e56dcc"
+        ]
+      }
+    }, 
+    "7f8d0931-e326-4656-82fa-991a0afcc862" : {
+      "name": "Split suede handbag",
+      "price": 99,
+      "quantity": 38,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 4,
+      "category": "bag",
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["L", "M", "S"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-5-1.jpg?alt=media&token=381721f4-de07-4bf1-95e6-dd81b14ece7f",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-5-2.jpg?alt=media&token=79fd115b-2f14-46f7-952a-7fad3f2e4d4a",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-5-3.jpg?alt=media&token=efe0f867-c05f-4d1b-9d9a-a60f5a775bd8",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-5-4.jpg?alt=media&token=d034982f-8b70-40e7-9efb-bca338891788"
+        ]
+      }
+    }, 
+    "2c234521-e752-4358-8834-68c73fb8f187" : {
+      "name": "Mid-heel ankle boots with toecap",
+      "price": 44,
+      "quantity": 9,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 4,
+      "category": "shoe",
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["L"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-4-1.jpg?alt=media&token=1b288f03-7859-4b3f-bb6f-9262b58b4a84",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-4-2.jpg?alt=media&token=cad90685-bbfc-4219-a8fd-309443590fe2",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-4-3.jpg?alt=media&token=352fd1f0-5058-494e-b84b-8da0d4f417ea",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-4-4.jpg?alt=media&token=164ebee2-535a-4e6a-88b8-4bd720a246d6"
+        ]
+      }
+    }, 
+    "29bd2b7e-dbb3-4662-a475-f7035e710f21" : {
+      "name": "Wood Coin Bank for Kids and Adults",
+      "price": 79,
+      "quantity": 0,
+      "describe": "Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.",
+      "rating": 5,
+      "category": "Accessories",
+      "weight": 10,
+      "dimensions": {
+        "height": 110,
+        "length": 10,
+        "width": 100
+      },
+      "meterial": ["60% Cotton"],
+      "reviews": [
+        {"userId": "1", "rate": 4, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"},
+        {"userId": "2", "rate": 4.5, "comment": "Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos"}
+      ],
+      "size": ["XL", "S", "M"],
+      "images": {
+        "coverImage": "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-41-1.jpg?alt=media&token=d0d7c361-62fc-4708-8394-ae5fb66135d0",
+        "productsImage": [
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-41-2.jpg?alt=media&token=d6944aef-d1d4-4f48-9617-f271d4ab21d3",
+          "https://firebasestorage.googleapis.com/v0/b/coza-store.appspot.com/o/products%20image%2Fprod-41-3.jpg?alt=media&token=576aaf16-2bb6-49cb-8bf8-1237813fd681"
+        ]
+      }
+    }
+  }
+} 
