@@ -8,10 +8,16 @@ const containerMenuDesktop = React.createRef();
 const toBar = React.createRef();
 export default function Header({ changeCartStatus }) {
   const path = useRouter().pathname;
+  const level = path.split("").filter(item => item == "/");
+  let fixPathImg = "";
+  for (let i = 0; i < level.length - 1; i++) {
+    fixPathImg += "../";
+  }
+
   const menu = [
     ["/", "Home"],
     ["/shop", "Shop"],
-    ["/shop", "Features"],
+    ["/shoping-cart", "Features"],
     ["/blog", "Blog"],
     ["/about", "About"],
     ["/contact", "Contact"]
@@ -75,9 +81,14 @@ export default function Header({ changeCartStatus }) {
         <div className="wrap-menu-desktop" ref={wrapMenuDesktop}>
           <nav className="limiter-menu-desktop container">
             {/* Logo desktop */}
-            <a href="#" className="logo">
-              <img src="images/icons/logo-01.png" alt="IMG-LOGO" />
-            </a>
+            <Link href="/">
+              <a href="#" className="logo">
+                <img
+                  src={fixPathImg + "images/icons/logo-01.png"}
+                  alt="IMG-LOGO"
+                />
+              </a>
+            </Link>
             {/* Menu desktop */}
             <div className="menu-desktop">
               <ul className="main-menu">
@@ -131,7 +142,7 @@ export default function Header({ changeCartStatus }) {
         {/* Logo moblie */}
         <div className="logo-mobile">
           <a href="index.html">
-            <img src="images/icons/logo-01.png" alt="IMG-LOGO" />
+            <img src={fixPathImg + "images/icons/logo-01.png"} alt="IMG-LOGO" />
           </a>
         </div>
         {/* Icon header */}
@@ -228,7 +239,10 @@ export default function Header({ changeCartStatus }) {
             onClick={hideSearch}
             className="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"
           >
-            <img src="images/icons/icon-close2.png" alt="CLOSE" />
+            <img
+              src={fixPathImg + "images/icons/icon-close2.png"}
+              alt="CLOSE"
+            />
           </button>
           <form className="wrap-search-header flex-w p-l-15">
             <button className="flex-c-m trans-04">

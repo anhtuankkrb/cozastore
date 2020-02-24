@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import Modal from "./modal";
+import Link from "next/link";
 import { Collapse } from "reactstrap";
-import Modal from "../modal";
 
 export default function Products({ title, data }) {
   const [cardsDefault, setCardsDefault] = useState(data);
+
+  const [dataForModal, setDataForModal] = useState({});
 
   useEffect(() => {
     let efs = document.getElementsByClassName("ef");
@@ -14,9 +17,10 @@ export default function Products({ title, data }) {
   });
 
   const [modal, setModal] = useState(false);
-  const showModal = e => {
-    setModal(true);
+  const showModal = (e, data) => {
     e.preventDefault();
+    setModal(true);
+    setDataForModal(data);
   };
   const hideModal = () => setModal(false);
 
@@ -32,7 +36,14 @@ export default function Products({ title, data }) {
     setFilter(false);
   };
 
-  const filters = ["All Products", "Women", "Men", "Bag", "Shoes", "Watches"];
+  const categories = [
+    "All Products",
+    "Shirt",
+    "Shoe",
+    "Bag",
+    "Accessories",
+    "Watches"
+  ];
 
   const onFilter = label => {
     setActive(label);
@@ -50,7 +61,7 @@ export default function Products({ title, data }) {
           <div className="flex-w flex-sb-m p-b-52">
             <div className="flex-w flex-l-m filter-tope-group m-tb-10">
               <div>
-                {filters.map(f => (
+                {categories.map(f => (
                   <button
                     key={f}
                     onClick={() => {
@@ -312,7 +323,10 @@ export default function Products({ title, data }) {
           <div className="row isotope-grid">
             {cardsDefault &&
               cardsDefault.map(card => {
-                if (active === "All Products" || card.category === active) {
+                if (
+                  active === "All Products" ||
+                  card.category.toLowerCase() === active.toLowerCase()
+                ) {
                   return (
                     <div
                       key={card.id}
@@ -324,20 +338,26 @@ export default function Products({ title, data }) {
                           <a
                             href="#"
                             className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                            onClick={showModal}
+                            onClick={e => showModal(e, card)}
                           >
                             Quick View
                           </a>
                         </div>
                         <div className="block2-txt flex-w flex-t p-t-14">
                           <div className="block2-txt-child1 flex-col-l ">
-                            <a
-                              href="product-detail.html"
-                              className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+                            <Link
+                              href="/shop/[id]"
+                              as={"/shop/" + card.name.replace(/\s/g, "_")}
                             >
-                              {card.name}
-                            </a>
-                            <span className="stext-105 cl3">{card.price}</span>
+                              <a
+                                href="product-detail.html"
+                                className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+                              >
+                                {card.name}
+                              </a>
+                            </Link>
+
+                            <span className="stext-105 cl3">{`$ ${card.price.toLocaleString()}`}</span>
                           </div>
                           <div className="block2-txt-child2 flex-r p-t-3">
                             <a
@@ -374,7 +394,7 @@ export default function Products({ title, data }) {
           </div>
         </div>
       </section>
-      <Modal modalStatus={modal} hideModal={hideModal} />
+      <Modal modalStatus={modal} hideModal={hideModal} data={dataForModal} />
     </>
   );
 }

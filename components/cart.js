@@ -1,4 +1,14 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function Cart({ toggleCart, changeCartStatus }) {
+  const path = useRouter().pathname;
+  const level = path.split("").filter(item => item == "/");
+  let fixPathImg = "";
+  for (let i = 0; i < level.length - 1; i++) {
+    fixPathImg += "../";
+  }
+
   return (
     <div
       className={`wrap-header-cart js-panel-cart ${
@@ -20,7 +30,7 @@ export default function Cart({ toggleCart, changeCartStatus }) {
           <ul className="header-cart-wrapitem w-full">
             <li className="header-cart-item flex-w flex-t m-b-12">
               <div className="header-cart-item-img">
-                <img src="images/item-cart-01.jpg" alt="IMG" />
+                <img src={fixPathImg + "images/item-cart-01.jpg"} alt="IMG" />
               </div>
               <div className="header-cart-item-txt p-t-8">
                 <a
@@ -34,7 +44,7 @@ export default function Cart({ toggleCart, changeCartStatus }) {
             </li>
             <li className="header-cart-item flex-w flex-t m-b-12">
               <div className="header-cart-item-img">
-                <img src="images/item-cart-02.jpg" alt="IMG" />
+                <img src={fixPathImg + "images/item-cart-02.jpg"} alt="IMG" />
               </div>
               <div className="header-cart-item-txt p-t-8">
                 <a
@@ -48,7 +58,7 @@ export default function Cart({ toggleCart, changeCartStatus }) {
             </li>
             <li className="header-cart-item flex-w flex-t m-b-12">
               <div className="header-cart-item-img">
-                <img src="images/item-cart-03.jpg" alt="IMG" />
+                <img src={fixPathImg + "images/item-cart-03.jpg"} alt="IMG" />
               </div>
               <div className="header-cart-item-txt p-t-8">
                 <a
@@ -66,12 +76,14 @@ export default function Cart({ toggleCart, changeCartStatus }) {
               Total: $75.00
             </div>
             <div className="header-cart-buttons flex-w w-full">
-              <a
-                href="shoping-cart.html"
-                className="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10"
-              >
-                View Cart
-              </a>
+              <Link href="/shoping-cart">
+                <a
+                  href="shoping-cart.html"
+                  className="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10"
+                >
+                  View Cart
+                </a>
+              </Link>
               <a
                 href="shoping-cart.html"
                 className="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"
