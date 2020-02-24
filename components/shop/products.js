@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Collapse } from "reactstrap";
-import Modal from "../modal";
+import QuickView from "./quickView";
 
 export default function Products({ title, data }) {
   const [cardsDefault, setCardsDefault] = useState(data);
+  const [isShowQuickView, setIsShowQuickView] = useState(false);
+  const [quickViewId, setQuickViewId] = useState()
 
   useEffect(() => {
     let efs = document.getElementsByClassName("ef");
@@ -13,12 +15,12 @@ export default function Products({ title, data }) {
     }
   });
 
-  const [modal, setModal] = useState(false);
-  const showModal = e => {
-    setModal(true);
+  const showQuickView = (id, e) => {
+    setIsShowQuickView(true);
+    setQuickViewId(id)
     e.preventDefault();
   };
-  const hideModal = () => setModal(false);
+  const hideModal = () => setIsShowQuickView(false);
 
   const [filter, setFilter] = useState(false);
   const toggleFilter = () => {
@@ -68,7 +70,7 @@ export default function Products({ title, data }) {
                     }}
                     className={`stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${
                       f === active ? "how-active1" : ""
-                    }`}
+                      }`}
                   >
                     {f}
                   </button>
@@ -79,7 +81,7 @@ export default function Products({ title, data }) {
               <div
                 className={`flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter ${
                   filter ? "show-filter" : ""
-                }`}
+                  }`}
                 onClick={toggleFilter}
               >
                 <i className="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list" />
@@ -89,7 +91,7 @@ export default function Products({ title, data }) {
               <div
                 className={`flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search ${
                   search ? "show-search" : ""
-                }`}
+                  }`}
                 onClick={toggleSearch}
               >
                 <i className="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search" />
@@ -324,7 +326,7 @@ export default function Products({ title, data }) {
                           <a
                             href="#"
                             className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                            onClick={showModal}
+                            onClick={(e) => showQuickView(card.id, e)}
                           >
                             Quick View
                           </a>
@@ -374,7 +376,7 @@ export default function Products({ title, data }) {
           </div>
         </div>
       </section>
-      <Modal modalStatus={modal} hideModal={hideModal} />
+      <QuickView modalStatus={isShowQuickView} hideModal={hideModal} productID={quickViewId} />
     </>
   );
 }

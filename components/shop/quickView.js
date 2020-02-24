@@ -8,10 +8,11 @@ import {
   Dot
 } from "pure-react-carousel";
 
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import Lightbox from "react-image-lightbox";
 import Select from "react-select";
+import db from "../../firebase/fire"
+
 const size = [
   { value: "S", label: "Size S" },
   { value: "M", label: "Size M" },
@@ -31,7 +32,7 @@ const images = [
   "images/product-detail-03.jpg"
 ];
 
-export default function Modal({ modalStatus, hideModal }) {
+export default function QuickView({ modalStatus, hideModal, productID }) {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [numProduct, setNumProduct] = useState(1);
@@ -42,6 +43,16 @@ export default function Modal({ modalStatus, hideModal }) {
   const reduceNumProduct = () => {
     numProduct && setNumProduct(numProduct - 1);
   };
+
+  useEffect(
+    () => {
+      db.get()
+        .then((doc) => {
+          const a = doc.data()
+          console.log(a)
+        })
+
+    }, []);
 
   return (
     <>
@@ -63,7 +74,7 @@ export default function Modal({ modalStatus, hideModal }) {
       <div
         className={`wrap-modal1 js-modal1 p-t-60 p-b-20 ${
           modalStatus ? "show-modal1" : ""
-        }`}
+          }`}
       >
         <div className="overlay-modal1 js-hide-modal1" onClick={hideModal} />
         <div className="container">
