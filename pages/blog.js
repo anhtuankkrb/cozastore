@@ -1,4 +1,5 @@
 import Layout from "../components/layout";
+import Link from "next/link";
 
 export default function Blog() {
   return (
@@ -54,13 +55,15 @@ export default function Blog() {
                         </span>
                         <span>8 Comments</span>
                       </span>
-                      <a
-                        href="blog-detail.html"
-                        className="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
-                      >
-                        Continue Reading
-                        <i className="fa fa-long-arrow-right m-l-9" />
-                      </a>
+                      <Link href="/blog/[id]" as="/blog/blog-detail">
+                        <a
+                          href="blog-detail.html"
+                          className="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
+                        >
+                          Continue Reading
+                          <i className="fa fa-long-arrow-right m-l-9" />
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
