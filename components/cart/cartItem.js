@@ -14,6 +14,11 @@ export default function CartItem({ product }) {
     setCart();
   };
 
+  const deleteItem = item => {
+    localStorage.removeItem(item);
+    setCart();
+  };
+
   const augmentNumProduct = () => {
     setNumProduct(numProduct + 1);
   };
@@ -60,7 +65,28 @@ export default function CartItem({ product }) {
             </div>
           </div>
         </td>
+
         <td className="column-5">{`$ ${product.price * numProduct}`}</td>
+
+        <td className="column-6">
+          <div
+            className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
+            style={{ color: "#a2a2a2" }}
+            onClick={() => {
+              deleteItem(product.name);
+            }}
+          >
+            <i
+              className="zmdi zmdi-delete"
+              style={{
+                fontSize: "20px",
+                padding: "7px",
+                cursor: "pointer",
+                color: ""
+              }}
+            />
+          </div>
+        </td>
       </tr>
     </>
   );
