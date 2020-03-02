@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   CarouselProvider,
   Slider,
@@ -12,8 +12,13 @@ import Select from "react-select";
 
 import Lightbox from "react-image-lightbox";
 
+import { CartContext } from "../layout";
+
 export default function Detail(props) {
   const [numProduct, setNumProduct] = useState(1);
+  useEffect(() => {
+    setNumProduct(1);
+  }, [props.name]);
 
   const augmentNumProduct = () => {
     setNumProduct(numProduct + 1);
@@ -37,6 +42,18 @@ export default function Detail(props) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
+
+  let { setCart } = useContext(CartContext);
+
+  const addToCard = (name, price, amount, image) => {
+    let productInfo = {
+      price: price,
+      amount: amount,
+      image: image
+    };
+    localStorage.setItem(name, JSON.stringify(productInfo));
+    setCart();
+  };
 
   return (
     <>
@@ -66,7 +83,7 @@ export default function Detail(props) {
             <CarouselProvider
               naturalSlideWidth={100}
               naturalSlideHeight={125}
-              totalSlides={props.images ? props.images.length : 0}
+              totalSlides={props.images ? props.images.length : 1}
               infinite={true}
             >
               <div className="wrap-slick3 flex-sb flex-w">
@@ -95,16 +112,11 @@ export default function Detail(props) {
                   </ButtonBack>
                 </div>
                 <div className="slick3 gallery-lb">
-                  <Slider classNameAnimation="slider">
+                  <Slider>
                     {props.images &&
                       props.images.map((image, index) => {
                         return (
-                          <Slide
-                            index={index}
-                            key={index}
-                            classNameHidden="hidden-slide"
-                            classNameVisible="show-slide"
-                          >
+                          <Slide index={index} key={index}>
                             <div className="item-slick3">
                               <div className="wrap-pic-w pos-relative">
                                 <Image
@@ -209,7 +221,17 @@ export default function Detail(props) {
                       <i className="fs-16 zmdi zmdi-plus" />
                     </div>
                   </div>
-                  <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                  <button
+                    className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
+                    onClick={() => {
+                      addToCard(
+                        props.name,
+                        props.price,
+                        numProduct,
+                        props.images[0]
+                      );
+                    }}
+                  >
                     Add to cart
                   </button>
                 </div>

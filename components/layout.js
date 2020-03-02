@@ -1,15 +1,30 @@
-import { useState } from "react";
-
+import React, { useState, useEffect, createContext } from "react";
+import Head from "next/head";
 import Header from "./header";
 import Cart from "./cart";
 import Footer from "./footer";
 import BackTop from "./backToTop";
 
-import Head from "next/head";
+export const CartContext = createContext();
 
 export default function Layout({ children, title }) {
   const [toggleCart, setCartToggle] = useState(false);
   const changeCartStatus = () => setCartToggle(!toggleCart);
+
+  const [products, setProducts] = useState([]);
+
+  const setCart = () => {
+    let arrProducts = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i);
+      arrProducts.push({ name: key, ...JSON.parse(localStorage.getItem(key)) });
+    }
+    setProducts(arrProducts);
+  };
+
+  useEffect(() => {
+    setCart();
+  }, []);
 
   return (
     <>
@@ -21,8 +36,11 @@ export default function Layout({ children, title }) {
       </Head>
 
       <Header changeCartStatus={changeCartStatus} />
-      <Cart toggleCart={toggleCart} changeCartStatus={changeCartStatus} />
-      {children}
+
+      <CartContext.Provider value={{ products: products, setCart: setCart }}>
+        <Cart toggleCart={toggleCart} changeCartStatus={changeCartStatus} />
+        {children}
+      </CartContext.Provider>
       <Footer />
 
       <BackTop />
