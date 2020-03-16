@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import Slide from "../components/index/slide";
 import Banner from "../components/index/banner";
 import Products from "../components/shop/products";
-import db from "../firebase/fire";
+import { db } from "../firebase/fire";
 
 export default function Index({ data }) {
   return (

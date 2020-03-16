@@ -85,8 +85,12 @@ export default function DashboardLayout({ children, title, select, open }) {
             style={{ height: "100%", borderRight: 0 }}
           >
             <Menu.Item key="Dashboard">
-              <DashboardOutlined />
-              Dashboard
+              <Link href="/dashboard">
+                <a>
+                  <DashboardOutlined />
+                  Dashboard
+                </a>
+              </Link>
             </Menu.Item>
             <SubMenu
               key="Users"
@@ -120,14 +124,20 @@ export default function DashboardLayout({ children, title, select, open }) {
               }
             >
               <Menu.Item key="Products list">
-                <UnorderedListOutlined />
                 <Link href="/dashboard/products-list">
-                  <a>Products list</a>
+                  <a>
+                    <UnorderedListOutlined />
+                    Products list
+                  </a>
                 </Link>
               </Menu.Item>
               <Menu.Item key="Add product">
-                <AppstoreAddOutlined />
-                Add product
+                <Link href="/dashboard/add-product">
+                  <a>
+                    <AppstoreAddOutlined />
+                    Add product
+                  </a>
+                </Link>
               </Menu.Item>
             </SubMenu>
             <SubMenu

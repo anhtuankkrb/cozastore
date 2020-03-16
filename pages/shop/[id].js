@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import classnames from "classnames";
 
-import db from "../../firebase/fire";
+import { db } from "../../firebase/fire";
 import Layout from "../../components/layout";
 import Detail from "../../components/shop/detail";
 
@@ -124,7 +124,13 @@ export default function Product({ data, relatedProducts }) {
       <section className="sec-product-detail bg0 p-t-65 p-b-60">
         <div className="container">
           <Detail
-            images={[data.images.coverImage, ...data.images.productsImage]}
+            images={
+              data.images
+                ? data.images.productsImage
+                  ? [data.images.coverImage, ...data.images.productsImage]
+                  : [data.images.coverImage]
+                : ""
+            }
             sizes={data.size}
             name={data.name}
             price={data.price}

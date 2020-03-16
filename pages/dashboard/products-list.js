@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import db from "../../firebase/fire";
+import { db } from "../../firebase/fire";
 import DashboardLayout from "../../components/dashboard/dashboard-layout";
 
 import { Breadcrumb, Layout, Table } from "antd";
@@ -66,7 +66,12 @@ export default function ProductsList() {
             <a>Home</a>
           </Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <Link href="/">
+            <a>Dashboard</a>
+          </Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>Products list</Breadcrumb.Item>
       </Breadcrumb>
       <Content
         className="site-layout-background"

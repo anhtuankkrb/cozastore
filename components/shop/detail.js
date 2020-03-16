@@ -129,7 +129,7 @@ export default function Detail(props) {
                                   onClick={e => {
                                     setIsOpen(true);
                                     e.preventDefault();
-                                    setPhotoIndex(2);
+                                    setPhotoIndex(index);
                                   }}
                                 >
                                   <i className="fa fa-expand" />

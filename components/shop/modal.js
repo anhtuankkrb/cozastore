@@ -31,7 +31,9 @@ export default function Modal({ modalStatus, hideModal, data }) {
               fixId={[3, 4]}
               images={
                 data.images
-                  ? [data.images.coverImage, ...data.images.productsImage]
+                  ? data.images.productsImage
+                    ? [data.images.coverImage, ...data.images.productsImage]
+                    : [data.images.coverImage]
                   : ""
               }
               sizes={data.size}
