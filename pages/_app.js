@@ -11,6 +11,8 @@ import "react-image-lightbox/style.css";
 
 import "pure-react-carousel/dist/react-carousel.es.css";
 
+import "antd/dist/antd.css";
+
 import "../public/css/util.css";
 import "../public/css/main.css";
 
