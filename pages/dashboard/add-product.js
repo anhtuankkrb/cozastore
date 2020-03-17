@@ -172,6 +172,12 @@ export default function AddProduct() {
       );
     }
   };
+  //reset
+  const onReset = () => {
+    form.resetFields();
+    setProductsImage([]);
+    setCoverImage(undefined);
+  };
 
   //nut upload
   const buttonUpload = (
@@ -412,6 +418,13 @@ export default function AddProduct() {
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
               Submit
+            </Button>
+            <Button
+              htmlType="button"
+              onClick={onReset}
+              style={{ marginLeft: "24px" }}
+            >
+              Reset
             </Button>
           </Form.Item>
         </Form>

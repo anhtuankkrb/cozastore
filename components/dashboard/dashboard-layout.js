@@ -1,5 +1,8 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Link from "next/link";
+
+import { auth } from "../../firebase/fire";
 
 import { Layout, Menu, Avatar, Dropdown } from "antd";
 import {
@@ -19,12 +22,31 @@ const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
 
 export default function DashboardLayout({ children, title, select, open }) {
+  //fix link tinh
   const path = useRouter().pathname;
   const level = path.split("").filter(item => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
   }
+
+  // xet nguoi dung
+  useEffect(() => {
+    let clean = auth.onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+      } else {
+        location.href = "/dashboard/login";
+      }
+    });
+    return () => {
+      clean();
+    };
+  }, []);
+  //logout
+  const logout = () => {
+    auth.signOut();
+  };
 
   const menu = (
     <Menu theme="dark">
@@ -34,8 +56,10 @@ export default function DashboardLayout({ children, title, select, open }) {
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="2">
-        <LogoutOutlined />
-        Logout
+        <span onClick={logout}>
+          <LogoutOutlined />
+          Logout
+        </span>
       </Menu.Item>
     </Menu>
   );
@@ -68,10 +92,17 @@ export default function DashboardLayout({ children, title, select, open }) {
 
         <div style={{ float: "right" }}>
           <span style={{ marginRight: "8px", color: "#fff" }}>
-            Emal@gmail.com{" "}
+            {auth.currentUser ? auth.currentUser.email : ""}
           </span>
           <Dropdown overlay={menu} trigger={["click"]}>
-            <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
+            {auth.currentUser ? (
+              <Avatar
+                src={auth.currentUser.photoURL}
+                style={{ cursor: "pointer" }}
+              />
+            ) : (
+              <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
+            )}
           </Dropdown>
         </div>
       </Header>
@@ -102,12 +133,20 @@ export default function DashboardLayout({ children, title, select, open }) {
               }
             >
               <Menu.Item key="Users List">
-                <UnorderedListOutlined />
-                Users List
+                <Link href="/dashboard/users-list">
+                  <a>
+                    <UnorderedListOutlined />
+                    Users List
+                  </a>
+                </Link>
               </Menu.Item>
               <Menu.Item key="Add user">
-                <UserAddOutlined />
-                Add user
+                <Link href="/dashboard/add-user">
+                  <a>
+                    <UserAddOutlined />
+                    Add user
+                  </a>
+                </Link>
               </Menu.Item>
               <Menu.Item key="Your profile">
                 <ProfileOutlined />

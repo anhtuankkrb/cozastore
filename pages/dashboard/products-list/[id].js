@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import Router from "next/router";
 import { db, storage } from "../../../firebase/fire";
 
 import DashboardLayout from "../../../components/dashboard/dashboard-layout";
@@ -164,6 +165,7 @@ export default function EditProduct({ dataEdit }) {
           } else {
             setConfirmLoading(false);
             handleCancel();
+            Router.push("/dashboard/products-list");
           }
         });
     } else {
@@ -184,6 +186,7 @@ export default function EditProduct({ dataEdit }) {
                 } else {
                   setConfirmLoading(false);
                   handleCancel();
+                  Router.push("/dashboard/products-list");
                 }
               });
           });
@@ -205,6 +208,7 @@ export default function EditProduct({ dataEdit }) {
               setImagesNeedDelete([]);
               setConfirmLoading(false);
               handleCancel();
+              Router.push("/dashboard/products-list");
             }
           });
       } else {
@@ -232,6 +236,7 @@ export default function EditProduct({ dataEdit }) {
                       setImagesNeedDelete([]);
                       setConfirmLoading(false);
                       handleCancel();
+                      Router.push("/dashboard/products-list");
                     }
                   });
               });
@@ -239,6 +244,22 @@ export default function EditProduct({ dataEdit }) {
         );
       }
     }
+  };
+  //reset
+  const onReset = () => {
+    form.resetFields();
+    setProductsImage(
+      dataEdit.images.productsImage
+        ? dataEdit.images.productsImage.map(image => {
+            return { url: image, file: "NO FILE" };
+          })
+        : []
+    );
+    setCoverImage({
+      url: dataEdit.images.coverImage,
+      file: "NO FILE"
+    });
+    setImagesNeedDelete([]);
   };
 
   //nut upload
@@ -500,6 +521,13 @@ export default function EditProduct({ dataEdit }) {
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
               Submit
+            </Button>
+            <Button
+              htmlType="button"
+              onClick={onReset}
+              style={{ marginLeft: "24px" }}
+            >
+              Reset
             </Button>
           </Form.Item>
         </Form>
