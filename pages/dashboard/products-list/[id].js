@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useState } from "react";
-import { db, storage } from "../../firebase/fire";
+import { db, storage } from "../../../firebase/fire";
 
-import DashboardLayout from "../../components/dashboard/dashboard-layout";
+import DashboardLayout from "../../../components/dashboard/dashboard-layout";
 import { UploadOutlined } from "@ant-design/icons";
 import {
   Breadcrumb,
@@ -29,14 +29,20 @@ const tailLayout = {
   wrapperCol: { offset: 4, span: 16 }
 };
 
-export default function AddProduct() {
+export default function EditProduct({ dataEdit }) {
   // reset form
 
   const [form] = Form.useForm();
 
   //xu ly anh
+
+  //hang anh doi xoa
+  const [imagesNeedDelete, setImagesNeedDelete] = useState([]);
   //cover anh
-  const [coverImage, setCoverImage] = useState();
+  const [coverImage, setCoverImage] = useState({
+    url: dataEdit.images.coverImage,
+    file: "NO FILE"
+  });
   const changeCoverImage = info => {
     if (info.file.status === "done") {
       const reader = new FileReader();
@@ -48,10 +54,19 @@ export default function AddProduct() {
     }
   };
   const deleteCoverImage = () => {
+    if (coverImage.file == "NO FILE") {
+      setImagesNeedDelete(imagesNeedDelete.concat(coverImage.url));
+    }
     setCoverImage(undefined);
   };
   //products anh
-  const [productsImage, setProductsImage] = useState([]);
+  const [productsImage, setProductsImage] = useState(
+    dataEdit.images.productsImage
+      ? dataEdit.images.productsImage.map(image => {
+          return { url: image, file: "NO FILE" };
+        })
+      : []
+  );
   const changeProductsImage = info => {
     if (info.file.status === "done") {
       const reader = new FileReader();
@@ -68,7 +83,14 @@ export default function AddProduct() {
     }
   };
   const deleteProductsImage = imageUrl => {
-    setProductsImage(productsImage.filter(image => image.url != imageUrl));
+    setProductsImage(
+      productsImage.filter(image => {
+        if (image.url == imageUrl && image.file == "NO FILE") {
+          setImagesNeedDelete(imagesNeedDelete.concat(imageUrl));
+        }
+        return image.url != imageUrl;
+      })
+    );
   };
 
   //submit
@@ -107,69 +129,115 @@ export default function AddProduct() {
   };
   const handleOk = () => {
     setConfirmLoading(true);
-    db.add(dataUpload).then(ref => {
-      upCoverImage(ref.id);
-    });
+    if (imagesNeedDelete.length == 0) {
+      db.doc(dataEdit.id)
+        .update(dataUpload)
+        .then(() => {
+          upCoverImage();
+        });
+    } else {
+      for (let i = 0; i < imagesNeedDelete.length; i++) {
+        storage
+          .refFromURL(imagesNeedDelete[i])
+          .delete()
+          .then(() => {
+            if (i == imagesNeedDelete.length - 1) {
+              db.doc(dataEdit.id)
+                .update(dataUpload)
+                .then(() => {
+                  upCoverImage();
+                });
+            }
+          });
+      }
+    }
   };
 
   //up anh
-  const upCoverImage = id => {
-    let uploadTask = storage
-      .ref("products image/" + coverImage.file.name)
-      .put(coverImage.file);
-    uploadTask.on(
-      "state_changed",
-      function(snapshot) {},
-      function(error) {},
-      function() {
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          db.doc(id)
-            .update({ images: { coverImage: downloadURL } })
-            .then(() => {
-              if (productsImage.length != 0) {
-                upProductsImage(id, downloadURL);
-              } else {
-                form.resetFields();
-                setCoverImage(undefined);
-                setConfirmLoading(false);
-                handleCancel();
-              }
-            });
+  const upCoverImage = () => {
+    if (coverImage.file == "NO FILE") {
+      db.doc(dataEdit.id)
+        .update({ images: { coverImage: coverImage.url } })
+        .then(() => {
+          if (productsImage.length != 0) {
+            upProductsImage(coverImage.url);
+          } else {
+            setConfirmLoading(false);
+            handleCancel();
+          }
         });
-      }
-    );
-  };
-  const upProductsImage = (id, coverImageurl) => {
-    let arrImage = [];
-    for (let i = 0; i < productsImage.length; i++) {
-      let uploadProductsImage = storage
-        .ref("products image/" + productsImage[i].file.name)
-        .put(productsImage[i].file);
-      uploadProductsImage.on(
+    } else {
+      let uploadTask = storage
+        .ref("products image/" + coverImage.file.name)
+        .put(coverImage.file);
+      uploadTask.on(
         "state_changed",
         function(snapshot) {},
         function(error) {},
         function() {
-          uploadProductsImage.snapshot.ref
-            .getDownloadURL()
-            .then(function(downloadURL) {
-              arrImage.push(downloadURL);
-              db.doc(id)
-                .update({
-                  images: { coverImage: coverImageurl, productsImage: arrImage }
-                })
-                .then(() => {
-                  if (i == productsImage.length - 1) {
-                    form.resetFields();
-                    setCoverImage(undefined);
-                    setProductsImage([]);
-                    setConfirmLoading(false);
-                    handleCancel();
-                  }
-                });
-            });
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            db.doc(dataEdit.id)
+              .update({ images: { coverImage: downloadURL } })
+              .then(() => {
+                if (productsImage.length != 0) {
+                  upProductsImage(downloadURL);
+                } else {
+                  setConfirmLoading(false);
+                  handleCancel();
+                }
+              });
+          });
         }
       );
+    }
+  };
+  const upProductsImage = coverImageurl => {
+    let arrImage = [];
+    for (let i = 0; i < productsImage.length; i++) {
+      if (productsImage[i].file == "NO FILE") {
+        arrImage.push(productsImage[i].url);
+        db.doc(dataEdit.id)
+          .update({
+            images: { coverImage: coverImageurl, productsImage: arrImage }
+          })
+          .then(() => {
+            if (i == productsImage.length - 1) {
+              setImagesNeedDelete([]);
+              setConfirmLoading(false);
+              handleCancel();
+            }
+          });
+      } else {
+        let uploadProductsImage = storage
+          .ref("products image/" + productsImage[i].file.name)
+          .put(productsImage[i].file);
+        uploadProductsImage.on(
+          "state_changed",
+          function(snapshot) {},
+          function(error) {},
+          function() {
+            uploadProductsImage.snapshot.ref
+              .getDownloadURL()
+              .then(function(downloadURL) {
+                arrImage.push(downloadURL);
+                db.doc(dataEdit.id)
+                  .update({
+                    images: {
+                      coverImage: coverImageurl,
+                      productsImage: arrImage
+                    }
+                  })
+                  .then(() => {
+                    if (i == productsImage.length - 1) {
+                      setImagesNeedDelete([]);
+                      setConfirmLoading(false);
+                      handleCancel();
+                    }
+                  });
+              });
+          }
+        );
+      }
     }
   };
 
@@ -181,7 +249,7 @@ export default function AddProduct() {
   );
 
   return (
-    <DashboardLayout title="Add product" select="Add product" open="Products">
+    <DashboardLayout title={dataEdit.name}>
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>
           <Link href="/">
@@ -193,7 +261,12 @@ export default function AddProduct() {
             <a>Dashboard</a>
           </Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Add product</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <Link href="/dashboard/products-list">
+            <a>Products list</a>
+          </Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>{dataEdit.name}</Breadcrumb.Item>
       </Breadcrumb>
       <Content
         className="site-layout-background"
@@ -210,6 +283,21 @@ export default function AddProduct() {
           onFinish={onFinish}
           size="large"
           form={form}
+          initialValues={{
+            name: dataEdit.name,
+            slug: dataEdit.slug,
+            category: dataEdit.category,
+            size: dataEdit.size,
+            quantity: dataEdit.quantity,
+            price: dataEdit.price,
+            weight: dataEdit.weight,
+            height: dataEdit.dimensions.height,
+            length: dataEdit.dimensions.length,
+            width: dataEdit.dimensions.width,
+            meterial: dataEdit.meterial[0],
+            describe: dataEdit.describe,
+            coverImage: "NO FILE"
+          }}
         >
           <Form.Item
             label="Name"
@@ -428,3 +516,24 @@ export default function AddProduct() {
     </DashboardLayout>
   );
 }
+
+EditProduct.getInitialProps = async function(context) {
+  const { id } = context.query;
+
+  let result = await db
+    .where("slug", "==", id)
+    .get()
+    .then(snapshot => {
+      let arrData = [];
+      snapshot.forEach(doc => {
+        arrData.push({ id: doc.id, ...doc.data() });
+      });
+      return arrData;
+    })
+
+    .catch(() => {
+      return {};
+    });
+
+  return { dataEdit: result[0] };
+};

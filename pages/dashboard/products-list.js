@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { db } from "../../firebase/fire";
+import { db, storage } from "../../firebase/fire";
+
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import DashboardLayout from "../../components/dashboard/dashboard-layout";
 
-import { Breadcrumb, Layout, Table } from "antd";
+import { Breadcrumb, Layout, Table, Button, Modal } from "antd";
 const { Content } = Layout;
 export default function ProductsList() {
   // lay du lieu
@@ -51,8 +53,75 @@ export default function ProductsList() {
       title: "Price",
 
       render: (text, record) => "$ " + record.price.toString()
+    },
+    {
+      title: "",
+
+      render: (text, record) => (
+        <Link
+          href="/dashboard/products-list/[id]"
+          as={`/dashboard/products-list/${record.slug}`}
+        >
+          <Button type="dashed" shape="circle" icon={<EditOutlined />} />
+        </Link>
+      )
+    },
+    {
+      title: "",
+
+      render: (text, record) => (
+        <Button
+          type="primary"
+          shape="circle"
+          icon={<DeleteOutlined />}
+          danger
+          onClick={() => deleteProduct(record.id, record.images)}
+        />
+      )
     }
   ];
+
+  //xoa du lieu
+  const [visible, setVisible] = useState(false); //modal hien thi
+  const [confirmLoading, setConfirmLoading] = useState(false);
+
+  const [idDelete, setIdDelete] = useState();
+  const [imagesDelete, setImagesDelete] = useState();
+  const deleteProduct = (id, images) => {
+    setIdDelete(id);
+    setImagesDelete(
+      images.productsImage
+        ? [images.coverImage, ...images.productsImage]
+        : [images.coverImage]
+    );
+    showModal();
+  };
+
+  //modal
+  const showModal = () => {
+    setVisible(true);
+  };
+  const handleCancel = () => {
+    setVisible(false);
+  };
+  const handleOk = () => {
+    setConfirmLoading(true);
+    for (let i = 0; i < imagesDelete.length; i++) {
+      storage
+        .refFromURL(imagesDelete[i])
+        .delete()
+        .then(() => {
+          if (i == imagesDelete.length - 1) {
+            db.doc(idDelete)
+              .delete()
+              .then(() => {
+                setConfirmLoading(false);
+                handleCancel();
+              });
+          }
+        });
+    }
+  };
 
   return (
     <DashboardLayout
@@ -82,6 +151,15 @@ export default function ProductsList() {
         }}
       >
         <Table columns={columns} dataSource={data} rowKey="id" />
+        <Modal
+          title="Submit"
+          visible={visible}
+          onOk={handleOk}
+          confirmLoading={confirmLoading}
+          onCancel={handleCancel}
+        >
+          <p>Are you sure ?</p>
+        </Modal>
       </Content>
     </DashboardLayout>
   );
