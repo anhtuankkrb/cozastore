@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { auth } from "../../firebase/fire";
@@ -23,7 +23,8 @@ const { Header, Sider } = Layout;
 
 export default function DashboardLayout({ children, title, select, open }) {
   //fix link tinh
-  const path = useRouter().pathname;
+  const router = useRouter();
+  const path = router.pathname;
   const level = path.split("").filter(item => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
@@ -31,14 +32,18 @@ export default function DashboardLayout({ children, title, select, open }) {
   }
 
   // xet nguoi dung
+
+  const [currentUser, setCurrentUser] = useState();
+
   useEffect(() => {
     let clean = auth.onAuthStateChanged(function(user) {
       if (user) {
-        // User is signed in.
+        setCurrentUser(user);
       } else {
-        location.href = "/dashboard/login";
+        location.href = "/dashboard/login?from=" + path;
       }
     });
+
     return () => {
       clean();
     };
@@ -51,8 +56,12 @@ export default function DashboardLayout({ children, title, select, open }) {
   const menu = (
     <Menu theme="dark">
       <Menu.Item key="1">
-        <ProfileOutlined />
-        Your profile
+        <Link href="/dashboard/your-profile">
+          <span>
+            <ProfileOutlined />
+            Your profile
+          </span>
+        </Link>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="2">
@@ -92,12 +101,12 @@ export default function DashboardLayout({ children, title, select, open }) {
 
         <div style={{ float: "right" }}>
           <span style={{ marginRight: "8px", color: "#fff" }}>
-            {auth.currentUser ? auth.currentUser.email : ""}
+            {currentUser ? currentUser.email : ""}
           </span>
           <Dropdown overlay={menu} trigger={["click"]}>
-            {auth.currentUser ? (
+            {currentUser ? (
               <Avatar
-                src={auth.currentUser.photoURL}
+                src={currentUser.photoURL}
                 style={{ cursor: "pointer" }}
               />
             ) : (
@@ -149,8 +158,12 @@ export default function DashboardLayout({ children, title, select, open }) {
                 </Link>
               </Menu.Item>
               <Menu.Item key="Your profile">
-                <ProfileOutlined />
-                Your profile
+                <Link href="/dashboard/your-profile">
+                  <a>
+                    <ProfileOutlined />
+                    Your profile
+                  </a>
+                </Link>
               </Menu.Item>
             </SubMenu>
             <SubMenu

@@ -17,7 +17,7 @@ export default function Header({ changeCartStatus }) {
   const menu = [
     ["/", "Home"],
     ["/shop", "Shop"],
-    ["/shopping-cart", "Features"],
+
     ["/blog", "Blog"],
     ["/about", "About"],
     ["/contact", "Contact"]

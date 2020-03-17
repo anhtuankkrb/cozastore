@@ -393,10 +393,7 @@ export default function Product({ data, relatedProducts }) {
                         </div>
                         <div className="block2-txt flex-w flex-t p-t-14">
                           <div className="block2-txt-child1 flex-col-l ">
-                            <Link
-                              href="[id]"
-                              as={product.name.replace(/\s/g, "_")}
-                            >
+                            <Link href="[id]" as={product.slug}>
                               <a
                                 href="product-detail.html"
                                 className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
@@ -445,7 +442,7 @@ Product.getInitialProps = async function(context) {
   const { id } = context.query;
 
   let result = await db
-    .where("name", "==", id.replace(/_/g, " "))
+    .where("slug", "==", id)
     .get()
     .then(snapshot => {
       let arrData = [];

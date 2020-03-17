@@ -1,4 +1,7 @@
-import { Form, Input, Button } from "antd";
+import { useRouter } from "next/router";
+import { Form, Input, Button, message } from "antd";
+
+import { auth } from "../../firebase/fire";
 
 export default function Login() {
   const layout = {
@@ -9,8 +12,17 @@ export default function Login() {
     wrapperCol: { offset: 8, span: 16 }
   };
 
+  const router = useRouter();
+
   const onFinish = values => {
-    console.log("Success:", values);
+    auth
+      .signInWithEmailAndPassword(values.email, values.password)
+      .then(() => {
+        router.push(router.query.from);
+      })
+      .catch(error => {
+        message.error(error.message);
+      });
   };
 
   const onFinishFailed = errorInfo => {
@@ -48,9 +60,15 @@ export default function Login() {
           onFinishFailed={onFinishFailed}
         >
           <Form.Item
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
+            label="Email"
+            name="email"
+            rules={[
+              {
+                type: "email",
+                required: true,
+                message: "Please input your username!"
+              }
+            ]}
           >
             <Input />
           </Form.Item>

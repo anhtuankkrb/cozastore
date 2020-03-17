@@ -136,7 +136,7 @@ export default function ProductsList() {
           </Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link href="/">
+          <Link href="/dashboard">
             <a>Dashboard</a>
           </Link>
         </Breadcrumb.Item>

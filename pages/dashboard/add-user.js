@@ -78,7 +78,8 @@ export default function Dashboard() {
                     })
                     .then(() => {
                       dbUsers
-                        .add({
+                        .doc(cred.user.uid)
+                        .set({
                           email: dataSignIn.email,
                           avatar: downloadURL,
                           bio: dataSignIn.bio ? dataSignIn.bio : ""
@@ -95,7 +96,8 @@ export default function Dashboard() {
           );
         } else {
           dbUsers
-            .add({
+            .doc(cred.user, uid)
+            .set({
               email: dataSignIn.email,
               bio: dataSignIn.bio ? dataSignIn.bio : ""
             })
