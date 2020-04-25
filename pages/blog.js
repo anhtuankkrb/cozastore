@@ -1,7 +1,16 @@
 import Layout from "../components/layout";
 import Link from "next/link";
+import { useEffect } from "react";
+import { dbBlog, Timestamp } from "../firebase/fire";
 
-export default function Blog() {
+export default function Blog({ data }) {
+  useEffect(() => {
+    let a = new Timestamp(
+      data[0].archiveDate.seconds,
+      data[0].archiveDate.nanoseconds
+    ).toDate();
+    console.log(a);
+  });
   return (
     <Layout title="Blog">
       {/* Title page */}
@@ -18,151 +27,89 @@ export default function Blog() {
             <div className="col-md-8 col-lg-9 p-b-80">
               <div className="p-r-45 p-r-0-lg">
                 {/* item blog */}
-                <div className="p-b-63">
-                  <a
-                    href="blog-detail.html"
-                    className="hov-img0 how-pos5-parent"
-                  >
-                    <img src="images/blog-04.jpg" alt="IMG-BLOG" />
-                    <div className="flex-col-c-m size-123 bg9 how-pos5">
-                      <span className="ltext-107 cl2 txt-center">22</span>
-                      <span className="stext-109 cl3 txt-center">Jan 2018</span>
-                    </div>
-                  </a>
-                  <div className="p-t-32">
-                    <h4 className="p-b-15">
-                      <a
-                        href="blog-detail.html"
-                        className="ltext-108 cl2 hov-cl1 trans-04"
-                      >
-                        8 Inspiring Ways to Wear Dresses in the Winter
-                      </a>
-                    </h4>
-                    <p className="stext-117 cl6">
-                      Class aptent taciti sociosqu ad litora torquent per
-                      conubia nostra, per inceptos himenaeos. Fusce eget dictum
-                      tortor. Donec dictum vitae sapien eu varius
-                    </p>
-                    <div className="flex-w flex-sb-m p-t-18">
-                      <span className="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
-                        <span>
-                          <span className="cl4">By</span> Admin
-                          <span className="cl12 m-l-4 m-r-6">|</span>
-                        </span>
-                        <span>
-                          StreetStyle, Fashion, Couple
-                          <span className="cl12 m-l-4 m-r-6">|</span>
-                        </span>
-                        <span>8 Comments</span>
-                      </span>
-                      <Link href="/blog/[id]" as="/blog/blog-detail">
-                        <a
-                          href="blog-detail.html"
-                          className="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
-                        >
-                          Continue Reading
-                          <i className="fa fa-long-arrow-right m-l-9" />
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                {/* item blog */}
-                <div className="p-b-63">
-                  <a
-                    href="blog-detail.html"
-                    className="hov-img0 how-pos5-parent"
-                  >
-                    <img src="images/blog-05.jpg" alt="IMG-BLOG" />
-                    <div className="flex-col-c-m size-123 bg9 how-pos5">
-                      <span className="ltext-107 cl2 txt-center">18</span>
-                      <span className="stext-109 cl3 txt-center">Jan 2018</span>
-                    </div>
-                  </a>
-                  <div className="p-t-32">
-                    <h4 className="p-b-15">
-                      <a
-                        href="blog-detail.html"
-                        className="ltext-108 cl2 hov-cl1 trans-04"
-                      >
-                        The Great Big List of Men’s Gifts for the Holidays
-                      </a>
-                    </h4>
-                    <p className="stext-117 cl6">
-                      Class aptent taciti sociosqu ad litora torquent per
-                      conubia nostra, per inceptos himenaeos. Fusce eget dictum
-                      tortor. Donec dictum vitae sapien eu varius
-                    </p>
-                    <div className="flex-w flex-sb-m p-t-18">
-                      <span className="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
-                        <span>
-                          <span className="cl4">By</span> Admin
-                          <span className="cl12 m-l-4 m-r-6">|</span>
-                        </span>
-                        <span>
-                          StreetStyle, Fashion, Couple
-                          <span className="cl12 m-l-4 m-r-6">|</span>
-                        </span>
-                        <span>8 Comments</span>
-                      </span>
-                      <a
-                        href="blog-detail.html"
-                        className="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
-                      >
-                        Continue Reading
-                        <i className="fa fa-long-arrow-right m-l-9" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                {/* item blog */}
-                <div className="p-b-63">
-                  <a
-                    href="blog-detail.html"
-                    className="hov-img0 how-pos5-parent"
-                  >
-                    <img src="images/blog-06.jpg" alt="IMG-BLOG" />
-                    <div className="flex-col-c-m size-123 bg9 how-pos5">
-                      <span className="ltext-107 cl2 txt-center">16</span>
-                      <span className="stext-109 cl3 txt-center">Jan 2018</span>
-                    </div>
-                  </a>
-                  <div className="p-t-32">
-                    <h4 className="p-b-15">
-                      <a
-                        href="blog-detail.html"
-                        className="ltext-108 cl2 hov-cl1 trans-04"
-                      >
-                        5 Winter-to-Spring Fashion Trends to Try Now
-                      </a>
-                    </h4>
-                    <p className="stext-117 cl6">
-                      Class aptent taciti sociosqu ad litora torquent per
-                      conubia nostra, per inceptos himenaeos. Fusce eget dictum
-                      tortor. Donec dictum vitae sapien eu varius
-                    </p>
-                    <div className="flex-w flex-sb-m p-t-18">
-                      <span className="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
-                        <span>
-                          <span className="cl4">By</span> Admin
-                          <span className="cl12 m-l-4 m-r-6">|</span>
-                        </span>
-                        <span>
-                          StreetStyle, Fashion, Couple
-                          <span className="cl12 m-l-4 m-r-6">|</span>
-                        </span>
-                        <span>8 Comments</span>
-                      </span>
-                      <a
-                        href="blog-detail.html"
-                        className="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
-                      >
-                        Continue Reading
-                        <i className="fa fa-long-arrow-right m-l-9" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                {data &&
+                  data.map((post) => {
+                    const time = new Timestamp(
+                      post.archiveDate.seconds,
+                      post.archiveDate.nanoseconds
+                    ).toDate();
+
+                    const date = time.getDate();
+                    const months = [
+                      "Jan",
+                      "Feb",
+                      "Mar",
+                      "Apr",
+                      "May",
+                      "Jun",
+                      "Jul",
+                      "Aug",
+                      "Sep",
+                      "Oct",
+                      "Nov",
+                      "Dec",
+                    ];
+                    const month = time.getMonth();
+                    const year = time.getFullYear();
+                    return (
+                      <div className="p-b-63" key={post.slug}>
+                        <Link href="/blog/[id]" as={"/blog/" + post.slug}>
+                          <a
+                            href="blog-detail.html"
+                            className="hov-img0 how-pos5-parent"
+                          >
+                            <img src={post.coverImage} alt={post.title} />
+                            <div className="flex-col-c-m size-123 bg9 how-pos5">
+                              <span className="ltext-107 cl2 txt-center">
+                                {date}
+                              </span>
+                              <span className="stext-109 cl3 txt-center">
+                                {months[month] + " " + year}
+                              </span>
+                            </div>
+                          </a>
+                        </Link>
+                        <div className="p-t-32">
+                          <h4 className="p-b-15">
+                            <Link href="/blog/[id]" as={"/blog/" + post.slug}>
+                              <a
+                                href="blog-detail.html"
+                                className="ltext-108 cl2 hov-cl1 trans-04"
+                              >
+                                {post.title}
+                              </a>
+                            </Link>
+                          </h4>
+                          <p className="stext-117 cl6">
+                            {post.descriptiveParagraph}
+                          </p>
+                          <div className="flex-w flex-sb-m p-t-18">
+                            <span className="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
+                              <span>
+                                <span className="cl4">By</span> {post.author}
+                                <span className="cl12 m-l-4 m-r-6">|</span>
+                              </span>
+                              <span>
+                                {post.categories.concat(post.tags).join(", ")}
+                                <span className="cl12 m-l-4 m-r-6">|</span>
+                              </span>
+                              <span>8 Comments</span>
+                            </span>
+                            <Link href="/blog/[id]" as={"/blog/" + post.slug}>
+                              <a
+                                href="blog-detail.html"
+                                className="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
+                              >
+                                Continue Reading
+                                <i className="fa fa-long-arrow-right m-l-9" />
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+
                 {/* Pagination */}
                 <div className="flex-l-m flex-w w-full p-t-10 m-lr--7">
                   <a
@@ -405,3 +352,21 @@ export default function Blog() {
     </Layout>
   );
 }
+
+Blog.getInitialProps = async function () {
+  let result = await dbBlog
+    .get()
+    .then((snapshot) => {
+      let arrData = [];
+      snapshot.forEach((doc) => {
+        arrData.push({ id: doc.id, ...doc.data() });
+      });
+      return arrData;
+    })
+
+    .catch(() => {
+      return [];
+    });
+
+  return { data: result };
+};

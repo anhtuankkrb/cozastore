@@ -54,6 +54,12 @@ export default function AddProduct() {
   const [productsImage, setProductsImage] = useState([]);
   const changeProductsImage = info => {
     if (info.file.status === "done") {
+      // setProductsImage(
+      //   productsImage.concat({
+      //     url: URL.createObjectURL(info.file.originFileObj),
+      //     file: info.file.originFileObj
+      //   })
+      // );
       const reader = new FileReader();
       reader.addEventListener("load", function() {
         setProductsImage(

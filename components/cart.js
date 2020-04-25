@@ -8,14 +8,14 @@ export default function Cart({ toggleCart, changeCartStatus }) {
   let { products } = useContext(CartContext);
   const total = () => {
     let result = 0;
-    products.forEach(product => {
+    products.forEach((product) => {
       result += product.amount * product.price;
     });
     return result;
   };
 
   const path = useRouter().pathname;
-  const level = path.split("").filter(item => item == "/");
+  const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
@@ -40,7 +40,7 @@ export default function Cart({ toggleCart, changeCartStatus }) {
         </div>
         <div className="header-cart-content flex-w js-pscroll">
           <ul className="header-cart-wrapitem w-full">
-            {products.map(product => (
+            {products.map((product) => (
               <li
                 className="header-cart-item flex-w flex-t m-b-12"
                 key={product.name}
@@ -49,17 +49,9 @@ export default function Cart({ toggleCart, changeCartStatus }) {
                   <img src={product.image} alt={product.name} />
                 </div>
                 <div className="header-cart-item-txt p-t-8">
-                  <Link
-                    href="/shop/[id]"
-                    as={"/shop/" + product.name.replace(/\s/g, "_")}
-                  >
-                    <a
-                      href="#"
-                      className="header-cart-item-name m-b-18 hov-cl1 trans-04"
-                    >
-                      {product.name}
-                    </a>
-                  </Link>
+                  <a className="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                    {product.name}
+                  </a>
 
                   <span className="header-cart-item-info">{`${
                     product.amount

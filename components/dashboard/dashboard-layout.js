@@ -47,7 +47,7 @@ export default function DashboardLayout({ children, title, select, open }) {
     return () => {
       clean();
     };
-  }, []);
+  });
   //logout
   const logout = () => {
     auth.signOut();
@@ -205,8 +205,12 @@ export default function DashboardLayout({ children, title, select, open }) {
                 <UnorderedListOutlined /> Posts list
               </Menu.Item>
               <Menu.Item key="Add post">
-                <DiffOutlined />
-                Add post
+                <Link href="/dashboard/add-post">
+                  <a>
+                    <DiffOutlined />
+                    Add post
+                  </a>
+                </Link>
               </Menu.Item>
             </SubMenu>
           </Menu>

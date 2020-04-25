@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "lean-project-nextjs",
   storageBucket: "lean-project-nextjs.appspot.com",
   messagingSenderId: "736099786213",
-  appId: "1:736099786213:web:06c024bd3307a6e4c6a30c"
+  appId: "1:736099786213:web:06c024bd3307a6e4c6a30c",
 };
 
 // var firebaseConfig = {
@@ -31,5 +31,7 @@ let db = firebase.firestore().collection("products");
 let storage = firebase.storage();
 let dbUsers = firebase.firestore().collection("users");
 let auth = firebase.auth();
+let Timestamp = firebase.firestore.Timestamp;
+let dbBlog = firebase.firestore().collection("blog");
 
-export { db, storage, dbUsers, auth };
+export { db, storage, dbUsers, auth, Timestamp, dbBlog };

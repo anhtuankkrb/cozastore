@@ -1,16 +1,51 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout";
+import { dbBlog, Timestamp } from "../../firebase/fire";
+import parse, { domToReact } from "html-react-parser";
 
-export default function Blog() {
+export default function Post({ data }) {
   const path = useRouter().pathname;
-  const level = path.split("").filter(item => item == "/");
+  const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
   }
+
+  const time = new Timestamp(
+    data.archiveDate.seconds,
+    data.archiveDate.nanoseconds
+  ).toDate();
+
+  const date = time.getDate();
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const month = time.getMonth();
+  const year = time.getFullYear();
+  const jsx = parse(data.html, {
+    replace: function (domNode) {
+      if (domNode.name == "p") {
+        return (
+          <p className="stext-117 cl6 p-b-26">{domToReact(domNode.children)}</p>
+        );
+      }
+    },
+  });
+
   return (
-    <Layout>
+    <Layout title={data.title}>
       <div>
         {/* breadcrumb */}
         <div className="container">
@@ -33,9 +68,7 @@ export default function Blog() {
                 />
               </a>
             </Link>
-            <span className="stext-109 cl4">
-              8 Inspiring Ways to Wear Dresses in the Winter
-            </span>
+            <span className="stext-109 cl4">{data.title}</span>
           </div>
         </div>
         {/* Content page */}
@@ -46,74 +79,47 @@ export default function Blog() {
                 <div className="p-r-45 p-r-0-lg">
                   {/*  */}
                   <div className="wrap-pic-w how-pos5-parent">
-                    <img
-                      src={fixPathImg + "images/blog-04.jpg"}
-                      alt="IMG-BLOG"
-                    />
+                    <img src={data.coverImage} alt={data.title} />
                     <div className="flex-col-c-m size-123 bg9 how-pos5">
-                      <span className="ltext-107 cl2 txt-center">22</span>
-                      <span className="stext-109 cl3 txt-center">Jan 2018</span>
+                      <span className="ltext-107 cl2 txt-center">{date}</span>
+                      <span className="stext-109 cl3 txt-center">
+                        {months[month] + " " + year}
+                      </span>
                     </div>
                   </div>
                   <div className="p-t-32">
                     <span className="flex-w flex-m stext-111 cl2 p-b-19">
                       <span>
-                        <span className="cl4">By</span> Admin
+                        <span className="cl4">By</span>
+                        {" " + data.author}
                         <span className="cl12 m-l-4 m-r-6">|</span>
                       </span>
                       <span>
-                        22 Jan, 2018
+                        {date + " " + months[month] + ", " + year}
                         <span className="cl12 m-l-4 m-r-6">|</span>
                       </span>
                       <span>
-                        StreetStyle, Fashion, Couple
+                        {data.categories.concat(data.tags).join(", ")}
                         <span className="cl12 m-l-4 m-r-6">|</span>
                       </span>
                       <span>8 Comments</span>
                     </span>
-                    <h4 className="ltext-109 cl2 p-b-28">
-                      8 Inspiring Ways to Wear Dresses in the Winter
-                    </h4>
-                    <p className="stext-117 cl6 p-b-26">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc sit amet est vel orci luctus sollicitudin. Duis
-                      eleifend vestibulum justo, varius semper lacus condimentum
-                      dictum. Donec pulvinar a magna ut malesuada. In posuere
-                      felis diam, vel sodales metus accumsan in. Duis viverra
-                      dui eu pharetra pellentesque. Donec a eros leo. Quisque
-                      sed ligula vitae lorem efficitur faucibus. Praesent sit
-                      amet imperdiet ante. Nulla id tellus auctor, dictum libero
-                      a, malesuada nisi. Nulla in porta nibh, id vestibulum
-                      ipsum. Praesent dapibus tempus erat quis aliquet. Donec ac
-                      purus id sapien condimentum feugiat.
-                    </p>
-                    <p className="stext-117 cl6 p-b-26">
-                      Praesent vel mi bibendum, finibus leo ac, condimentum
-                      arcu. Pellentesque sem ex, tristique sit amet suscipit in,
-                      mattis imperdiet enim. Integer tempus justo nec velit
-                      fringilla, eget eleifend neque blandit. Sed tempor magna
-                      sed congue auctor. Mauris eu turpis eget tortor ultricies
-                      elementum. Phasellus vel placerat orci, a venenatis justo.
-                      Phasellus faucibus venenatis nisl vitae vestibulum.
-                      Praesent id nibh arcu. Vivamus sagittis accumsan felis,
-                      quis vulputate
-                    </p>
+                    <h4 className="ltext-109 cl2 p-b-28">{data.title}</h4>
+                    {jsx}
                   </div>
                   <div className="flex-w flex-t p-t-16">
                     <span className="size-216 stext-116 cl8 p-t-4">Tags</span>
                     <div className="flex-w size-217">
-                      <a
-                        href="#"
-                        className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
-                      >
-                        Streetstyle
-                      </a>
-                      <a
-                        href="#"
-                        className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
-                      >
-                        Crafts
-                      </a>
+                      {data.tags &&
+                        data.tags.map((tag) => (
+                          <a
+                            key={tag}
+                            href="#"
+                            className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
+                          >
+                            {tag}
+                          </a>
+                        ))}
                     </div>
                   </div>
                   {/*  */}
@@ -407,3 +413,24 @@ export default function Blog() {
     </Layout>
   );
 }
+
+Post.getInitialProps = async function (context) {
+  const { id } = context.query;
+
+  let result = await dbBlog
+    .where("slug", "==", id)
+    .get()
+    .then((snapshot) => {
+      let arrData = [];
+      snapshot.forEach((doc) => {
+        arrData.push({ id: doc.id, ...doc.data() });
+      });
+      return arrData;
+    })
+
+    .catch(() => {
+      return [];
+    });
+
+  return { data: result[0] };
+};

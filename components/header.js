@@ -37,7 +37,8 @@ export default function Header({ changeCartStatus }) {
       containerMenuDesktop.current.classList.add("fix-menu-desktop");
       wrapMenuDesktop.current.style.top = 0;
     }
-    window.addEventListener("scroll", () => {
+    window.addEventListener("scroll", scroll);
+    function scroll() {
       if (pageYOffset > toBar.current.offsetHeight) {
         containerMenuDesktop.current.classList.add("fix-menu-desktop");
         wrapMenuDesktop.current.style.top = 0;
@@ -45,8 +46,11 @@ export default function Header({ changeCartStatus }) {
         containerMenuDesktop.current.classList.remove("fix-menu-desktop");
         wrapMenuDesktop.current.style.top = "40px";
       }
-    });
-  });
+    }
+    return () => {
+      window.removeEventListener("scroll", scroll);
+    };
+  }, []);
 
   return (
     <header className={path !== "/" ? "header-v4" : null}>
