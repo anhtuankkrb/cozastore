@@ -15,7 +15,7 @@ import {
   AppstoreAddOutlined,
   DiffOutlined,
   DashboardOutlined,
-  LogoutOutlined
+  LogoutOutlined,
 } from "@ant-design/icons";
 
 const { SubMenu } = Menu;
@@ -25,7 +25,7 @@ export default function DashboardLayout({ children, title, select, open }) {
   //fix link tinh
   const router = useRouter();
   const path = router.pathname;
-  const level = path.split("").filter(item => item == "/");
+  const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
@@ -36,7 +36,7 @@ export default function DashboardLayout({ children, title, select, open }) {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    let clean = auth.onAuthStateChanged(function(user) {
+    let clean = auth.onAuthStateChanged(function (user) {
       if (user) {
         setCurrentUser(user);
       } else {
@@ -81,7 +81,7 @@ export default function DashboardLayout({ children, title, select, open }) {
             href="#"
             style={{
               background: " #fff",
-              padding: "8px"
+              padding: "8px",
             }}
           >
             <img src={fixPathImg + "images/icons/logo-01.png"} alt="IMG-LOGO" />
@@ -93,7 +93,7 @@ export default function DashboardLayout({ children, title, select, open }) {
             display: "inline",
             marginLeft: "32px",
             position: "relative",
-            top: "5px"
+            top: "5px",
           }}
         >
           {title}
@@ -202,7 +202,11 @@ export default function DashboardLayout({ children, title, select, open }) {
               }
             >
               <Menu.Item key="Posts list">
-                <UnorderedListOutlined /> Posts list
+                <Link href="/dashboard/posts-list">
+                  <a>
+                    <UnorderedListOutlined /> Posts list
+                  </a>
+                </Link>
               </Menu.Item>
               <Menu.Item key="Add post">
                 <Link href="/dashboard/add-post">

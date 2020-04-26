@@ -1,19 +1,17 @@
 import Link from "next/link";
 import { useState } from "react";
-import { dbBlog, storage, Timestamp } from "../../firebase/fire";
+import { useRouter } from "next/router";
+import { dbBlog, storage } from "../../../firebase/fire";
 import dynamic from "next/dynamic";
 
-const Editor = dynamic(
-  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
-  {
-    ssr: false,
-  }
-);
+const Edit = dynamic(() => import("../../../components/dashboard/edit"), {
+  ssr: false,
+});
 
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 
-import DashboardLayout from "../../components/dashboard/dashboard-layout";
+import DashboardLayout from "../../../components/dashboard/dashboard-layout";
 
 import { UploadOutlined } from "@ant-design/icons";
 import {
@@ -27,11 +25,14 @@ import {
   Upload,
   Modal,
 } from "antd";
+
 const { Search } = Input;
 const { Content } = Layout;
 const { TextArea } = Input;
 
-export default function AddPost() {
+export default function EditPost({ data }) {
+  const router = useRouter();
+
   //nut upload
   const buttonUpload = (
     <Button>
@@ -40,12 +41,21 @@ export default function AddPost() {
   );
 
   //edit
+
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
   const onEditorStateChange = (editorContent) => {
     setEditorState(editorContent);
   };
 
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(
+    data.contentImages
+      ? data.contentImages.map((image) => ({
+          localUrl: image,
+          flie: "NO FILE",
+        }))
+      : []
+  );
   let image = [];
 
   const uploadImageCallBack = (file) => {
@@ -76,7 +86,6 @@ export default function AddPost() {
       author: values.author,
       categories: values.categories,
       tags: tags,
-      archiveDate: Timestamp.now(),
       descriptiveParagraph: values.descriptiveParagraph,
     };
     setDataUpload(data);
@@ -97,33 +106,68 @@ export default function AddPost() {
     upCoverImage();
   };
   const upCoverImage = () => {
-    dbBlog.add(dataUpload).then((ref) => {
-      let uploadTask = storage
-        .ref("blog/" + coverImage.file.name)
-        .put(coverImage.file);
-      uploadTask.on(
-        "state_changed",
-        function (snapshot) {},
-        function (error) {},
-        function () {
-          uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-            dbBlog
-              .doc(ref.id)
-              .update({ coverImage: downloadURL })
-              .then(() => {
-                upContent(ref.id);
-              });
-          });
-        }
-      );
-    });
+    if (coverImage.file == "NO FILE") {
+      dbBlog
+        .doc(data.id)
+        .update(dataUpload)
+        .then(() => {
+          upContent();
+        });
+    } else {
+      dbBlog
+        .doc(data.id)
+        .update(dataUpload)
+        .then(() => {
+          storage
+            .refFromURL(data.coverImage)
+            .delete()
+            .then(() => {
+              let uploadTask = storage
+                .ref("blog/" + coverImage.file.name)
+                .put(coverImage.file);
+              uploadTask.on(
+                "state_changed",
+                function (snapshot) {},
+                function (error) {},
+                function () {
+                  uploadTask.snapshot.ref
+                    .getDownloadURL()
+                    .then(function (downloadURL) {
+                      dbBlog
+                        .doc(data.id)
+                        .update({ coverImage: downloadURL })
+                        .then(() => {
+                          upContent();
+                        });
+                    });
+                }
+              );
+            });
+        });
+    }
   };
   //up content
   const upContent = (id) => {
     let contentImages = [];
 
     let html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+
     let upImages = images.filter((image) => html.includes(image.localUrl));
+
+    let ollImages = images.filter((image) => image.file == "NO FILE");
+
+    let imagesNeedDelete = data.contentImages
+      ? data.contentImages.filter((image) => {
+          let tester = true;
+          for (let i = 0; i < ollImages.length; i++) {
+            if (image == ollImages[i].localUrl) {
+              tester = false;
+              break;
+            }
+          }
+          return tester;
+        })
+      : [];
 
     if (upImages.length == 0) {
       dbBlog
@@ -134,38 +178,59 @@ export default function AddPost() {
           handleCancel();
         });
     } else {
+      if (imagesNeedDelete.length != 0) {
+        imagesNeedDelete.forEach((image) => {
+          storage.refFromURL(image).delete();
+        });
+      }
+
       upImages.forEach((image, i) => {
-        let uploadTask = storage.ref("blog/" + image.file.name).put(image.file);
-        uploadTask.on(
-          "state_changed",
-          function (snapshot) {},
-          function (error) {},
-          function () {
-            uploadTask.snapshot.ref
-              .getDownloadURL()
-              .then(function (downloadURL) {
-                contentImages.push(downloadURL);
-                html = html.replace(image.localUrl, downloadURL);
-              })
-              .then(function () {
-                if (i == upImages.length - 1) {
-                  dbBlog
-                    .doc(id)
-                    .update({ html: html, contentImages: contentImages })
-                    .then(() => {
-                      setConfirmLoading(false);
-                      handleCancel();
-                    });
-                }
+        if (image.localUrl == "NO FILE") {
+          contentImages.push(image.localUrl);
+          if (i == upImages.length - 1) {
+            dbBlog
+              .doc(id)
+              .update({ html: html, contentImages: contentImages })
+              .then(() => {
+                setConfirmLoading(false);
+                handleCancel();
               });
           }
-        );
+        } else {
+          let uploadTask = storage
+            .ref("blog/" + image.file.name)
+            .put(image.file);
+          uploadTask.on(
+            "state_changed",
+            function (snapshot) {},
+            function (error) {},
+            function () {
+              uploadTask.snapshot.ref
+                .getDownloadURL()
+                .then(function (downloadURL) {
+                  contentImages.push(downloadURL);
+                  html = html.replace(image.localUrl, downloadURL);
+                })
+                .then(function () {
+                  if (i == upImages.length - 1) {
+                    dbBlog
+                      .doc(data.id)
+                      .update({ html: html, contentImages: contentImages })
+                      .then(() => {
+                        setConfirmLoading(false);
+                        handleCancel();
+                      });
+                  }
+                });
+            }
+          );
+        }
       });
     }
   };
 
   //tags
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(data.tags ? data.tags : []);
   const addTag = (val) => {
     if (val.trim() !== "" && !tags.includes(val.trim())) {
       setTags(tags.concat(val.trim()));
@@ -180,7 +245,10 @@ export default function AddPost() {
   };
 
   //cover image
-  const [coverImage, setCoverImage] = useState();
+  const [coverImage, setCoverImage] = useState({
+    url: data.coverImage,
+    file: "NO FILE",
+  });
   const changeCoverImage = (info) => {
     if (info.file.status === "done") {
       setCoverImage({
@@ -193,7 +261,7 @@ export default function AddPost() {
     setCoverImage(undefined);
   };
   return (
-    <DashboardLayout title="Add post" select="Add post" open="Blog">
+    <DashboardLayout title={data.title}>
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>
           <Link href="/">
@@ -205,7 +273,12 @@ export default function AddPost() {
             <a>Dashboard</a>
           </Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Add post</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <Link href="/dashboard/posts-list">
+            <a>Posts list</a>
+          </Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>{data.title}</Breadcrumb.Item>
       </Breadcrumb>
       <Content
         className="site-layout-background"
@@ -222,6 +295,14 @@ export default function AddPost() {
           onFinish={onFinish}
           size="large"
           form={form}
+          initialValues={{
+            title: data.title,
+            slug: data.slug,
+            categories: data.categories,
+            author: data.author,
+            descriptiveParagraph: data.descriptiveParagraph,
+            coverImage: "NO FILE",
+          }}
         >
           <Form.Item
             label="Title"
@@ -329,21 +410,12 @@ export default function AddPost() {
           >
             <TextArea autoSize={{ minRows: 5 }} />
           </Form.Item>
-          <Editor
+
+          <Edit
             editorState={editorState}
             onEditorStateChange={onEditorStateChange}
-            editorStyle={{ background: "#fff", height: "700px" }}
-            toolbar={{
-              list: { inDropdown: true },
-              textAlign: { inDropdown: true },
-              link: { inDropdown: true },
-              history: { inDropdown: false },
-              image: {
-                uploadCallback: uploadImageCallBack,
-                previewImage: true,
-                alt: { present: true, mandatory: true },
-              },
-            }}
+            uploadImageCallBack={uploadImageCallBack}
+            html={data.html}
           />
 
           <Form.Item {...tailLayout}>
@@ -369,3 +441,24 @@ export default function AddPost() {
     </DashboardLayout>
   );
 }
+
+EditPost.getInitialProps = async function (context) {
+  const { id } = context.query;
+
+  let result = await dbBlog
+    .where("slug", "==", id)
+    .get()
+    .then((snapshot) => {
+      let arrData = [];
+      snapshot.forEach((doc) => {
+        arrData.push({ id: doc.id, ...doc.data() });
+      });
+      return arrData;
+    })
+
+    .catch(() => {
+      return {};
+    });
+
+  return { data: result[0] };
+};
