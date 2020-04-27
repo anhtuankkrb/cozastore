@@ -3,6 +3,8 @@ import Modal from "./modal";
 import Link from "next/link";
 import { Collapse } from "reactstrap";
 
+import { db } from "../../firebase/fire";
+
 export default function Products({ title, data }) {
   const [cardsDefault, setCardsDefault] = useState(data);
 
@@ -14,7 +16,7 @@ export default function Products({ title, data }) {
     for (let i = 0; i < efs.length; i++) {
       efs[i].style = "transform: scale(1);opacity: 1;transition: 0.5s;";
     }
-  });
+  }, []);
 
   const [modal, setModal] = useState(false);
   const showModal = (e, data) => {
@@ -42,11 +44,35 @@ export default function Products({ title, data }) {
     "Shoe",
     "Bag",
     "Accessories",
-    "Watches"
+    "Watches",
   ];
 
-  const onFilter = label => {
+  const onFilter = (label) => {
     setActive(label);
+    if (label == "All Products") {
+      setCardsDefault(data);
+      let efs = document.getElementsByClassName("ef");
+
+      for (let i = 0; i < efs.length; i++) {
+        efs[i].style = "transform: scale(1);opacity: 1;transition: 0.5s;";
+      }
+      return;
+    }
+    db.where("category", "==", label.toLowerCase())
+      .get()
+
+      .then((snapshot) => {
+        let arrData = [];
+        snapshot.forEach((doc) => {
+          arrData.push({ id: doc.id, ...doc.data() });
+        });
+        setCardsDefault(arrData);
+        let efs = document.getElementsByClassName("ef");
+
+        for (let i = 0; i < efs.length; i++) {
+          efs[i].style = "transform: scale(1);opacity: 1;transition: 0.5s;";
+        }
+      });
   };
   const [active, setActive] = useState("All Products");
   return (
@@ -61,7 +87,7 @@ export default function Products({ title, data }) {
           <div className="flex-w flex-sb-m p-b-52">
             <div className="flex-w flex-l-m filter-tope-group m-tb-10">
               <div>
-                {categories.map(f => (
+                {categories.map((f) => (
                   <button
                     key={f}
                     onClick={() => {
@@ -322,62 +348,62 @@ export default function Products({ title, data }) {
           </div>
           <div className="row isotope-grid">
             {cardsDefault &&
-              cardsDefault.map(card => {
-                if (
-                  active === "All Products" ||
-                  card.category.toLowerCase() === active.toLowerCase()
-                ) {
-                  return (
-                    <div
-                      key={card.id}
-                      className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ef"
-                    >
-                      <div className="block2">
-                        <div className="block2-pic hov-img0">
-                          <img src={card.images.coverImage} alt={card.name} />
+              cardsDefault.map((card) => {
+                // if (
+                //   active === "All Products" ||
+                //   card.category.toLowerCase() === active.toLowerCase()
+                // ) {
+                return (
+                  <div
+                    key={card.id}
+                    className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ef"
+                  >
+                    <div className="block2">
+                      <div className="block2-pic hov-img0">
+                        <img src={card.images.coverImage} alt={card.name} />
+                        <a
+                          href="#"
+                          className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+                          onClick={(e) => showModal(e, card)}
+                        >
+                          Quick View
+                        </a>
+                      </div>
+                      <div className="block2-txt flex-w flex-t p-t-14">
+                        <div className="block2-txt-child1 flex-col-l ">
+                          <Link href="/shop/[id]" as={"/shop/" + card.slug}>
+                            <a
+                              href="product-detail.html"
+                              className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+                            >
+                              {card.name}
+                            </a>
+                          </Link>
+
+                          <span className="stext-105 cl3">{`$ ${card.price.toLocaleString()}`}</span>
+                        </div>
+                        <div className="block2-txt-child2 flex-r p-t-3">
                           <a
                             href="#"
-                            className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                            onClick={e => showModal(e, card)}
+                            className="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
                           >
-                            Quick View
+                            <img
+                              className="icon-heart1 dis-block trans-04"
+                              src="images/icons/icon-heart-01.png"
+                              alt="ICON"
+                            />
+                            <img
+                              className="icon-heart2 dis-block trans-04 ab-t-l"
+                              src="images/icons/icon-heart-02.png"
+                              alt="ICON"
+                            />
                           </a>
-                        </div>
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                          <div className="block2-txt-child1 flex-col-l ">
-                            <Link href="/shop/[id]" as={"/shop/" + card.slug}>
-                              <a
-                                href="product-detail.html"
-                                className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                              >
-                                {card.name}
-                              </a>
-                            </Link>
-
-                            <span className="stext-105 cl3">{`$ ${card.price.toLocaleString()}`}</span>
-                          </div>
-                          <div className="block2-txt-child2 flex-r p-t-3">
-                            <a
-                              href="#"
-                              className="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                            >
-                              <img
-                                className="icon-heart1 dis-block trans-04"
-                                src="images/icons/icon-heart-01.png"
-                                alt="ICON"
-                              />
-                              <img
-                                className="icon-heart2 dis-block trans-04 ab-t-l"
-                                src="images/icons/icon-heart-02.png"
-                                alt="ICON"
-                              />
-                            </a>
-                          </div>
                         </div>
                       </div>
                     </div>
-                  );
-                }
+                  </div>
+                );
+                // }
               })}
           </div>
           {/* Load more */}
