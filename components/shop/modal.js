@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 export default function Modal({ modalStatus, hideModal, data }) {
   const path = useRouter().pathname;
-  const level = path.split("").filter(item => item == "/");
+  const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
@@ -40,6 +40,7 @@ export default function Modal({ modalStatus, hideModal, data }) {
               name={data.name}
               price={data.price}
               describe={data.describe}
+              slug={data.slug}
             />
           </div>
         </div>

@@ -6,13 +6,14 @@ import {
   ButtonBack,
   ButtonNext,
   Image,
-  Dot
+  Dot,
 } from "pure-react-carousel";
 import Select from "react-select";
 
 import Lightbox from "react-image-lightbox";
 
 import { CartContext } from "../layout";
+import { Popover, PopoverBody } from "reactstrap";
 
 export default function Detail(props) {
   const [numProduct, setNumProduct] = useState(1);
@@ -28,7 +29,7 @@ export default function Detail(props) {
   };
 
   const size = props.sizes
-    ? props.sizes.map(size => {
+    ? props.sizes.map((size) => {
         return { value: size, label: `Size ${size}` };
       })
     : [];
@@ -37,7 +38,7 @@ export default function Detail(props) {
     { value: "Red", label: "Red" },
     { value: "Blue", label: "Blue" },
     { value: "White", label: "White" },
-    { value: "Grey", label: "Grey" }
+    { value: "Grey", label: "Grey" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -45,16 +46,23 @@ export default function Detail(props) {
 
   let { setCart } = useContext(CartContext);
 
-  const addToCard = (name, price, amount, image) => {
+  const addToCard = (name, price, amount, image, slug) => {
     let productInfo = {
       price: price,
       amount: amount,
-      image: image
+      image: image,
+      slug: slug,
     };
     localStorage.setItem(name, JSON.stringify(productInfo));
     setCart();
   };
+  //
+  const [popoverOpen, setPopoverOpen] = useState(false);
 
+  const toggle = () => {
+    setPopoverOpen(true);
+    setTimeout(() => setPopoverOpen(false), 2000);
+  };
   return (
     <>
       {isOpen && (
@@ -126,7 +134,7 @@ export default function Detail(props) {
                                 <a
                                   className="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                   href="#"
-                                  onClick={e => {
+                                  onClick={(e) => {
                                     setIsOpen(true);
                                     e.preventDefault();
                                     setPhotoIndex(index);
@@ -206,7 +214,7 @@ export default function Detail(props) {
                       type="number"
                       name="num-product"
                       value={numProduct}
-                      onChange={e => {
+                      onChange={(e) => {
                         setNumProduct(+e.target.value);
                       }}
                     />
@@ -222,13 +230,15 @@ export default function Detail(props) {
                     </div>
                   </div>
                   <button
+                    id="Popover1"
                     className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
                     onClick={() => {
                       addToCard(
                         props.name,
                         props.price,
                         numProduct,
-                        props.images[0]
+                        props.images[0],
+                        props.slug
                       );
                     }}
                   >
@@ -273,6 +283,14 @@ export default function Detail(props) {
           </div>
         </div>
       </div>
+      <Popover
+        placement="top"
+        isOpen={popoverOpen}
+        target="Popover1"
+        toggle={toggle}
+      >
+        <PopoverBody className="PopoverBody">Added to cart</PopoverBody>
+      </Popover>
     </>
   );
 }

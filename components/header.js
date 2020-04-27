@@ -6,9 +6,9 @@ import { Collapse } from "reactstrap";
 const wrapMenuDesktop = React.createRef();
 const containerMenuDesktop = React.createRef();
 const toBar = React.createRef();
-export default function Header({ changeCartStatus }) {
+export default function Header({ changeCartStatus, products }) {
   const path = useRouter().pathname;
-  const level = path.split("").filter(item => item == "/");
+  const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
@@ -20,7 +20,7 @@ export default function Header({ changeCartStatus }) {
 
     ["/blog", "Blog"],
     ["/about", "About"],
-    ["/contact", "Contact"]
+    ["/contact", "Contact"],
   ];
   const [modalSearch, setModalSearch] = useState(false);
   const showSearch = () => setModalSearch(!modalSearch);
@@ -125,7 +125,7 @@ export default function Header({ changeCartStatus }) {
 
               <div
                 className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                data-notify={2}
+                data-notify={products.length}
                 onClick={changeCartStatus}
               >
                 <i className="zmdi zmdi-shopping-cart" />
@@ -237,7 +237,7 @@ export default function Header({ changeCartStatus }) {
       >
         <div
           className="container-search-header"
-          onClick={e => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
         >
           <button
             onClick={hideSearch}

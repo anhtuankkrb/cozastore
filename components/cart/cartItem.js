@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "../layout";
 
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+
 export default function CartItem({ product }) {
   let { setCart } = useContext(CartContext);
   const [numProduct, setNumProduct] = useState(product.amount);
@@ -8,13 +10,13 @@ export default function CartItem({ product }) {
     let productInfo = {
       price: price,
       amount: amount,
-      image: image
+      image: image,
     };
     localStorage.setItem(name, JSON.stringify(productInfo));
     setCart();
   };
 
-  const deleteItem = item => {
+  const deleteItem = (item) => {
     localStorage.removeItem(item);
     setCart();
   };
@@ -30,6 +32,16 @@ export default function CartItem({ product }) {
     changeCard(product.name, product.price, numProduct, product.image);
   }, [numProduct]);
 
+  //modal
+  const [itemDelete, setItemDelete] = useState();
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+  const okDelete = () => {
+    deleteItem(itemDelete);
+    toggle();
+  };
   return (
     <>
       <tr className="table_row">
@@ -53,7 +65,7 @@ export default function CartItem({ product }) {
               type="number"
               name="num-product2"
               value={numProduct}
-              onChange={e => {
+              onChange={(e) => {
                 setNumProduct(+e.target.value);
               }}
             />
@@ -73,7 +85,9 @@ export default function CartItem({ product }) {
             className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
             style={{ color: "#a2a2a2" }}
             onClick={() => {
-              deleteItem(product.name);
+              // deleteItem(product.name);
+              setItemDelete(product.name);
+              toggle();
             }}
           >
             <i
@@ -82,12 +96,24 @@ export default function CartItem({ product }) {
                 fontSize: "20px",
                 padding: "7px",
                 cursor: "pointer",
-                color: ""
+                color: "",
               }}
             />
           </div>
         </td>
       </tr>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Delete product</ModalHeader>
+        <ModalBody>{"Are you sure delete " + itemDelete + "?"}</ModalBody>
+        <ModalFooter>
+          <Button color="danger" onClick={okDelete}>
+            Sure
+          </Button>{" "}
+          <Button color="secondary" onClick={toggle}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 }

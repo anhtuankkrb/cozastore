@@ -49,10 +49,11 @@ export default function Cart({ toggleCart, changeCartStatus }) {
                   <img src={product.image} alt={product.name} />
                 </div>
                 <div className="header-cart-item-txt p-t-8">
-                  <a className="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                    {product.name}
-                  </a>
-
+                  <Link href="/shop/[id]" as={"/shop/" + product.slug}>
+                    <a className="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                      {product.name}
+                    </a>
+                  </Link>
                   <span className="header-cart-item-info">{`${
                     product.amount
                   } x $${product.price.toLocaleString()}`}</span>
@@ -73,12 +74,6 @@ export default function Cart({ toggleCart, changeCartStatus }) {
                   View Cart
                 </a>
               </Link>
-              <a
-                href="shoping-cart.html"
-                className="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"
-              >
-                Check Out
-              </a>
             </div>
           </div>
         </div>

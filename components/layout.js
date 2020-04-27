@@ -35,7 +35,7 @@ export default function Layout({ children, title }) {
         <link rel="icon" type="image/png" href="images/icons/favicon.png" />
       </Head>
 
-      <Header changeCartStatus={changeCartStatus} />
+      <Header changeCartStatus={changeCartStatus} products={products} />
 
       <CartContext.Provider value={{ products: products, setCart: setCart }}>
         <Cart toggleCart={toggleCart} changeCartStatus={changeCartStatus} />
