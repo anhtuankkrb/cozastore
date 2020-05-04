@@ -45,14 +45,10 @@ export default function EditProduct({ dataEdit }) {
     file: "NO FILE",
   });
   const changeCoverImage = (info) => {
-    if (info.file.status === "done") {
-      const reader = new FileReader();
-      reader.addEventListener("load", function () {
-        setCoverImage({ url: this.result, file: info.file.originFileObj });
-      });
-
-      reader.readAsDataURL(info.file.originFileObj);
-    }
+    setCoverImage({
+      url: URL.createObjectURL(info.file.originFileObj),
+      file: info.file.originFileObj,
+    });
   };
   const deleteCoverImage = () => {
     if (coverImage.file == "NO FILE") {
@@ -69,19 +65,12 @@ export default function EditProduct({ dataEdit }) {
       : []
   );
   const changeProductsImage = (info) => {
-    if (info.file.status === "done") {
-      const reader = new FileReader();
-      reader.addEventListener("load", function () {
-        setProductsImage(
-          productsImage.concat({
-            url: this.result,
-            file: info.file.originFileObj,
-          })
-        );
-      });
-
-      reader.readAsDataURL(info.file.originFileObj);
-    }
+    setProductsImage(
+      productsImage.concat({
+        url: URL.createObjectURL(info.file.originFileObj),
+        file: info.file.originFileObj,
+      })
+    );
   };
   const deleteProductsImage = (imageUrl) => {
     setProductsImage(
