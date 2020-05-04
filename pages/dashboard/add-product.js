@@ -17,6 +17,8 @@ import {
   Modal,
 } from "antd";
 
+import ProductForm from "../../components/dashboard/product-form";
+
 const { Option } = Select;
 const { TextArea } = Input;
 const { Content } = Layout;
@@ -36,10 +38,7 @@ export default function AddProduct() {
 
   //xu ly anh
   //cover anh
-  const [coverImage, setCoverImage] = useState({
-    url: false,
-    file: false,
-  });
+  const [coverImage, setCoverImage] = useState();
   const changeCoverImage = (info) => {
     if (info.file.status === "done") {
       setCoverImage({
@@ -49,10 +48,7 @@ export default function AddProduct() {
     }
   };
   const deleteCoverImage = () => {
-    setCoverImage({
-      url: false,
-      file: false,
-    });
+    setCoverImage(undefined);
   };
   //products anh
   const [productsImage, setProductsImage] = useState([]);
@@ -220,6 +216,7 @@ export default function AddProduct() {
           size="large"
           form={form}
         >
+          <ProductForm />
           <Form.Item
             label="Name"
             name="name"
