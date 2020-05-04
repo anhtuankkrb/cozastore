@@ -31,12 +31,13 @@ export default function ProductForm() {
   //cover anh
   const [coverImage, setCoverImage] = useState();
   const changeCoverImage = (info) => {
-    if (info.file.status === "done") {
-      setCoverImage({
-        url: URL.createObjectURL(info.file.originFileObj),
-        file: info.file.originFileObj,
-      });
-    }
+    // if (info.file.status === "done") {
+    //   setCoverImage({
+    //     url: URL.createObjectURL(info.file.originFileObj),
+    //     file: info.file.originFileObj,
+    //   });
+    console.log(URL.createObjectURL(info.file.originFileObj));
+    // }
   };
   const deleteCoverImage = () => {
     setCoverImage(undefined);
