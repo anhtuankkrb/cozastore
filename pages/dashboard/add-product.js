@@ -36,7 +36,10 @@ export default function AddProduct() {
 
   //xu ly anh
   //cover anh
-  const [coverImage, setCoverImage] = useState();
+  const [coverImage, setCoverImage] = useState({
+    url: false,
+    file: false,
+  });
   const changeCoverImage = (info) => {
     if (info.file.status === "done") {
       setCoverImage({
@@ -46,7 +49,10 @@ export default function AddProduct() {
     }
   };
   const deleteCoverImage = () => {
-    setCoverImage(undefined);
+    setCoverImage({
+      url: false,
+      file: false,
+    });
   };
   //products anh
   const [productsImage, setProductsImage] = useState([]);
@@ -408,10 +414,10 @@ export default function AddProduct() {
                 showUploadList={false}
                 onChange={changeCoverImage}
               >
-                {!coverImage && buttonUpload}
+                {!coverImage.url && buttonUpload}
               </Upload>
             </Form.Item>
-            {coverImage && (
+            {coverImage.url && (
               <div style={{ display: "flex", alignItems: "flex-end" }}>
                 <img
                   src={coverImage.url}
