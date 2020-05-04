@@ -16,8 +16,13 @@ import {
   Upload,
   Modal,
 } from "antd";
-
-import ProductForm from "../../components/dashboard/product-form";
+import dynamic from "next/dynamic";
+const ProductForm = dynamic(
+  () => import("../../components/dashboard/product-form"),
+  {
+    ssr: false,
+  }
+);
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -411,10 +416,10 @@ export default function AddProduct() {
                 showUploadList={false}
                 onChange={changeCoverImage}
               >
-                {!coverImage.url && buttonUpload}
+                {!coverImage && buttonUpload}
               </Upload>
             </Form.Item>
-            {coverImage.url && (
+            {coverImage && (
               <div style={{ display: "flex", alignItems: "flex-end" }}>
                 <img
                   src={coverImage.url}

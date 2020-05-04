@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { UploadOutlined } from "@ant-design/icons";
 import {
   Breadcrumb,
   Layout,
@@ -16,6 +18,11 @@ const { TextArea } = Input;
 const { Content } = Layout;
 
 export default function ProductForm() {
+  const buttonUpload = (
+    <Button>
+      <UploadOutlined /> Click to Upload
+    </Button>
+  );
   const [coverImage, setCoverImage] = useState();
   const changeCoverImage = (info) => {
     if (info.file.status === "done") {
@@ -37,10 +44,10 @@ export default function ProductForm() {
         noStyle
       >
         <Upload name="file" showUploadList={false} onChange={changeCoverImage}>
-          {!coverImage.url && buttonUpload}
+          {!coverImage && buttonUpload}
         </Upload>
       </Form.Item>
-      {coverImage.url && (
+      {coverImage && (
         <div style={{ display: "flex", alignItems: "flex-end" }}>
           <img
             src={coverImage.url}
