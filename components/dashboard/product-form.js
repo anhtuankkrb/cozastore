@@ -36,17 +36,11 @@ export default function ProductForm() {
     setCoverImage(undefined);
   };
   return (
-    <Form.Item label="Cover image">
-      <Form.Item
-        name="coverImage"
-        valuePropName="file"
-        rules={[{ required: true, message: "Please input your Cover image!" }]}
-        noStyle
-      >
-        <Upload name="file" showUploadList={false} onChange={changeCoverImage}>
-          {!coverImage && buttonUpload}
-        </Upload>
-      </Form.Item>
+    <div>
+      <Upload name="file" showUploadList={false} onChange={changeCoverImage}>
+        {!coverImage && buttonUpload}
+      </Upload>
+
       {coverImage && (
         <div style={{ display: "flex", alignItems: "flex-end" }}>
           <img
@@ -58,6 +52,6 @@ export default function ProductForm() {
           </Button>
         </div>
       )}
-    </Form.Item>
+    </div>
   );
 }
