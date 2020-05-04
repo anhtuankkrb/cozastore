@@ -6,11 +6,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 export default function CartItem({ product }) {
   let { setCart } = useContext(CartContext);
   const [numProduct, setNumProduct] = useState(product.amount);
-  const changeCard = (name, price, amount, image) => {
+  const changeCard = (name, price, amount, image, slug, color, size) => {
     let productInfo = {
       price: price,
       amount: amount,
       image: image,
+      slug: slug,
+      color: color,
+      size: size,
     };
     localStorage.setItem(name, JSON.stringify(productInfo));
     setCart();
@@ -29,7 +32,15 @@ export default function CartItem({ product }) {
   };
 
   useEffect(() => {
-    changeCard(product.name, product.price, numProduct, product.image);
+    changeCard(
+      product.name,
+      product.price,
+      numProduct,
+      product.image,
+      product.slug,
+      product.color,
+      product.size
+    );
   }, [numProduct]);
 
   //modal
@@ -50,7 +61,15 @@ export default function CartItem({ product }) {
             <img src={product.image} alt={product.name} />
           </div>
         </td>
-        <td className="column-2">{product.name}</td>
+        <td className="column-2">
+          {product.name}{" "}
+          <div
+            style={{ color: "#a2a2a2", fontSize: "12px" }}
+          >{`Size: ${product.size}`}</div>
+          <div
+            style={{ color: "#a2a2a2", fontSize: "12px" }}
+          >{`Color: ${product.color}`}</div>
+        </td>
         <td className="column-3">{`$ ${product.price}`}</td>
         <td className="column-4">
           <div className="wrap-num-product flex-w m-l-auto m-r-0">

@@ -40,11 +40,11 @@ export default function Products({ title, data }) {
 
   const categories = [
     "All Products",
-    "Shirt",
-    "Shoe",
+    "Women",
+    "Men",
     "Bag",
+    "Shoes",
     "Accessories",
-    "Watches",
   ];
 
   const onFilter = (label) => {

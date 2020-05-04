@@ -14,7 +14,7 @@ import {
   Input,
   Upload,
   Button,
-  Modal
+  Modal,
 } from "antd";
 const { TextArea } = Input;
 const { TabPane } = Tabs;
@@ -22,10 +22,10 @@ const { Content } = Layout;
 
 const layout = {
   labelCol: { span: 2 },
-  wrapperCol: { span: 7 }
+  wrapperCol: { span: 7 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 2, span: 7 }
+  wrapperCol: { offset: 2, span: 7 },
 };
 
 function getBase64(img, callback) {
@@ -41,11 +41,11 @@ export default function YourProfile() {
   const [dataUser, setDataUser] = useState();
   useEffect(() => {
     let cleanDB;
-    let clean = auth.onAuthStateChanged(function(user) {
+    let clean = auth.onAuthStateChanged(function (user) {
       if (user) {
         setCurrentUser(user);
         setImageUrl(user.photoURL);
-        cleanDB = dbUsers.doc(user.uid).onSnapshot(snapshot => {
+        cleanDB = dbUsers.doc(user.uid).onSnapshot((snapshot) => {
           setDataUser(snapshot.data());
         });
       } else {
@@ -66,7 +66,7 @@ export default function YourProfile() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   //submit
   const [dataUpdate, setDataUpdate] = useState();
-  const onFinish = values => {
+  const onFinish = (values) => {
     setDataUpdate(values);
     showModal();
   };
@@ -90,12 +90,12 @@ export default function YourProfile() {
             .put(dataUpdate.avatar.file.originFileObj);
           uploadTask.on(
             "state_changed",
-            function(snapshot) {},
-            function(error) {},
-            function() {
+            function (snapshot) {},
+            function (error) {},
+            function () {
               uploadTask.snapshot.ref
                 .getDownloadURL()
-                .then(function(downloadURL) {
+                .then(function (downloadURL) {
                   currentUser
                     .updateProfile({ photoURL: downloadURL })
                     .then(() => {
@@ -106,7 +106,7 @@ export default function YourProfile() {
                           setConfirmLoading(false);
                           handleCancel();
                           form.setFieldsValue({
-                            avatar: undefined
+                            avatar: undefined,
                           });
                         });
                     });
@@ -128,14 +128,14 @@ export default function YourProfile() {
   //avatar
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
-  const handleChange = info => {
+  const handleChange = (info) => {
     if (info.file.status === "uploading") {
       setLoading(true);
       return;
     }
     if (info.file.status === "done") {
       // Get this url from response in real world.
-      getBase64(info.file.originFileObj, imageUrl => {
+      getBase64(info.file.originFileObj, (imageUrl) => {
         setImageUrl(imageUrl);
         setLoading(false);
       });
@@ -149,7 +149,7 @@ export default function YourProfile() {
     </div>
   );
 
-  return (
+  return auth.currentUser ? (
     <DashboardLayout title="Your profile" select="Your profile" open="Users">
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>
@@ -169,7 +169,7 @@ export default function YourProfile() {
         style={{
           padding: 24,
           margin: 0,
-          minHeight: 280
+          minHeight: 280,
         }}
       >
         <Tabs tabPosition="left" type="card">
@@ -188,7 +188,7 @@ export default function YourProfile() {
                 fontSize: "24px",
                 fontWeight: "bold",
                 marginLeft: "8px",
-                marginTop: "24px"
+                marginTop: "24px",
               }}
             >
               {currentUser ? `Email: ${currentUser.email}` : ""}
@@ -198,7 +198,7 @@ export default function YourProfile() {
                 fontSize: "16px",
 
                 marginLeft: "8px",
-                marginTop: "24px"
+                marginTop: "24px",
               }}
             >
               {dataUser ? (dataUser.bio ? `Bio: ${dataUser.bio}` : "") : ""}
@@ -212,7 +212,7 @@ export default function YourProfile() {
               onFinish={onFinish}
               form={form}
               initialValues={{
-                bio: dataUser ? (dataUser.bio ? dataUser.bio : "") : ""
+                bio: dataUser ? (dataUser.bio ? dataUser.bio : "") : "",
               }}
             >
               <Form.Item label="Avatar">
@@ -260,5 +260,5 @@ export default function YourProfile() {
         </Tabs>
       </Content>
     </DashboardLayout>
-  );
+  ) : null;
 }

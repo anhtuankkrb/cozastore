@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   CarouselProvider,
   Slider,
@@ -13,20 +13,16 @@ import Select from "react-select";
 import Lightbox from "react-image-lightbox";
 
 import { CartContext } from "../layout";
-import { Popover, PopoverBody } from "reactstrap";
+import { Popover, PopoverBody, Modal, ModalBody } from "reactstrap";
 
 export default function Detail(props) {
-  const [numProduct, setNumProduct] = useState(1);
-  useEffect(() => {
-    setNumProduct(1);
-  }, [props.name]);
-
   const augmentNumProduct = () => {
-    setNumProduct(numProduct + 1);
+    props.setNumProduct(props.numProduct + 1);
   };
   const reduceNumProduct = () => {
-    numProduct && setNumProduct(numProduct - 1);
+    props.numProduct && props.setNumProduct(props.numProduct - 1);
   };
+  //select
 
   const size = props.sizes
     ? props.sizes.map((size) => {
@@ -34,27 +30,38 @@ export default function Detail(props) {
       })
     : [];
 
-  const color = [
-    { value: "Red", label: "Red" },
-    { value: "Blue", label: "Blue" },
-    { value: "White", label: "White" },
-    { value: "Grey", label: "Grey" },
-  ];
+  const color = props.colors
+    ? props.colors.map((color) => {
+        return { value: color, label: color };
+      })
+    : [];
 
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
   let { setCart } = useContext(CartContext);
 
+  const [pc, setpc] = useState();
+  const [pt, setpt] = useState();
+
   const addToCard = (name, price, amount, image, slug) => {
-    let productInfo = {
-      price: price,
-      amount: amount,
-      image: image,
-      slug: slug,
-    };
-    localStorage.setItem(name, JSON.stringify(productInfo));
-    setCart();
+    if (props.selectSize.value && props.selectColor.value) {
+      let productInfo = {
+        price: price,
+        amount: amount,
+        image: image,
+        slug: slug,
+        color: props.selectColor.value,
+        size: props.selectSize.value,
+      };
+      setpt("Added to cart");
+      setpc("PopoverBody");
+      localStorage.setItem(name, JSON.stringify(productInfo));
+      setCart();
+    } else {
+      setpc("PopoverBodyEror");
+      setpt("Pleases! Choose color and size");
+    }
   };
   //
   const [popoverOpen, setPopoverOpen] = useState(false);
@@ -63,6 +70,13 @@ export default function Detail(props) {
     setPopoverOpen(true);
     setTimeout(() => setPopoverOpen(false), 2000);
   };
+
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(true);
+    setTimeout(() => setModal(false), 2000);
+  };
+
   return (
     <>
       {isOpen && (
@@ -177,7 +191,10 @@ export default function Detail(props) {
                           : "Reac-select-1"
                       }
                       options={size}
-                      placeholder="Choose an option"
+                      value={props.selectSize}
+                      onChange={(s) => {
+                        props.setSelectSize(s);
+                      }}
                     />
                     <div className="dropDownSelect2" />
                   </div>
@@ -194,7 +211,10 @@ export default function Detail(props) {
                           : "Reac-select-2"
                       }
                       options={color}
-                      placeholder="Choose an option"
+                      value={props.selectColor}
+                      onChange={(s) => {
+                        props.setSelectColor(s);
+                      }}
                     />
                     <div className="dropDownSelect2" />
                   </div>
@@ -213,7 +233,7 @@ export default function Detail(props) {
                       className="mtext-104 cl3 txt-center num-product"
                       type="number"
                       name="num-product"
-                      value={numProduct}
+                      value={props.numProduct}
                       onChange={(e) => {
                         setNumProduct(+e.target.value);
                       }}
@@ -230,13 +250,16 @@ export default function Detail(props) {
                     </div>
                   </div>
                   <button
-                    id="Popover1"
+                    id={props.page ? null : "Popover1"}
                     className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
                     onClick={() => {
+                      if (props.page) {
+                        toggleModal();
+                      }
                       addToCard(
                         props.name,
                         props.price,
-                        numProduct,
+                        props.numProduct,
                         props.images[0],
                         props.slug
                       );
@@ -289,8 +312,19 @@ export default function Detail(props) {
         target="Popover1"
         toggle={toggle}
       >
-        <PopoverBody className="PopoverBody">Added to cart</PopoverBody>
+        <PopoverBody className={pc}>{pt}</PopoverBody>
       </Popover>
+      <Modal isOpen={modal} toggle={toggleModal}>
+        <ModalBody
+          style={
+            pt == "Pleases! Choose color and size"
+              ? { textAlign: "center", color: "red" }
+              : { textAlign: "center", color: "green" }
+          }
+        >
+          {pt}
+        </ModalBody>
+      </Modal>
     </>
   );
 }

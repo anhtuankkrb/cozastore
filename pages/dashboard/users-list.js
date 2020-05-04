@@ -10,9 +10,9 @@ export default function Dashboard() {
   // lay du lieu
   const [data, setData] = useState([]);
   useEffect(() => {
-    let clean = dbUsers.onSnapshot(snapshot => {
+    let clean = dbUsers.onSnapshot((snapshot) => {
       let arrData = [];
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         arrData.push({ id: doc.id, ...doc.data() });
       });
       setData(arrData);
@@ -32,16 +32,16 @@ export default function Dashboard() {
           <Avatar src={record.avatar} size={64} />
         ) : (
           <Avatar icon={<UserOutlined />} size={64} />
-        )
+        ),
     },
     {
       title: "Email",
-      dataIndex: "email"
+      dataIndex: "email",
     },
     {
       title: "Bio",
-      render: (text, record) => (record.bio ? record.bio : "")
-    }
+      render: (text, record) => (record.bio ? record.bio : ""),
+    },
   ];
   return (
     <DashboardLayout title="Users list" select="Users List" open="Users">
@@ -63,7 +63,7 @@ export default function Dashboard() {
         style={{
           padding: 24,
           margin: 0,
-          minHeight: 280
+          minHeight: 280,
         }}
       >
         <Table columns={columns} dataSource={data} rowKey="id" />

@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import Detail from "./detail";
 import { useRouter } from "next/router";
 
@@ -8,6 +10,20 @@ export default function Modal({ modalStatus, hideModal, data }) {
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
   }
+  useEffect(() => {
+    setNumProduct(1);
+    setSelectSize({ value: null, label: "Choose an option" });
+    setSelectColor({ value: null, label: "Choose an option" });
+  }, [data]);
+  const [numProduct, setNumProduct] = useState(1);
+  const [selectSize, setSelectSize] = useState({
+    value: null,
+    label: "Choose an option",
+  });
+  const [selectColor, setSelectColor] = useState({
+    value: null,
+    label: "Choose an option",
+  });
   return (
     <>
       <div
@@ -41,6 +57,13 @@ export default function Modal({ modalStatus, hideModal, data }) {
               price={data.price}
               describe={data.describe}
               slug={data.slug}
+              colors={data.color}
+              numProduct={numProduct}
+              setNumProduct={setNumProduct}
+              selectSize={selectSize}
+              setSelectSize={setSelectSize}
+              selectColor={selectColor}
+              setSelectColor={setSelectColor}
             />
           </div>
         </div>

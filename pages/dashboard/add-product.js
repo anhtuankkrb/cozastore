@@ -14,7 +14,7 @@ import {
   Select,
   InputNumber,
   Upload,
-  Modal
+  Modal,
 } from "antd";
 
 const { Option } = Select;
@@ -23,10 +23,10 @@ const { Content } = Layout;
 
 const layout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8 }
+  wrapperCol: { span: 8 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 4, span: 16 }
+  wrapperCol: { offset: 4, span: 16 },
 };
 
 export default function AddProduct() {
@@ -37,10 +37,10 @@ export default function AddProduct() {
   //xu ly anh
   //cover anh
   const [coverImage, setCoverImage] = useState();
-  const changeCoverImage = info => {
+  const changeCoverImage = (info) => {
     if (info.file.status === "done") {
       const reader = new FileReader();
-      reader.addEventListener("load", function() {
+      reader.addEventListener("load", function () {
         setCoverImage({ url: this.result, file: info.file.originFileObj });
       });
 
@@ -52,7 +52,7 @@ export default function AddProduct() {
   };
   //products anh
   const [productsImage, setProductsImage] = useState([]);
-  const changeProductsImage = info => {
+  const changeProductsImage = (info) => {
     if (info.file.status === "done") {
       // setProductsImage(
       //   productsImage.concat({
@@ -61,11 +61,11 @@ export default function AddProduct() {
       //   })
       // );
       const reader = new FileReader();
-      reader.addEventListener("load", function() {
+      reader.addEventListener("load", function () {
         setProductsImage(
           productsImage.concat({
             url: this.result,
-            file: info.file.originFileObj
+            file: info.file.originFileObj,
           })
         );
       });
@@ -73,8 +73,8 @@ export default function AddProduct() {
       reader.readAsDataURL(info.file.originFileObj);
     }
   };
-  const deleteProductsImage = imageUrl => {
-    setProductsImage(productsImage.filter(image => image.url != imageUrl));
+  const deleteProductsImage = (imageUrl) => {
+    setProductsImage(productsImage.filter((image) => image.url != imageUrl));
   };
 
   //submit
@@ -83,22 +83,23 @@ export default function AddProduct() {
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const [dataUpload, setDataUpload] = useState({});
-  const onFinish = values => {
+  const onFinish = (values) => {
     let data = {
       name: values.name,
       slug: values.slug,
       category: values.category,
       size: values.size,
+      color: values.color,
       quantity: values.quantity,
       price: values.price,
       weight: values.weight,
       dimensions: {
         height: values.height,
         length: values.length,
-        width: values.width
+        width: values.width,
       },
       meterial: [values.meterial],
-      describe: values.describe
+      describe: values.describe,
     };
     setDataUpload(data);
     showModal();
@@ -113,22 +114,22 @@ export default function AddProduct() {
   };
   const handleOk = () => {
     setConfirmLoading(true);
-    db.add(dataUpload).then(ref => {
+    db.add(dataUpload).then((ref) => {
       upCoverImage(ref.id);
     });
   };
 
   //up anh
-  const upCoverImage = id => {
+  const upCoverImage = (id) => {
     let uploadTask = storage
       .ref("products image/" + coverImage.file.name)
       .put(coverImage.file);
     uploadTask.on(
       "state_changed",
-      function(snapshot) {},
-      function(error) {},
-      function() {
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+      function (snapshot) {},
+      function (error) {},
+      function () {
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
           db.doc(id)
             .update({ images: { coverImage: downloadURL } })
             .then(() => {
@@ -153,16 +154,19 @@ export default function AddProduct() {
         .put(productsImage[i].file);
       uploadProductsImage.on(
         "state_changed",
-        function(snapshot) {},
-        function(error) {},
-        function() {
+        function (snapshot) {},
+        function (error) {},
+        function () {
           uploadProductsImage.snapshot.ref
             .getDownloadURL()
-            .then(function(downloadURL) {
+            .then(function (downloadURL) {
               arrImage.push(downloadURL);
               db.doc(id)
                 .update({
-                  images: { coverImage: coverImageurl, productsImage: arrImage }
+                  images: {
+                    coverImage: coverImageurl,
+                    productsImage: arrImage,
+                  },
                 })
                 .then(() => {
                   if (i == productsImage.length - 1) {
@@ -212,7 +216,7 @@ export default function AddProduct() {
         style={{
           padding: 24,
           margin: 0,
-          minHeight: 280
+          minHeight: 280,
         }}
       >
         <Form
@@ -243,11 +247,11 @@ export default function AddProduct() {
             rules={[{ required: true, message: "Please select Category!" }]}
           >
             <Select placeholder="Please select Cacategory">
-              <Option value="shirt">Shirt</Option>
-              <Option value="shoe">Shoe</Option>
+              <Option value="women">Women</Option>
+              <Option value="men">Men</Option>
               <Option value="bag">Bag</Option>
+              <Option value="shoes">Shoes</Option>
               <Option value="accessories">Accessories</Option>
-              <Option value="watches">Watches</Option>
             </Select>
           </Form.Item>
 
@@ -276,6 +280,57 @@ export default function AddProduct() {
           </Form.Item>
 
           <Form.Item
+            name="color"
+            label="Color"
+            rules={[{ required: true, message: "Please select color!" }]}
+          >
+            <Checkbox.Group>
+              <Checkbox
+                value="Black"
+                style={{ lineHeight: "32px", color: "black" }}
+              >
+                Black
+              </Checkbox>
+
+              <Checkbox
+                value="Blue"
+                style={{ lineHeight: "32px", color: "blue" }}
+              >
+                Blue
+              </Checkbox>
+
+              <Checkbox
+                value="Gray"
+                style={{ lineHeight: "32px", color: "gray" }}
+              >
+                Gray
+              </Checkbox>
+
+              <Checkbox
+                value="Green"
+                style={{ lineHeight: "32px", color: "green" }}
+              >
+                Green
+              </Checkbox>
+              <Checkbox
+                value="Red"
+                style={{ lineHeight: "32px", color: "red" }}
+              >
+                Red
+              </Checkbox>
+              <Checkbox
+                value="Brown"
+                style={{ lineHeight: "32px", color: "brown" }}
+              >
+                Brown
+              </Checkbox>
+              <Checkbox value="White" style={{ lineHeight: "32px" }}>
+                White
+              </Checkbox>
+            </Checkbox.Group>
+          </Form.Item>
+
+          <Form.Item
             label="Quantity"
             name="quantity"
             rules={[{ required: true, message: "Please input your quantity!" }]}
@@ -289,10 +344,10 @@ export default function AddProduct() {
           >
             <InputNumber
               defaultValue={1000}
-              formatter={value =>
+              formatter={(value) =>
                 `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
               }
-              parser={value => value.replace(/\$\s?|(,*)/g, "")}
+              parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             />
           </Form.Item>
 
@@ -357,7 +412,7 @@ export default function AddProduct() {
               name="coverImage"
               valuePropName="file"
               rules={[
-                { required: true, message: "Please input your Cover image!" }
+                { required: true, message: "Please input your Cover image!" },
               ]}
               noStyle
             >
@@ -390,7 +445,7 @@ export default function AddProduct() {
                     style={{
                       display: "flex",
                       alignItems: "flex-end",
-                      marginBottom: "24px"
+                      marginBottom: "24px",
                     }}
                     key={index}
                   >

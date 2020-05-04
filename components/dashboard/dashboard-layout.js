@@ -73,7 +73,7 @@ export default function DashboardLayout({ children, title, select, open }) {
     </Menu>
   );
 
-  return (
+  return auth.currentUser ? (
     <Layout style={{ minHeight: "100vh" }}>
       <Header className="header" style={{ padding: "0 30px" }}>
         <Link href="/">
@@ -222,5 +222,5 @@ export default function DashboardLayout({ children, title, select, open }) {
         <Layout style={{ padding: "0 24px 24px" }}>{children}</Layout>
       </Layout>
     </Layout>
-  );
+  ) : null;
 }

@@ -36,9 +36,16 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
+.popover {
+  z-index: 9999 !important;
+}
 .PopoverBody {
   font-size: 16px;
   color: #005fc6;
+}
+.PopoverBodyEror {
+  font-size: 16px;
+  color: red;
 }
 .active-category {
   color: #717fe0 !important;

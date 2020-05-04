@@ -130,6 +130,11 @@ export default function AddPost() {
         .doc(id)
         .update({ html: html, contentImages: contentImages })
         .then(() => {
+          form.resetFields();
+          setEditorState(EditorState.createEmpty());
+          setImages([]);
+          setCoverImage(undefined);
+          setTags([]);
           setConfirmLoading(false);
           handleCancel();
         });
@@ -153,6 +158,11 @@ export default function AddPost() {
                     .doc(id)
                     .update({ html: html, contentImages: contentImages })
                     .then(() => {
+                      form.resetFields();
+                      setEditorState(EditorState.createEmpty());
+                      setImages([]);
+                      setCoverImage(undefined);
+                      setTags([]);
                       setConfirmLoading(false);
                       handleCancel();
                     });

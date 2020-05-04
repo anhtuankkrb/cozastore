@@ -1,12 +1,12 @@
 import { CartContext } from "../layout";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import CartItem from "./cartItem";
 export default function CartTable({ setCartTotals }) {
   let { products } = useContext(CartContext);
 
   const total = () => {
     let result = 0;
-    products.forEach(product => {
+    products.forEach((product) => {
       result += product.amount * product.price;
     });
     return result;

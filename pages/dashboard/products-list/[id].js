@@ -15,7 +15,7 @@ import {
   Select,
   InputNumber,
   Upload,
-  Modal
+  Modal,
 } from "antd";
 
 const { Option } = Select;
@@ -24,10 +24,10 @@ const { Content } = Layout;
 
 const layout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8 }
+  wrapperCol: { span: 8 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 4, span: 16 }
+  wrapperCol: { offset: 4, span: 16 },
 };
 
 export default function EditProduct({ dataEdit }) {
@@ -42,12 +42,12 @@ export default function EditProduct({ dataEdit }) {
   //cover anh
   const [coverImage, setCoverImage] = useState({
     url: dataEdit.images.coverImage,
-    file: "NO FILE"
+    file: "NO FILE",
   });
-  const changeCoverImage = info => {
+  const changeCoverImage = (info) => {
     if (info.file.status === "done") {
       const reader = new FileReader();
-      reader.addEventListener("load", function() {
+      reader.addEventListener("load", function () {
         setCoverImage({ url: this.result, file: info.file.originFileObj });
       });
 
@@ -63,19 +63,19 @@ export default function EditProduct({ dataEdit }) {
   //products anh
   const [productsImage, setProductsImage] = useState(
     dataEdit.images.productsImage
-      ? dataEdit.images.productsImage.map(image => {
+      ? dataEdit.images.productsImage.map((image) => {
           return { url: image, file: "NO FILE" };
         })
       : []
   );
-  const changeProductsImage = info => {
+  const changeProductsImage = (info) => {
     if (info.file.status === "done") {
       const reader = new FileReader();
-      reader.addEventListener("load", function() {
+      reader.addEventListener("load", function () {
         setProductsImage(
           productsImage.concat({
             url: this.result,
-            file: info.file.originFileObj
+            file: info.file.originFileObj,
           })
         );
       });
@@ -83,9 +83,9 @@ export default function EditProduct({ dataEdit }) {
       reader.readAsDataURL(info.file.originFileObj);
     }
   };
-  const deleteProductsImage = imageUrl => {
+  const deleteProductsImage = (imageUrl) => {
     setProductsImage(
-      productsImage.filter(image => {
+      productsImage.filter((image) => {
         if (image.url == imageUrl && image.file == "NO FILE") {
           setImagesNeedDelete(imagesNeedDelete.concat(imageUrl));
         }
@@ -100,22 +100,23 @@ export default function EditProduct({ dataEdit }) {
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const [dataUpload, setDataUpload] = useState({});
-  const onFinish = values => {
+  const onFinish = (values) => {
     let data = {
       name: values.name,
       slug: values.slug,
       category: values.category,
       size: values.size,
+      color: values.color,
       quantity: values.quantity,
       price: values.price,
       weight: values.weight,
       dimensions: {
         height: values.height,
         length: values.length,
-        width: values.width
+        width: values.width,
       },
       meterial: [values.meterial],
-      describe: values.describe
+      describe: values.describe,
     };
     setDataUpload(data);
     showModal();
@@ -174,10 +175,10 @@ export default function EditProduct({ dataEdit }) {
         .put(coverImage.file);
       uploadTask.on(
         "state_changed",
-        function(snapshot) {},
-        function(error) {},
-        function() {
-          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        function (snapshot) {},
+        function (error) {},
+        function () {
+          uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
             db.doc(dataEdit.id)
               .update({ images: { coverImage: downloadURL } })
               .then(() => {
@@ -194,14 +195,14 @@ export default function EditProduct({ dataEdit }) {
       );
     }
   };
-  const upProductsImage = coverImageurl => {
+  const upProductsImage = (coverImageurl) => {
     let arrImage = [];
     for (let i = 0; i < productsImage.length; i++) {
       if (productsImage[i].file == "NO FILE") {
         arrImage.push(productsImage[i].url);
         db.doc(dataEdit.id)
           .update({
-            images: { coverImage: coverImageurl, productsImage: arrImage }
+            images: { coverImage: coverImageurl, productsImage: arrImage },
           })
           .then(() => {
             if (i == productsImage.length - 1) {
@@ -217,19 +218,19 @@ export default function EditProduct({ dataEdit }) {
           .put(productsImage[i].file);
         uploadProductsImage.on(
           "state_changed",
-          function(snapshot) {},
-          function(error) {},
-          function() {
+          function (snapshot) {},
+          function (error) {},
+          function () {
             uploadProductsImage.snapshot.ref
               .getDownloadURL()
-              .then(function(downloadURL) {
+              .then(function (downloadURL) {
                 arrImage.push(downloadURL);
                 db.doc(dataEdit.id)
                   .update({
                     images: {
                       coverImage: coverImageurl,
-                      productsImage: arrImage
-                    }
+                      productsImage: arrImage,
+                    },
                   })
                   .then(() => {
                     if (i == productsImage.length - 1) {
@@ -250,14 +251,14 @@ export default function EditProduct({ dataEdit }) {
     form.resetFields();
     setProductsImage(
       dataEdit.images.productsImage
-        ? dataEdit.images.productsImage.map(image => {
+        ? dataEdit.images.productsImage.map((image) => {
             return { url: image, file: "NO FILE" };
           })
         : []
     );
     setCoverImage({
       url: dataEdit.images.coverImage,
-      file: "NO FILE"
+      file: "NO FILE",
     });
     setImagesNeedDelete([]);
   };
@@ -294,7 +295,7 @@ export default function EditProduct({ dataEdit }) {
         style={{
           padding: 24,
           margin: 0,
-          minHeight: 280
+          minHeight: 280,
         }}
       >
         <Form
@@ -309,6 +310,7 @@ export default function EditProduct({ dataEdit }) {
             slug: dataEdit.slug,
             category: dataEdit.category,
             size: dataEdit.size,
+            color: dataEdit.color,
             quantity: dataEdit.quantity,
             price: dataEdit.price,
             weight: dataEdit.weight,
@@ -317,7 +319,7 @@ export default function EditProduct({ dataEdit }) {
             width: dataEdit.dimensions.width,
             meterial: dataEdit.meterial[0],
             describe: dataEdit.describe,
-            coverImage: "NO FILE"
+            coverImage: "NO FILE",
           }}
         >
           <Form.Item
@@ -340,11 +342,11 @@ export default function EditProduct({ dataEdit }) {
             rules={[{ required: true, message: "Please select Category!" }]}
           >
             <Select placeholder="Please select Cacategory">
-              <Option value="shirt">Shirt</Option>
-              <Option value="shoe">Shoe</Option>
+              <Option value="women">Women</Option>
+              <Option value="men">Men</Option>
               <Option value="bag">Bag</Option>
+              <Option value="shoes">Shoes</Option>
               <Option value="accessories">Accessories</Option>
-              <Option value="watches">Watches</Option>
             </Select>
           </Form.Item>
 
@@ -373,6 +375,57 @@ export default function EditProduct({ dataEdit }) {
           </Form.Item>
 
           <Form.Item
+            name="color"
+            label="Color"
+            rules={[{ required: true, message: "Please select color!" }]}
+          >
+            <Checkbox.Group>
+              <Checkbox
+                value="Black"
+                style={{ lineHeight: "32px", color: "black" }}
+              >
+                Black
+              </Checkbox>
+
+              <Checkbox
+                value="Blue"
+                style={{ lineHeight: "32px", color: "blue" }}
+              >
+                Blue
+              </Checkbox>
+
+              <Checkbox
+                value="Gray"
+                style={{ lineHeight: "32px", color: "gray" }}
+              >
+                Gray
+              </Checkbox>
+
+              <Checkbox
+                value="Green"
+                style={{ lineHeight: "32px", color: "green" }}
+              >
+                Green
+              </Checkbox>
+              <Checkbox
+                value="Red"
+                style={{ lineHeight: "32px", color: "red" }}
+              >
+                Red
+              </Checkbox>
+              <Checkbox
+                value="Brown"
+                style={{ lineHeight: "32px", color: "brown" }}
+              >
+                Brown
+              </Checkbox>
+              <Checkbox value="White" style={{ lineHeight: "32px" }}>
+                White
+              </Checkbox>
+            </Checkbox.Group>
+          </Form.Item>
+
+          <Form.Item
             label="Quantity"
             name="quantity"
             rules={[{ required: true, message: "Please input your quantity!" }]}
@@ -386,10 +439,10 @@ export default function EditProduct({ dataEdit }) {
           >
             <InputNumber
               defaultValue={1000}
-              formatter={value =>
+              formatter={(value) =>
                 `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
               }
-              parser={value => value.replace(/\$\s?|(,*)/g, "")}
+              parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             />
           </Form.Item>
 
@@ -454,7 +507,7 @@ export default function EditProduct({ dataEdit }) {
               name="coverImage"
               valuePropName="file"
               rules={[
-                { required: true, message: "Please input your Cover image!" }
+                { required: true, message: "Please input your Cover image!" },
               ]}
               noStyle
             >
@@ -487,7 +540,7 @@ export default function EditProduct({ dataEdit }) {
                     style={{
                       display: "flex",
                       alignItems: "flex-end",
-                      marginBottom: "24px"
+                      marginBottom: "24px",
                     }}
                     key={index}
                   >
@@ -545,15 +598,15 @@ export default function EditProduct({ dataEdit }) {
   );
 }
 
-EditProduct.getInitialProps = async function(context) {
+EditProduct.getInitialProps = async function (context) {
   const { id } = context.query;
 
   let result = await db
     .where("slug", "==", id)
     .get()
-    .then(snapshot => {
+    .then((snapshot) => {
       let arrData = [];
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         arrData.push({ id: doc.id, ...doc.data() });
       });
       return arrData;

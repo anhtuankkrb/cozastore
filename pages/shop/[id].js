@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -43,13 +43,13 @@ export default function Product({ data, relatedProducts }) {
   const [activeTab, setActiveTab] = useState("1");
 
   const path = useRouter().pathname;
-  const level = path.split("").filter(item => item == "/");
+  const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
   }
 
-  const toggle = tab => {
+  const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
@@ -65,24 +65,24 @@ export default function Product({ data, relatedProducts }) {
         breakpoint: 990,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3
-        }
+          slidesToScroll: 3,
+        },
       },
       {
         breakpoint: 770,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
-        }
+          slidesToScroll: 2,
+        },
       },
       {
         breakpoint: 570,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const [dataForModal, setDataForModal] = useState({});
@@ -93,6 +93,16 @@ export default function Product({ data, relatedProducts }) {
     e.preventDefault();
   };
   const hideModal = () => setModal(false);
+
+  const [numProduct, setNumProduct] = useState(1);
+  const [selectSize, setSelectSize] = useState({
+    value: null,
+    label: "Choose an option",
+  });
+  const [selectColor, setSelectColor] = useState({
+    value: null,
+    label: "Choose an option",
+  });
 
   return (
     <Layout title={data.name}>
@@ -135,6 +145,15 @@ export default function Product({ data, relatedProducts }) {
             name={data.name}
             price={data.price}
             describe={data.describe}
+            slug={data.slug}
+            colors={data.color}
+            numProduct={numProduct}
+            setNumProduct={setNumProduct}
+            selectSize={selectSize}
+            setSelectSize={setSelectSize}
+            selectColor={selectColor}
+            setSelectColor={setSelectColor}
+            page={true}
           />
           <div className="bor10 m-t-50 p-t-43 p-b-40">
             {/* Tab01 */}
@@ -357,8 +376,9 @@ export default function Product({ data, relatedProducts }) {
           </div>
         </div>
         <div className="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-          <span className="stext-107 cl6 p-lr-25">{`Categories: ${data.category[0].toUpperCase() +
-            data.category.slice(1)}`}</span>
+          <span className="stext-107 cl6 p-lr-25">{`Categories: ${
+            data.category[0].toUpperCase() + data.category.slice(1)
+          }`}</span>
         </div>
       </section>
       {/* Related Products */}
@@ -386,7 +406,7 @@ export default function Product({ data, relatedProducts }) {
                           <a
                             href="#"
                             className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                            onClick={e => showModal(e, product)}
+                            onClick={(e) => showModal(e, product)}
                           >
                             Quick View
                           </a>
@@ -438,15 +458,15 @@ export default function Product({ data, relatedProducts }) {
   );
 }
 
-Product.getInitialProps = async function(context) {
+Product.getInitialProps = async function (context) {
   const { id } = context.query;
 
   let result = await db
     .where("slug", "==", id)
     .get()
-    .then(snapshot => {
+    .then((snapshot) => {
       let arrData = [];
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         arrData.push({ id: doc.id, ...doc.data() });
       });
       return arrData;
@@ -460,9 +480,9 @@ Product.getInitialProps = async function(context) {
     .limit(8)
 
     .get()
-    .then(snapshot => {
+    .then((snapshot) => {
       let arrData = [];
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         arrData.push({ id: doc.id, ...doc.data() });
       });
       return arrData;
