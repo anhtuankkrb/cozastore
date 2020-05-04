@@ -45,10 +45,12 @@ export default function EditProduct({ dataEdit }) {
     file: "NO FILE",
   });
   const changeCoverImage = (info) => {
-    setCoverImage({
-      url: URL.createObjectURL(info.file.originFileObj),
-      file: info.file.originFileObj,
-    });
+    if (info.file.status === "done") {
+      setCoverImage({
+        url: URL.createObjectURL(info.file.originFileObj),
+        file: info.file.originFileObj,
+      });
+    }
   };
   const deleteCoverImage = () => {
     if (coverImage.file == "NO FILE") {
@@ -65,12 +67,14 @@ export default function EditProduct({ dataEdit }) {
       : []
   );
   const changeProductsImage = (info) => {
-    setProductsImage(
-      productsImage.concat({
-        url: URL.createObjectURL(info.file.originFileObj),
-        file: info.file.originFileObj,
-      })
-    );
+    if (info.file.status === "done") {
+      setProductsImage(
+        productsImage.concat({
+          url: URL.createObjectURL(info.file.originFileObj),
+          file: info.file.originFileObj,
+        })
+      );
+    }
   };
   const deleteProductsImage = (imageUrl) => {
     setProductsImage(

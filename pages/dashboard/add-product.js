@@ -38,10 +38,12 @@ export default function AddProduct() {
   //cover anh
   const [coverImage, setCoverImage] = useState();
   const changeCoverImage = (info) => {
-    setCoverImage({
-      url: URL.createObjectURL(info.file.originFileObj),
-      file: info.file.originFileObj,
-    });
+    if (info.file.status === "done") {
+      setCoverImage({
+        url: URL.createObjectURL(info.file.originFileObj),
+        file: info.file.originFileObj,
+      });
+    }
   };
   const deleteCoverImage = () => {
     setCoverImage(undefined);
