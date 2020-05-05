@@ -30,29 +30,24 @@ export default function ProductForm() {
   //xu ly anh
   //cover anh
   const [coverImage, setCoverImage] = useState();
-  const changeCoverImage = (info) => {
-    // if (info.file.status === "done") {
-    //   setCoverImage({
-    //     url: URL.createObjectURL(info.file.originFileObj),
-    //     file: info.file.originFileObj,
-    //   });
-    console.log(URL.createObjectURL(info.file.originFileObj));
-    // }
+  const changeCoverImage = (e) => {
+    setCoverImage({
+      url: URL.createObjectURL(e.target.files[0]),
+      file: e.target.files[0],
+    });
   };
   const deleteCoverImage = () => {
     setCoverImage(undefined);
   };
   //products anh
   const [productsImage, setProductsImage] = useState([]);
-  const changeProductsImage = (info) => {
-    if (info.file.status === "done") {
-      setProductsImage(
-        productsImage.concat({
-          url: URL.createObjectURL(info.file.originFileObj),
-          file: info.file.originFileObj,
-        })
-      );
-    }
+  const changeProductsImage = (e) => {
+    setProductsImage(
+      productsImage.concat({
+        url: URL.createObjectURL(e.target.files[0]),
+        file: e.target.files[0],
+      })
+    );
   };
   const deleteProductsImage = (imageUrl) => {
     setProductsImage(productsImage.filter((image) => image.url != imageUrl));
@@ -372,13 +367,14 @@ export default function ProductForm() {
             ]}
             noStyle
           >
-            <Upload
+            {/* <Upload
               name="file"
               showUploadList={false}
               onChange={changeCoverImage}
             >
               {!coverImage && buttonUpload}
-            </Upload>
+            </Upload> */}
+            {!coverImage && <input type="file" onChange={changeCoverImage} />}
           </Form.Item>
           {coverImage && (
             <div style={{ display: "flex", alignItems: "flex-end" }}>
@@ -421,13 +417,14 @@ export default function ProductForm() {
             })}
 
           <Form.Item name="productsImage" valuePropName="files" noStyle>
-            <Upload
+            {/* <Upload
               name="files"
               showUploadList={false}
               onChange={changeProductsImage}
             >
               {buttonUpload}
-            </Upload>
+            </Upload> */}
+            <input type="file" onChange={changeProductsImage} />
           </Form.Item>
         </Form.Item>
 
