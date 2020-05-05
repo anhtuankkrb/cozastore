@@ -15,7 +15,6 @@ import draftToHtml from "draftjs-to-html";
 
 import DashboardLayout from "../../components/dashboard/dashboard-layout";
 
-import { UploadOutlined } from "@ant-design/icons";
 import {
   Breadcrumb,
   Layout,
@@ -24,7 +23,6 @@ import {
   Button,
   Checkbox,
   Tag,
-  Upload,
   Modal,
 } from "antd";
 const { Search } = Input;
@@ -32,13 +30,6 @@ const { Content } = Layout;
 const { TextArea } = Input;
 
 export default function AddPost() {
-  //nut upload
-  const buttonUpload = (
-    <Button>
-      <UploadOutlined /> Click to Upload
-    </Button>
-  );
-
   //edit
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const onEditorStateChange = (editorContent) => {
@@ -191,13 +182,11 @@ export default function AddPost() {
 
   //cover image
   const [coverImage, setCoverImage] = useState();
-  const changeCoverImage = (info) => {
-    if (info.file.status === "done") {
-      setCoverImage({
-        url: URL.createObjectURL(info.file.originFileObj),
-        file: info.file.originFileObj,
-      });
-    }
+  const changeCoverImage = (e) => {
+    setCoverImage({
+      url: URL.createObjectURL(e.target.files[0]),
+      file: e.target.files[0],
+    });
   };
   const deleteCoverImage = () => {
     setCoverImage(undefined);
@@ -308,13 +297,7 @@ export default function AddPost() {
               ]}
               noStyle
             >
-              <Upload
-                name="file"
-                showUploadList={false}
-                onChange={changeCoverImage}
-              >
-                {!coverImage && buttonUpload}
-              </Upload>
+              {!coverImage && <input type="file" onChange={changeCoverImage} />}
             </Form.Item>
             {coverImage && (
               <div>

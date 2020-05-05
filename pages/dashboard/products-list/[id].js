@@ -4,7 +4,7 @@ import Router from "next/router";
 import { db, storage } from "../../../firebase/fire";
 
 import DashboardLayout from "../../../components/dashboard/dashboard-layout";
-import { UploadOutlined } from "@ant-design/icons";
+
 import {
   Breadcrumb,
   Layout,
@@ -14,7 +14,6 @@ import {
   Checkbox,
   Select,
   InputNumber,
-  Upload,
   Modal,
 } from "antd";
 
@@ -44,13 +43,11 @@ export default function EditProduct({ dataEdit }) {
     url: dataEdit.images.coverImage,
     file: "NO FILE",
   });
-  const changeCoverImage = (info) => {
-    if (info.file.status === "done") {
-      setCoverImage({
-        url: URL.createObjectURL(info.file.originFileObj),
-        file: info.file.originFileObj,
-      });
-    }
+  const changeCoverImage = (e) => {
+    setCoverImage({
+      url: URL.createObjectURL(e.target.files[0]),
+      file: e.target.files[0],
+    });
   };
   const deleteCoverImage = () => {
     if (coverImage.file == "NO FILE") {
@@ -66,15 +63,13 @@ export default function EditProduct({ dataEdit }) {
         })
       : []
   );
-  const changeProductsImage = (info) => {
-    if (info.file.status === "done") {
-      setProductsImage(
-        productsImage.concat({
-          url: URL.createObjectURL(info.file.originFileObj),
-          file: info.file.originFileObj,
-        })
-      );
-    }
+  const changeProductsImage = (e) => {
+    setProductsImage(
+      productsImage.concat({
+        url: URL.createObjectURL(e.target.files[0]),
+        file: e.target.files[0],
+      })
+    );
   };
   const deleteProductsImage = (imageUrl) => {
     setProductsImage(
@@ -255,13 +250,6 @@ export default function EditProduct({ dataEdit }) {
     });
     setImagesNeedDelete([]);
   };
-
-  //nut upload
-  const buttonUpload = (
-    <Button>
-      <UploadOutlined /> Click to Upload
-    </Button>
-  );
 
   return (
     <DashboardLayout title={dataEdit.name}>
@@ -504,13 +492,7 @@ export default function EditProduct({ dataEdit }) {
               ]}
               noStyle
             >
-              <Upload
-                name="file"
-                showUploadList={false}
-                onChange={changeCoverImage}
-              >
-                {!coverImage && buttonUpload}
-              </Upload>
+              {!coverImage && <input type="file" onChange={changeCoverImage} />}
             </Form.Item>
             {coverImage && (
               <div style={{ display: "flex", alignItems: "flex-end" }}>
@@ -553,13 +535,7 @@ export default function EditProduct({ dataEdit }) {
               })}
 
             <Form.Item name="productsImage" valuePropName="files" noStyle>
-              <Upload
-                name="files"
-                showUploadList={false}
-                onChange={changeProductsImage}
-              >
-                {buttonUpload}
-              </Upload>
+              <input type="file" onChange={changeProductsImage} />
             </Form.Item>
           </Form.Item>
 
