@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 export default function Footer() {
   const path = useRouter().pathname;
-  const level = path.split("").filter(item => item == "/");
+  const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
   for (let i = 0; i < level.length - 1; i++) {
     fixPathImg += "../";
@@ -15,24 +15,32 @@ export default function Footer() {
             <h4 className="stext-301 cl0 p-b-30">Categories</h4>
             <ul>
               <li className="p-b-10">
-                <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                  Women
-                </a>
+                <Link href="/shop?category=Women">
+                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
+                    Women
+                  </a>
+                </Link>
               </li>
               <li className="p-b-10">
-                <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                  Men
-                </a>
+                <Link href="/shop?category=Men">
+                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
+                    Men
+                  </a>
+                </Link>
               </li>
               <li className="p-b-10">
-                <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                  Shoes
-                </a>
+                <Link href="/shop?category=Shoes">
+                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
+                    Shoes
+                  </a>
+                </Link>
               </li>
               <li className="p-b-10">
-                <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                  Watches
-                </a>
+                <Link href="/shop?category=Accessories">
+                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
+                    Accessories
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -133,13 +141,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="stext-107 cl6 txt-center">
-            {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-            Copyright © All rights reserved | This template is made with{" "}
-            <i className="fa fa-heart-o" aria-hidden="true" /> by{" "}
-            <a href="https://colorlib.com" target="_blank">
-              Colorlib
-            </a>
-            {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
+            Copyright © All rights reserved
           </p>
         </div>
       </div>

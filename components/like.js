@@ -2,38 +2,31 @@ import Link from "next/link";
 
 import { useContext } from "react";
 
-import { CartContext } from "./layout";
+import { LikeContext } from "./layout";
 
-export default function Cart({ toggleCart, changeCartStatus }) {
-  let { products } = useContext(CartContext);
-  const total = () => {
-    let result = 0;
-    products.forEach((product) => {
-      result += product.amount * product.price;
-    });
-    return result;
-  };
+export default function Like({ toggleLike, changeLikeStatus }) {
+  let { productsLike } = useContext(LikeContext);
 
   return (
     <div
       className={`wrap-header-cart js-panel-cart ${
-        toggleCart ? "show-header-cart" : ""
+        toggleLike ? "show-header-cart" : ""
       }`}
     >
-      <div className="s-full" onClick={changeCartStatus} />
+      <div className="s-full" onClick={changeLikeStatus} />
       <div className="header-cart flex-col-l p-l-65 p-r-25">
         <div className="header-cart-title flex-w flex-sb-m p-b-8">
-          <span className="mtext-103 cl2">Your Cart</span>
+          <span className="mtext-103 cl2">Products liked</span>
           <div
             className="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04"
-            onClick={changeCartStatus}
+            onClick={changeLikeStatus}
           >
             <i className="zmdi zmdi-close" />
           </div>
         </div>
         <div className="header-cart-content flex-w js-pscroll">
           <ul className="header-cart-wrapitem w-full">
-            {products.map((product) => (
+            {productsLike.map((product) => (
               <li
                 className="header-cart-item flex-w flex-t m-b-12"
                 key={product.name}
@@ -47,28 +40,10 @@ export default function Cart({ toggleCart, changeCartStatus }) {
                       {product.name}
                     </a>
                   </Link>
-                  <span className="header-cart-item-info">{`${
-                    product.amount
-                  } x $${product.price.toLocaleString()}`}</span>
                 </div>
               </li>
             ))}
           </ul>
-          <div className="w-full">
-            <div className="header-cart-total w-full p-tb-40">
-              {`Total: $${total()}`}
-            </div>
-            <div className="header-cart-buttons flex-w w-full">
-              <Link href="/shopping-cart">
-                <a
-                  href="shoping-cart.html"
-                  className="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10"
-                >
-                  View Cart
-                </a>
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </div>

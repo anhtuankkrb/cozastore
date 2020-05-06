@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 import { auth } from "../../firebase/fire";
 
@@ -75,6 +76,12 @@ export default function DashboardLayout({ children, title, select, open }) {
 
   return auth.currentUser ? (
     <Layout style={{ minHeight: "100vh" }}>
+      <Head>
+        <title>coza store | dashboard</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+      </Head>
       <Header className="header" style={{ padding: "0 30px" }}>
         <Link href="/">
           <a
@@ -87,17 +94,7 @@ export default function DashboardLayout({ children, title, select, open }) {
             <img src={fixPathImg + "images/icons/logo-01.png"} alt="IMG-LOGO" />
           </a>
         </Link>
-        <h2
-          style={{
-            color: "#fff",
-            display: "inline",
-            marginLeft: "32px",
-            position: "relative",
-            top: "5px",
-          }}
-        >
-          {title}
-        </h2>
+        <h2 className="title-dashboard">{title}</h2>
 
         <div style={{ float: "right" }}>
           <span style={{ marginRight: "8px", color: "#fff" }}>
@@ -116,7 +113,12 @@ export default function DashboardLayout({ children, title, select, open }) {
         </div>
       </Header>
       <Layout>
-        <Sider width={200} className="site-layout-background">
+        <Sider
+          width={200}
+          className="site-layout-background"
+          breakpoint="lg"
+          collapsedWidth="0"
+        >
           <Menu
             theme="dark"
             mode="inline"
@@ -154,14 +156,6 @@ export default function DashboardLayout({ children, title, select, open }) {
                   <a>
                     <UserAddOutlined />
                     Add user
-                  </a>
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="Your profile">
-                <Link href="/dashboard/your-profile">
-                  <a>
-                    <ProfileOutlined />
-                    Your profile
                   </a>
                 </Link>
               </Menu.Item>

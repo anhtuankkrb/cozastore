@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-
+import Link from "next/link";
 function NextArrow(props) {
   const { onClick } = props;
   return (
@@ -33,7 +33,7 @@ export default function Slide(props) {
     waitForAnimate: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    afterChange: index => {
+    afterChange: (index) => {
       const arr = document.getElementsByClassName("respon5");
       for (let i = 0; i < arr.length; i++) {
         const arr1 = arr[i].getElementsByClassName("animated");
@@ -54,7 +54,7 @@ export default function Slide(props) {
           //   arr1[z].classList.add("visible-true", att);
         }
       }
-    }
+    },
   };
 
   return (
@@ -94,12 +94,14 @@ export default function Slide(props) {
                       data-delay={1600}
                       style={{ animationDelay: "1.6s" }}
                     >
-                      <a
-                        href="product.html"
-                        className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                      >
-                        Shop Now
-                      </a>
+                      <Link href="/shop">
+                        <a
+                          href="product.html"
+                          className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
+                        >
+                          Shop Now
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -137,12 +139,14 @@ export default function Slide(props) {
                       data-delay={1600}
                       style={{ animationDelay: "1.6s" }}
                     >
-                      <a
-                        href="product.html"
-                        className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                      >
-                        Shop Now
-                      </a>
+                      <Link href="/shop">
+                        <a
+                          href="product.html"
+                          className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
+                        >
+                          Shop Now
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -180,12 +184,14 @@ export default function Slide(props) {
                       data-delay={1600}
                       style={{ animationDelay: "1.6s" }}
                     >
-                      <a
-                        href="product.html"
-                        className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                      >
-                        Shop Now
-                      </a>
+                      <Link href="/shop">
+                        <a
+                          href="product.html"
+                          className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
+                        >
+                          Shop Now
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

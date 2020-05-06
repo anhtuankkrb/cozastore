@@ -28,12 +28,6 @@ const tailLayout = {
   wrapperCol: { offset: 2, span: 7 },
 };
 
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
-
 export default function YourProfile() {
   //user
   const [currentUser, setCurrentUser] = useState();
@@ -44,7 +38,7 @@ export default function YourProfile() {
     let clean = auth.onAuthStateChanged(function (user) {
       if (user) {
         setCurrentUser(user);
-        setImageUrl(user.photoURL);
+        setImage({ url: user.photoURL, file: "NO FILE" });
         cleanDB = dbUsers.doc(user.uid).onSnapshot((snapshot) => {
           setDataUser(snapshot.data());
         });
@@ -80,40 +74,71 @@ export default function YourProfile() {
   const handleOk = () => {
     setConfirmLoading(true);
 
-    if (dataUpdate.avatar) {
-      storage
-        .refFromURL(currentUser.photoURL)
-        .delete()
-        .then(() => {
-          let uploadTask = storage
-            .ref("users-image/" + dataUpdate.avatar.file.name)
-            .put(dataUpdate.avatar.file.originFileObj);
-          uploadTask.on(
-            "state_changed",
-            function (snapshot) {},
-            function (error) {},
-            function () {
-              uploadTask.snapshot.ref
-                .getDownloadURL()
-                .then(function (downloadURL) {
-                  currentUser
-                    .updateProfile({ photoURL: downloadURL })
-                    .then(() => {
-                      dbUsers
-                        .doc(currentUser.uid)
-                        .update({ avatar: downloadURL, bio: dataUpdate.bio })
-                        .then(() => {
-                          setConfirmLoading(false);
-                          handleCancel();
-                          form.setFieldsValue({
-                            avatar: undefined,
+    if (image.file != "NO FILE") {
+      if (!image.url) {
+        storage
+          .refFromURL(currentUser.photoURL)
+          .delete()
+          .then(() => {
+            let uploadTask = storage
+              .ref("users-image/" + image.file.name)
+              .put(image.file);
+            uploadTask.on(
+              "state_changed",
+              function (snapshot) {},
+              function (error) {},
+              function () {
+                uploadTask.snapshot.ref
+                  .getDownloadURL()
+                  .then(function (downloadURL) {
+                    currentUser
+                      .updateProfile({ photoURL: downloadURL })
+                      .then(() => {
+                        dbUsers
+                          .doc(currentUser.uid)
+                          .update({ avatar: downloadURL, bio: dataUpdate.bio })
+                          .then(() => {
+                            setConfirmLoading(false);
+                            handleCancel();
+                            form.setFieldsValue({
+                              avatar: undefined,
+                            });
                           });
+                      });
+                  });
+              }
+            );
+          });
+      } else {
+        let uploadTask = storage
+          .ref("users-image/" + image.file.name)
+          .put(image.file);
+        uploadTask.on(
+          "state_changed",
+          function (snapshot) {},
+          function (error) {},
+          function () {
+            uploadTask.snapshot.ref
+              .getDownloadURL()
+              .then(function (downloadURL) {
+                currentUser
+                  .updateProfile({ photoURL: downloadURL })
+                  .then(() => {
+                    dbUsers
+                      .doc(currentUser.uid)
+                      .update({ avatar: downloadURL, bio: dataUpdate.bio })
+                      .then(() => {
+                        setConfirmLoading(false);
+                        handleCancel();
+                        form.setFieldsValue({
+                          avatar: undefined,
                         });
-                    });
-                });
-            }
-          );
-        });
+                      });
+                  });
+              });
+          }
+        );
+      }
     } else {
       dbUsers
         .doc(currentUser.uid)
@@ -126,31 +151,17 @@ export default function YourProfile() {
   };
 
   //avatar
-  const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
-  const handleChange = (info) => {
-    if (info.file.status === "uploading") {
-      setLoading(true);
-      return;
-    }
-    if (info.file.status === "done") {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (imageUrl) => {
-        setImageUrl(imageUrl);
-        setLoading(false);
-      });
-    }
+
+  const [image, setImage] = useState();
+  const changeImage = (e) => {
+    setImage({
+      url: URL.createObjectURL(e.target.files[0]),
+      file: e.target.files[0],
+    });
   };
 
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div className="ant-upload-text">Upload</div>
-    </div>
-  );
-
   return auth.currentUser ? (
-    <DashboardLayout title="Your profile" select="Your profile" open="Users">
+    <DashboardLayout title="Your profile">
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>
           <Link href="/">
@@ -216,24 +227,23 @@ export default function YourProfile() {
               }}
             >
               <Form.Item label="Avatar">
-                <Form.Item name="avatar" valuePropName="file" noStyle>
-                  <Upload
-                    name="file"
-                    listType="picture-card"
-                    className="avatar-uploader"
-                    showUploadList={false}
-                    onChange={handleChange}
+                {image && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-end",
+                      marginBottom: "10px",
+                    }}
                   >
-                    {imageUrl ? (
-                      <img
-                        src={imageUrl}
-                        alt="avatar"
-                        style={{ width: "100%" }}
-                      />
-                    ) : (
-                      uploadButton
-                    )}
-                  </Upload>
+                    <img
+                      src={image.url}
+                      style={{ width: "280px", marginRight: "16px" }}
+                    />
+                  </div>
+                )}
+
+                <Form.Item name="avatar" valuePropName="file" noStyle>
+                  <input type="file" onChange={changeImage} />
                 </Form.Item>
               </Form.Item>
 

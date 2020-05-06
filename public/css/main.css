@@ -36,6 +36,19 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
+.title-dashboard {
+  color: #fff;
+  display: inline;
+  margin-left: 32px;
+  position: relative;
+  top: 5px;
+}
+@media (max-width: 700px) {
+  .title-dashboard {
+    display: none;
+  }
+}
+
 .popover {
   z-index: 9999 !important;
 }

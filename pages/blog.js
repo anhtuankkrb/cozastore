@@ -1,11 +1,52 @@
 import Layout from "../components/layout";
 import Link from "next/link";
-
+import { useState } from "react";
 import { dbBlog, Timestamp } from "../firebase/fire";
 
 import SideMenu from "../components/blog/side-menu";
 
 export default function Blog({ data, category }) {
+  const [posts, setPosts] = useState(data);
+  const [page, setPage] = useState(2);
+  const [load, setLoad] = useState(true);
+
+  const loadMore = () => {
+    if (category) {
+      dbBlog
+        .where("categories", "array-contains", category)
+        .limit(page * 3)
+        .get()
+        .then((snapshot) => {
+          let arrData = [];
+          snapshot.forEach((doc) => {
+            arrData.push({ id: doc.id, ...doc.data() });
+          });
+          setPosts(arrData);
+          if (arrData.length == 0 || arrData.length < page * 3) {
+            setLoad(false);
+          } else {
+            setPage(page + 1);
+          }
+        });
+      return;
+    }
+    dbBlog
+      .limit(page * 3)
+      .get()
+      .then((snapshot) => {
+        let arrData = [];
+        snapshot.forEach((doc) => {
+          arrData.push({ id: doc.id, ...doc.data() });
+        });
+        setPosts(arrData);
+        if (arrData.length == 0 || arrData.length < page * 3) {
+          setLoad(false);
+        } else {
+          setPage(page + 1);
+        }
+      });
+  };
+
   return (
     <Layout title="Blog">
       {/* Title page */}
@@ -22,8 +63,8 @@ export default function Blog({ data, category }) {
             <div className="col-md-8 col-lg-9 p-b-80">
               <div className="p-r-45 p-r-0-lg">
                 {/* item blog */}
-                {data &&
-                  data.map((post) => {
+                {posts &&
+                  posts.map((post) => {
                     const time = new Timestamp(
                       post.archiveDate.seconds,
                       post.archiveDate.nanoseconds
@@ -109,15 +150,15 @@ export default function Blog({ data, category }) {
                 <div className="flex-l-m flex-w w-full p-t-10 m-lr--7">
                   <a
                     href="#"
-                    className="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1"
+                    className="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"
+                    style={load ? null : { visibility: "hidden" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      loadMore();
+                    }}
                   >
-                    1
-                  </a>
-                  <a
-                    href="#"
-                    className="flex-c-m how-pagination1 trans-04 m-all-7"
-                  >
-                    2
+                    Load More
                   </a>
                 </div>
               </div>
@@ -147,6 +188,7 @@ Blog.getInitialProps = async function (context) {
 
     let result = await dbBlog
       .where(field, "array-contains", value)
+      .limit(3)
       .get()
       .then((snapshot) => {
         let arrData = [];
@@ -161,12 +203,15 @@ Blog.getInitialProps = async function (context) {
       });
     return { data: result, category: category };
   }
-  let result = await dbBlog.get().then((snapshot) => {
-    let arrData = [];
-    snapshot.forEach((doc) => {
-      arrData.push({ id: doc.id, ...doc.data() });
+  let result = await dbBlog
+    .limit(3)
+    .get()
+    .then((snapshot) => {
+      let arrData = [];
+      snapshot.forEach((doc) => {
+        arrData.push({ id: doc.id, ...doc.data() });
+      });
+      return arrData;
     });
-    return arrData;
-  });
   return { data: result };
 };

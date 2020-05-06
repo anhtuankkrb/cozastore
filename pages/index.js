@@ -14,12 +14,14 @@ export default function Index({ data }) {
   );
 }
 
-Index.getInitialProps = async function() {
+Index.getInitialProps = async function () {
   let result = await db
+
+    .limit(8)
     .get()
-    .then(snapshot => {
+    .then((snapshot) => {
       let arrData = [];
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         arrData.push({ id: doc.id, ...doc.data() });
       });
       return arrData;

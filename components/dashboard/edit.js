@@ -31,7 +31,7 @@ export default function Edit({
     <Editor
       editorState={editorState}
       onEditorStateChange={onEditorStateChange}
-      editorStyle={{ background: "#fff", height: "700px" }}
+      editorStyle={{ background: "#fff", height: "700px", padding: "8px 16px" }}
       toolbar={{
         list: { inDropdown: true },
         textAlign: { inDropdown: true },

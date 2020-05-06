@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Collapse } from "reactstrap";
@@ -6,7 +6,12 @@ import { Collapse } from "reactstrap";
 const wrapMenuDesktop = React.createRef();
 const containerMenuDesktop = React.createRef();
 const toBar = React.createRef();
-export default function Header({ changeCartStatus, products }) {
+export default function Header({
+  changeCartStatus,
+  products,
+  changeLikeStatus,
+  productsLike,
+}) {
   const path = useRouter().pathname;
   const level = path.split("").filter((item) => item == "/");
   let fixPathImg = "";
@@ -133,7 +138,11 @@ export default function Header({ changeCartStatus, products }) {
               <a
                 href="#"
                 className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                data-notify={0}
+                data-notify={productsLike.length}
+                onClick={(e) => {
+                  e.preventDefault();
+                  changeLikeStatus();
+                }}
               >
                 <i className="zmdi zmdi-favorite-outline" />
               </a>
@@ -160,14 +169,18 @@ export default function Header({ changeCartStatus, products }) {
           <div
             className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
             onClick={changeCartStatus}
-            data-notify={2}
+            data-notify={products.length}
           >
             <i className="zmdi zmdi-shopping-cart" />
           </div>
           <a
             href="#"
             className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-            data-notify={0}
+            data-notify={productsLike.length}
+            onClick={(e) => {
+              e.preventDefault();
+              changeLikeStatus();
+            }}
           >
             <i className="zmdi zmdi-favorite-outline" />
           </a>
