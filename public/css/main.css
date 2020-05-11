@@ -36,6 +36,15 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
+.chartis {
+  width: 70%;
+  margin-bottom: 100px;
+}
+.chartisCol {
+  width: 50%;
+  margin-bottom: 80px;
+}
+
 .title-dashboard {
   color: #fff;
   display: inline;
@@ -46,6 +55,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 @media (max-width: 700px) {
   .title-dashboard {
     display: none;
+  }
+  .chartisCol {
+    width: 100%;
+  }
+  .chartis {
+    width: 100%;
   }
 }
 

@@ -17,6 +17,8 @@ import "../public/css/util.css";
 import "../public/css/main.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
+import "../public/css/chartist.min.css";
+
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
