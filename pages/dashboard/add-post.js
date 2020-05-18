@@ -144,20 +144,18 @@ export default function AddPost() {
                 html = html.replace(image.localUrl, downloadURL);
               })
               .then(function () {
-                if (i == upImages.length - 1) {
-                  dbBlog
-                    .doc(id)
-                    .update({ html: html, contentImages: contentImages })
-                    .then(() => {
-                      form.resetFields();
-                      setEditorState(EditorState.createEmpty());
-                      setImages([]);
-                      setCoverImage(undefined);
-                      setTags([]);
-                      setConfirmLoading(false);
-                      handleCancel();
-                    });
-                }
+                dbBlog
+                  .doc(id)
+                  .update({ html: html, contentImages: contentImages })
+                  .then(() => {
+                    form.resetFields();
+                    setEditorState(EditorState.createEmpty());
+                    setImages([]);
+                    setCoverImage(undefined);
+                    setTags([]);
+                    setConfirmLoading(false);
+                    handleCancel();
+                  });
               });
           }
         );
@@ -290,7 +288,6 @@ export default function AddPost() {
           </Form.Item>
           <Form.Item label="Cover image">
             <Form.Item
-              name="coverImage"
               valuePropName="file"
               rules={[
                 { required: true, message: "Please input your Cover image!" },

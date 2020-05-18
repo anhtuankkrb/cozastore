@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { dbBlog, storage } from "../../../firebase/fire";
 import dynamic from "next/dynamic";
 
@@ -43,7 +43,7 @@ export default function EditPost({ data }) {
     data.contentImages
       ? data.contentImages.map((image) => ({
           localUrl: image,
-          flie: "NO FILE",
+          file: "NO FILE",
         }))
       : []
   );
@@ -138,20 +138,20 @@ export default function EditPost({ data }) {
     }
   };
   //up content
-  const upContent = (id) => {
+  const upContent = () => {
     let contentImages = [];
 
     let html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
     let upImages = images.filter((image) => html.includes(image.localUrl));
 
-    let ollImages = images.filter((image) => image.file == "NO FILE");
+    // let ollImages = images.filter((image) => image.file == "NO FILE");
 
     let imagesNeedDelete = data.contentImages
       ? data.contentImages.filter((image) => {
           let tester = true;
-          for (let i = 0; i < ollImages.length; i++) {
-            if (image == ollImages[i].localUrl) {
+          for (let i = 0; i < upImages.length; i++) {
+            if (image == upImages[i].localUrl) {
               tester = false;
               break;
             }
@@ -161,12 +161,18 @@ export default function EditPost({ data }) {
       : [];
 
     if (upImages.length == 0) {
+      if (imagesNeedDelete.length != 0) {
+        imagesNeedDelete.forEach((image) => {
+          storage.refFromURL(image).delete();
+        });
+      }
       dbBlog
-        .doc(id)
+        .doc(data.id)
         .update({ html: html, contentImages: contentImages })
         .then(() => {
           setConfirmLoading(false);
           handleCancel();
+          Router.push("/dashboard/posts-list");
         });
     } else {
       if (imagesNeedDelete.length != 0) {
@@ -176,17 +182,19 @@ export default function EditPost({ data }) {
       }
 
       upImages.forEach((image, i) => {
-        if (image.localUrl == "NO FILE") {
+        if (image.file == "NO FILE") {
           contentImages.push(image.localUrl);
-          if (i == upImages.length - 1) {
-            dbBlog
-              .doc(id)
-              .update({ html: html, contentImages: contentImages })
-              .then(() => {
+
+          dbBlog
+            .doc(data.id)
+            .update({ html: html, contentImages: contentImages })
+            .then(() => {
+              if (i == upImages.length - 1) {
                 setConfirmLoading(false);
                 handleCancel();
-              });
-          }
+                Router.push("/dashboard/posts-list");
+              }
+            });
         } else {
           let uploadTask = storage
             .ref("blog/" + image.file.name)
@@ -203,15 +211,16 @@ export default function EditPost({ data }) {
                   html = html.replace(image.localUrl, downloadURL);
                 })
                 .then(function () {
-                  if (i == upImages.length - 1) {
-                    dbBlog
-                      .doc(data.id)
-                      .update({ html: html, contentImages: contentImages })
-                      .then(() => {
+                  dbBlog
+                    .doc(data.id)
+                    .update({ html: html, contentImages: contentImages })
+                    .then(() => {
+                      if (i == upImages.length - 1) {
                         setConfirmLoading(false);
                         handleCancel();
-                      });
-                  }
+                        Router.push("/dashboard/posts-list");
+                      }
+                    });
                 });
             }
           );
@@ -361,7 +370,6 @@ export default function EditPost({ data }) {
           </Form.Item>
           <Form.Item label="Cover image">
             <Form.Item
-              name="coverImage"
               valuePropName="file"
               rules={[
                 { required: true, message: "Please input your Cover image!" },
